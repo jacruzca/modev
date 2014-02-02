@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/co.edu.unal.modev.dbConfig/src-gen" editDirectory="/co.edu.unal.modev.dbConfig.edit/src"
+    editorDirectory="/co.edu.unal.modev.dbConfig.editor/src" modelPluginID="co.edu.unal.modev.dbConfig"
+    forceOverwrite="true" modelName="DbConfigDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.dbConfig.edit"
+    editorPluginID="co.edu.unal.modev.dbConfig.editor" runtimeVersion="2.9">
+  <genPackages prefix="DbConfigDsl" basePackage="co.edu.unal.modev.dbConfig" disposableProviderFactory="true"
+      fileExtensions="dbConfig" ecorePackage="DbConfigDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DbConfigDsl.ecore#//DATABASEENGINE">
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DATABASEENGINE/MYSQL"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DATABASEENGINE/SQLSERVER"/>
+    </genEnums>
+    <genClasses ecoreClass="DbConfigDsl.ecore#//DBConfiguration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DbConfigDsl.ecore#//DBConfiguration/config"/>
+    </genClasses>
+    <genClasses ecoreClass="DbConfigDsl.ecore#//DatabaseConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/datasource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/engine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/host"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/user"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/port"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/database"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/schema"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

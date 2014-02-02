@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="layeredAppDsl" nsURI="http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
+    nsPrefix="layeredAppDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="App">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" upperBound="-1"
+        eType="#//Config" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="persistenceLayer" eType="#//PersistenceLayer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Config">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" eType="ecore:EClass ../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PersistenceLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityModules" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//EntitiesModule"/>
+  </eClassifiers>
+</ecore:EPackage>

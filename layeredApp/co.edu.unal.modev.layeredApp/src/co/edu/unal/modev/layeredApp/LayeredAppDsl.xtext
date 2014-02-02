@@ -1,0 +1,24 @@
+grammar co.edu.unal.modev.layeredApp.LayeredAppDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.edu.co/unal/modev/dbConfig/DbConfigDsl" as dbConfig
+import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
+
+generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
+
+
+App:
+	config+=Config*
+	persistenceLayer=PersistenceLayer
+;
+	
+Config:
+	'configuration' name=STRING "{"
+		"dbConfig" dbConfig=[dbConfig::DatabaseConfiguration | ID]
+	"}"
+;
+
+PersistenceLayer:
+	"persistence-layer" name=ID "{"
+		entityModules+=[entity::EntitiesModule | ID]
+	"}"
+;
