@@ -7,13 +7,23 @@ generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
 
 
 App:
-	config+=Config*
+	config=Config
 	persistenceLayer=PersistenceLayer
 ;
 	
 Config:
 	'configuration' name=STRING "{"
+		projectConfig=ProjectConfig
 		"dbConfig" dbConfig=[dbConfig::DatabaseConfiguration | ID]
+	"}"
+;
+
+ProjectConfig:
+	'project-config' name=ID "{"
+		'projectName' projectName=ID
+		'projectLocation' projectLocation=STRING
+		'packageName' packageName=STRING
+		'applicationVersion' applicationVersion=STRING
 	"}"
 ;
 

@@ -246,13 +246,14 @@
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
 	</extension>
-
+	<!--
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
             class="co.edu.unal.modev.dbConfig.ui.DbConfigDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
+   -->
    <extension
             point="org.eclipse.ui.preferencePages">
         <page

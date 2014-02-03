@@ -246,13 +246,14 @@
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
 	</extension>
-
+	<!--
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
             class="co.edu.unal.modev.layeredApp.ui.LayeredAppDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
+   -->
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
@@ -391,6 +392,41 @@
             class="co.edu.unal.modev.layeredApp.ui.LayeredAppDslExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="layeredApp">
     </provider>
+  </extension>
+  
+  <!--[Custom] setup context menu-->
+  
+  <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="co.edu.unal.modev.layeredApp.ui.LayeredAppDslExecutableExtensionFactory:co.edu.unal.modev.layeredApp.ui.handler.GenerationHandler"
+           commandId="co.edu.unal.modev.layeredApp.ui.handler.GenerationCommand">
+     </handler>
+  </extension>
+   
+  <extension
+        point="org.eclipse.ui.commands">
+        <command name="Generate Code"
+              id="co.edu.unal.modev.layeredApp.ui.handler.GenerationCommand">
+        </command>
+  </extension>
+   
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+        <command
+            commandId="co.edu.unal.modev.layeredApp.ui.handler.GenerationCommand"
+            style="push">
+            <visibleWhen
+                  checkEnabled="false">
+                  <iterate>
+				       <adapt type="org.eclipse.core.resources.IResource">
+				          <test property="org.eclipse.core.resources.name" 
+				                value="*.layeredApp"/>
+				       </adapt>
+    				</iterate>
+            </visibleWhen>
+        </command>
+    </menuContribution>
   </extension>
 
 </plugin>
