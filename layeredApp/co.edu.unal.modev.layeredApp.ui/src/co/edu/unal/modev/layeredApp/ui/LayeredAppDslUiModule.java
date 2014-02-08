@@ -5,11 +5,19 @@ package co.edu.unal.modev.layeredApp.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import com.google.inject.Binder;
+
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class LayeredAppDslUiModule extends co.edu.unal.modev.layeredApp.ui.AbstractLayeredAppDslUiModule {
 	public LayeredAppDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+	
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		
 	}
 }

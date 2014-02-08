@@ -20,6 +20,7 @@ Config:
 
 ProjectConfig:
 	'project-config' name=ID "{"
+		'technology' technology=TECHNOLOGY
 		'projectName' projectName=ID
 		'projectLocation' projectLocation=STRING
 		'packageName' packageName=STRING
@@ -31,4 +32,9 @@ PersistenceLayer:
 	"persistence-layer" name=ID "{"
 		entityModules+=[entity::EntitiesModule | ID]
 	"}"
+;
+
+enum TECHNOLOGY:
+	NODEJS ='NodeJS' | 
+	JEE = 'JEE'
 ;

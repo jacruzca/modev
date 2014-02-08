@@ -16,6 +16,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectConfig">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="technology" eType="#//TECHNOLOGY"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -25,5 +26,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityModules" unique="false"
         upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//EntitiesModule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TECHNOLOGY">
+    <eLiterals name="NODEJS" literal="NodeJS"/>
+    <eLiterals name="JEE" value="1" literal="JEE"/>
   </eClassifiers>
 </ecore:EPackage>

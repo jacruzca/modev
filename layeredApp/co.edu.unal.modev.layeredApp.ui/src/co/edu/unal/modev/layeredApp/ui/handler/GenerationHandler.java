@@ -21,7 +21,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
@@ -29,24 +28,26 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
+import co.edu.unal.modev.layeredApp.generator.GeneratorFactory;
+import co.edu.unal.modev.layeredApp.generator.IGeneratorLayeredApp;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App;
+import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
 import co.edu.unal.modev.layeredApp.ui.exception.ModelLoaderException;
 import co.edu.unal.modev.layeredApp.ui.util.JavaProjectHelper;
 import co.edu.unal.modev.layeredApp.ui.util.LayeredAppUtil;
 
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public class GenerationHandler extends AbstractHandler implements IHandler{
 	
-	@Inject
-	private Provider<EclipseResourceFileSystemAccess2> fileAccessProvider;
-
 	@Inject
 	IResourceDescriptions resourceDescriptions;
 
 	@Inject
 	IResourceSetProvider resourceSetProvider;
+	
+	@Inject
+	GeneratorFactory generatorFactory;
 
 	@Inject
 	private JavaIoFileSystemAccess fsa;
@@ -140,6 +141,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 		boolean mainFileValid = validateMainFile(app);
 		
 		final String projectName = app.getConfig().getProjectConfig().getProjectName();
+		final TECHNOLOGY technology = app.getConfig().getProjectConfig().getTechnology();
 		final String projectLocation = app.getConfig().getProjectConfig().getProjectLocation();
 		
 		if (mainFileValid) {
@@ -157,25 +159,31 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 				protected IStatus run(IProgressMonitor monitor) {
 					
 					try {
-						monitor.beginTask("Generando aplicación "+projectName, 100);						
+						monitor.beginTask("Generating application "+projectName, 100);						
 						monitor.worked(10);
 						
-						monitor.subTask("Verificando regiones protegidas ...");
+						monitor.subTask("Verifying protected regions ...");
 						
 						fsa.setOutputPath(parentLocation);
+						
+						//request specific generator
+						IGeneratorLayeredApp generator = (IGeneratorLayeredApp) generatorFactory.getGenerator(technology);	
 
 						generator.doBeginGeneration(resource, fsa, monitor, 80);
 						
-						monitor.subTask("Actualizando workspace ...");
+						monitor.subTask("Reloading workspace ...");
 						monitor.worked(10);
-						monitor.subTask("Finalizando");
+						monitor.subTask("Finishing");
 						monitor.done();
 						return Status.OK_STATUS;
 						
-					} catch (CoreException e) {
+					/*} catch (CoreException e) {
 						LayeredAppUtil.logErrorMessage(e.getMessage(), e);
 						return Status.CANCEL_STATUS;
 					} catch (IOException e) {
+						LayeredAppUtil.logErrorMessage(e.getMessage(), e);
+						return Status.CANCEL_STATUS;*/
+					} catch (Exception e) {
 						LayeredAppUtil.logErrorMessage(e.getMessage(), e);
 						return Status.CANCEL_STATUS;
 					}

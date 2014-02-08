@@ -18,20 +18,21 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
  co.edu.unal.modev.dbConfig;bundle-version="1.0.0",
- co.edu.unal.modev.entity;bundle-version="1.0.0"
+ co.edu.unal.modev.entity;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="3.9.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: co.edu.unal.modev.layeredApp,
- co.edu.unal.modev.layeredApp.services,
+ co.edu.unal.modev.layeredApp.formatting,
+ co.edu.unal.modev.layeredApp.generator,
  co.edu.unal.modev.layeredApp.layeredAppDsl,
  co.edu.unal.modev.layeredApp.layeredAppDsl.impl,
  co.edu.unal.modev.layeredApp.layeredAppDsl.util,
- co.edu.unal.modev.layeredApp.serializer,
  co.edu.unal.modev.layeredApp.parser.antlr,
  co.edu.unal.modev.layeredApp.parser.antlr.internal,
- co.edu.unal.modev.layeredApp.validation,
  co.edu.unal.modev.layeredApp.scoping,
- co.edu.unal.modev.layeredApp.generator,
- co.edu.unal.modev.layeredApp.formatting
+ co.edu.unal.modev.layeredApp.serializer,
+ co.edu.unal.modev.layeredApp.services,
+ co.edu.unal.modev.layeredApp.validation
 
