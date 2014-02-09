@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.eclipse.xtext.generator.IGenerator;
 
-import co.edu.unal.modev.layeredApp.generator.nodejs.NodejsGenerator;
+import co.edu.unal.modev.generator.nodejs.layeredApp.NodejsGenerator;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
 
 import com.google.inject.Inject;

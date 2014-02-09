@@ -1,4 +1,4 @@
-package co.edu.unal.modev.layeredApp.generator;
+package co.edu.unal.modev.generator;
 
 import java.util.List;
 
