@@ -21,7 +21,6 @@ class NodejsGenerator implements IGeneratorLayeredApp {
 	
 	override doBeginGeneration(Resource resource, JavaIoFileSystemAccess fsa, IProgressMonitor monitor, int percentageToAssign) {
 		
-		
 		generatePersistenceLayer.generate(resource, fsa)
 		
 		

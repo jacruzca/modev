@@ -1,6 +1,10 @@
 package co.edu.unal.modev.layeredApp.ui.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -9,6 +13,7 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -35,6 +40,7 @@ import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
 import co.edu.unal.modev.layeredApp.ui.exception.ModelLoaderException;
 import co.edu.unal.modev.layeredApp.ui.util.JavaProjectHelper;
 import co.edu.unal.modev.layeredApp.ui.util.LayeredAppUtil;
+import co.edu.unal.modev.layeredApp.ui.util.WorkspaceUtils;
 
 import com.google.inject.Inject;
 
@@ -61,6 +67,11 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 	private Resource getResource(IProject project, String filePath) {
 		URI uri = URI.createPlatformResourceURI(filePath, true);
 		ResourceSet rs = resourceSetProvider.get(project);
+		
+		System.out.println(project.getLocation());
+		
+		loadAllReferences(rs, project.getLocation());
+		
 		Resource r = rs.getResource(uri, true);
 		return r;
 	}
@@ -90,6 +101,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 							@Override
 							public Boolean exec(XtextResource resource)
 									throws Exception {
+								
 								initGeneration(resource);
 								return Boolean.TRUE;
 							}
@@ -124,6 +136,28 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 			e.printStackTrace();
 			LayeredAppUtil.manageException(e.getMessage(), e.getMessage(), e);
 		}
+	}
+	
+	private List<String> getAllModelExtensions(){
+		List<String> extensions = new ArrayList<String>();
+			
+		extensions.add(".entity");
+		extensions.add(".layeredApp");
+		extensions.add(".dbConfig");
+		
+		
+		return extensions;
+	}
+	
+	private void loadAllReferences(ResourceSet resourceSet, IPath folder){
+		List<String> allModelExtensions = getAllModelExtensions();
+		Set<IFile> resultSet = new HashSet<IFile>();
+		for (String fileExtension : allModelExtensions) {
+			Set<IFile> allDSLFilesInFolder = WorkspaceUtils.getAllDSLFilesInFolder(folder, fileExtension);
+			resultSet.addAll(allDSLFilesInFolder);
+		}
+		
+		WorkspaceUtils.getModelElements(resultSet, resourceSet);
 	}
 	
 	/**
@@ -168,7 +202,6 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 						
 						//request specific generator based on technology
 						IGeneratorLayeredApp generator = (IGeneratorLayeredApp) generatorFactory.getGenerator(technology);	
-
 						generator.doBeginGeneration(resource, fsa, monitor, 80);
 						
 						monitor.subTask("Reloading workspace ...");
