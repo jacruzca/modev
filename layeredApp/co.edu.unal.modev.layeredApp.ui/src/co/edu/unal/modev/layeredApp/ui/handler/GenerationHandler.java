@@ -166,7 +166,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 						
 						fsa.setOutputPath(parentLocation);
 						
-						//request specific generator
+						//request specific generator based on technology
 						IGeneratorLayeredApp generator = (IGeneratorLayeredApp) generatorFactory.getGenerator(technology);	
 
 						generator.doBeginGeneration(resource, fsa, monitor, 80);

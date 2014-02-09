@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.eclipse.xtext.generator.IGenerator;
 
+import co.edu.unal.modev.layeredApp.generator.nodejs.NodejsGenerator;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
 
 import com.google.inject.Inject;
@@ -27,7 +28,6 @@ public class GeneratorFactory {
 	 * @return
 	 */
 	public IGenerator getGenerator(TECHNOLOGY val){
-		System.out.println(generatorMap);
 		return generatorMap.containsKey(val) ? generatorMap.get(val).get(): defaultGenerator.get();
 	}
 }

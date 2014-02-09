@@ -5,8 +5,8 @@ package co.edu.unal.modev.layeredApp;
 
 import org.eclipse.xtext.generator.IGenerator;
 
-import co.edu.unal.modev.layeredApp.generator.JeeGenerator;
-import co.edu.unal.modev.layeredApp.generator.NodejsGenerator;
+import co.edu.unal.modev.layeredApp.generator.jee.JeeGenerator;
+import co.edu.unal.modev.layeredApp.generator.nodejs.NodejsGenerator;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
 
 import com.google.inject.Binder;
