@@ -37,7 +37,6 @@ public class WorkspaceUtils {
 		getAllTxtureFilesInFolderRec(resources, folder, workspaceRoot, fileExtension);
 		for (IResource resource : resources) {
 			IFile file = (IFile) resource;
-			System.out.println(file);
 			resultSet.add(file);
 		}
 		return resultSet;

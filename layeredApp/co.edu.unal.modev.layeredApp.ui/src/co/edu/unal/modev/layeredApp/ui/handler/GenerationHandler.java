@@ -34,10 +34,10 @@ import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import co.edu.unal.modev.generator.IGeneratorLayeredApp;
-import co.edu.unal.modev.layeredApp.generator.GeneratorFactory;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
 import co.edu.unal.modev.layeredApp.ui.exception.ModelLoaderException;
+import co.edu.unal.modev.layeredApp.ui.generator.GeneratorFactory;
 import co.edu.unal.modev.layeredApp.ui.util.JavaProjectHelper;
 import co.edu.unal.modev.layeredApp.ui.util.LayeredAppUtil;
 import co.edu.unal.modev.layeredApp.ui.util.WorkspaceUtils;

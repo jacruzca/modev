@@ -10,7 +10,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore;bundle-version="2.9.1",
  org.eclipse.xtext.generator;bundle-version="2.5.0",
  co.edu.unal.modev.entity;bundle-version="1.0.0",
- co.edu.unal.modev;bundle-version="1.0.0"
+ co.edu.unal.modev;bundle-version="1.0.0",
+ co.edu.unal.modev.layeredApp;bundle-version="1.0.0",
+ co.edu.unal.modev.generator.nodejs.entity;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: co.edu.unal.modev.generator.nodejs.layeredApp

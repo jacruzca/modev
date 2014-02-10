@@ -16,7 +16,9 @@ Require-Bundle: co.edu.unal.modev.layeredApp;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- co.edu.unal.modev
+ co.edu.unal.modev,
+ co.edu.unal.modev.generator.nodejs.layeredApp,
+ co.edu.unal.modev.generator.jee.layeredApp
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
