@@ -4,7 +4,7 @@
     editorDirectory="/co.edu.unal.modev.layeredApp.editor/src" modelPluginID="co.edu.unal.modev.layeredApp"
     forceOverwrite="true" modelName="LayeredAppDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.layeredApp.edit"
-    editorPluginID="co.edu.unal.modev.layeredApp.editor" runtimeVersion="2.9" usedGenPackages="../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.genmodel#//dbConfigDsl ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel#//entityDsl">
+    editorPluginID="co.edu.unal.modev.layeredApp.editor" runtimeVersion="2.9" usedGenPackages="../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.genmodel#//dbConfigDsl ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel#//entityDsl ../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.genmodel#//repositoryDsl">
   <genPackages prefix="LayeredAppDsl" basePackage="co.edu.unal.modev.layeredApp" disposableProviderFactory="true"
       fileExtensions="layeredApp" ecorePackage="LayeredAppDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="LayeredAppDsl.ecore#//TECHNOLOGY">
@@ -31,6 +31,7 @@
     <genClasses ecoreClass="LayeredAppDsl.ecore#//PersistenceLayer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//PersistenceLayer/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//PersistenceLayer/entityModules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//PersistenceLayer/repositoryModules"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -21,6 +21,9 @@ Workflow {
     	//Entity
     	registerGeneratedEPackage = "co.edu.unal.modev.entity.entityDsl.EntityDslPackage"
     	registerGenModelFile = "platform:/resource/co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel"
+    	//Repository
+    	registerGeneratedEPackage = "co.edu.unal.modev.repository.repositoryDsl.RepositoryDslPackage"
+    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.repository/model/generated/RepositoryDsl.genmodel"
     }
     
     component = DirectoryCleaner {

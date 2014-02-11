@@ -144,6 +144,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 		extensions.add(".entity");
 		extensions.add(".layeredApp");
 		extensions.add(".dbConfig");
+		extensions.add(".repository");
 		
 		
 		return extensions;

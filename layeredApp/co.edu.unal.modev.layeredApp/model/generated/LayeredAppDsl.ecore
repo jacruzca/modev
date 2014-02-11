@@ -26,6 +26,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityModules" unique="false"
         upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//EntitiesModule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryModules" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//RepositoriesModule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TECHNOLOGY">
     <eLiterals name="NODEJS" literal="NodeJS"/>

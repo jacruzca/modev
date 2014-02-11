@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: co.edu.unal.modev.repository
-Bundle-Vendor: My Company
+Bundle-Vendor: jacruzca-UNAL
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: co.edu.unal.modev.repository; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  co.edu.unal.modev.entity;bundle-version="1.0.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: co.edu.unal.modev.repository,
  co.edu.unal.modev.repository.services,
  co.edu.unal.modev.repository.repositoryDsl,

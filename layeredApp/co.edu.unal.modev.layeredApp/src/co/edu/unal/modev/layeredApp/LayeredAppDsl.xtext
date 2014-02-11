@@ -2,6 +2,7 @@ grammar co.edu.unal.modev.layeredApp.LayeredAppDsl with org.eclipse.xtext.common
 
 import "http://www.edu.co/unal/modev/dbConfig/DbConfigDsl" as dbConfig
 import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
+import "http://www.edu.co/unal/modev/repository/RepositoryDsl" as repository
 
 generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
 
@@ -31,6 +32,7 @@ ProjectConfig:
 PersistenceLayer:
 	"persistence-layer" name=ID "{"
 		entityModules+=[entity::EntitiesModule | ID]
+		repositoryModules+=[repository::RepositoriesModule | ID]
 	"}"
 ;
 
