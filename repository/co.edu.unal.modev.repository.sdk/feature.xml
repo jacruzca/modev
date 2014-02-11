@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="co.edu.unal.modev.repository.sdk"
+	label="RepositoryDsl SDK Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="co.edu.unal.modev.repository"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="co.edu.unal.modev.repository.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>

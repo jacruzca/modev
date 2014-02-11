@@ -1,0 +1,74 @@
+grammar co.edu.unal.modev.repository.RepositoryDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
+
+generate repositoryDsl "http://www.edu.co/unal/modev/repository/RepositoryDsl"
+
+RepositoriesModule:
+	"repositories-module" name=ID "{"
+		repositories+=Repository*
+	"}"
+;
+	
+Repository:
+	'repository' name=ID 'belongsTo' belongsTo=[entity::Entity|ID]
+	'{'
+		(springDataOperations += RepositorySpringDataOperation)*
+		(operations += RepositoryOperation)*
+	'}'
+;
+
+RepositorySpringDataOperation:
+	'spring-data-operation' name=ID 'returnType' returnType=RepositoryReturnType ( 'throws' throwsException=EXCEPTION )? 
+	'query' query=STRING
+	(	'('
+				(parameters += RepositoryParameter)+
+		')'
+	)?
+;
+
+RepositoryOperation:
+	'operation' name=ID 'returnType' returnType=RepositoryReturnType ( 'throws' throwsException=EXCEPTION )? 
+	(	'('
+				(parameters += RepositoryParameter)+
+		')'
+	)?
+;
+
+RepositoryReturnType:
+	voidType=VOID | entityType=EntityType
+;
+
+RepositoryParameter:
+	'parameter' name=STRING 'type' type=EntityType
+;
+
+EntityType:
+	collectionType=EntityCollectionType | type=[entity::Entity] | literalType = LiteralType 
+;
+
+EntityCollectionType:
+	'Page<' pageType=EntityType '>' | 'List<' listType=EntityType '>' | 'Set<' setType=EntityType '>' | 'Map<' mapType1=EntityType ',' mapType2=EntityType '>'
+;
+
+LiteralType:
+	literal = STRING
+;
+
+Boolean:
+	value = BOOLEAN_VALUE
+;
+
+enum VOID:
+	VOID='void'
+;
+
+enum EXCEPTION: 
+	NONE = "NONE" |  
+	OTHER_EXCEPTION = "Exception"
+;
+
+terminal BOOLEAN_VALUE returns ecore::EBoolean :
+	('true' | 'false')
+;

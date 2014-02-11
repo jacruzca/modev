@@ -31,7 +31,5 @@ class GeneratePersistenceLayer {
 				fsa.generateFile(entity.name+".java", generateEntity.generate(entity));
 			}
 		}
-		
 	}
-	
 }

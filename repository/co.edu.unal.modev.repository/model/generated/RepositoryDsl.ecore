@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="repositoryDsl" nsURI="http://www.edu.co/unal/modev/repository/RepositoryDsl"
+    nsPrefix="repositoryDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="RepositoriesModule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repositories" upperBound="-1"
+        eType="#//Repository" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Repository">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="belongsTo" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="springDataOperations" upperBound="-1"
+        eType="#//RepositorySpringDataOperation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//RepositoryOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepositorySpringDataOperation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//RepositoryReturnType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="throwsException" eType="#//EXCEPTION"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="query" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//RepositoryParameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepositoryOperation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//RepositoryReturnType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="throwsException" eType="#//EXCEPTION"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//RepositoryParameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepositoryReturnType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="voidType" eType="#//VOID"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityType" eType="#//EntityType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepositoryParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//EntityType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collectionType" eType="#//EntityCollectionType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literalType" eType="#//LiteralType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityCollectionType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageType" eType="#//EntityType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listType" eType="#//EntityType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setType" eType="#//EntityType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapType1" eType="#//EntityType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mapType2" eType="#//EntityType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LiteralType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Boolean">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VOID">
+    <eLiterals name="VOID" literal="void"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EXCEPTION">
+    <eLiterals name="NONE" literal="NONE"/>
+    <eLiterals name="OTHER_EXCEPTION" value="1" literal="Exception"/>
+  </eClassifiers>
+</ecore:EPackage>
