@@ -15,18 +15,8 @@ FQN: ID ("." ID)*;
 Repository:
 	'repository' name=ID 'belongsTo' belongsTo=[entity::Entity|FQN]
 	'{'
-		(springDataOperations += RepositorySpringDataOperation)*
 		(operations += RepositoryOperation)*
 	'}'
-;
-
-RepositorySpringDataOperation:
-	'spring-data-operation' name=ID 'returnType' returnType=RepositoryReturnType ( 'throws' throwsException=EXCEPTION )? 
-	'query' query=STRING
-	(	'('
-				(parameters += RepositoryParameter)+
-		')'
-	)?
 ;
 
 RepositoryOperation:

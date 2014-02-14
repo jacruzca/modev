@@ -1,29 +1,65 @@
 package co.edu.unal.modev.generator.nodejs.layeredApp.util
 
-import co.edu.unal.modev.entity.entityDsl.Entity
 import co.edu.unal.modev.entity.entityDsl.EntitiesModule
-import co.edu.unal.modev.repository.repositoryDsl.Repository
+import co.edu.unal.modev.entity.entityDsl.Entity
 import co.edu.unal.modev.repository.repositoryDsl.RepositoriesModule
+import co.edu.unal.modev.repository.repositoryDsl.Repository
 
 class LocationsUtil {
 	
 	final static String PATH_SEPARATOR = "/"
 	final static String JS_EXTENSION = ".js"
+	final static String JSON_EXTENSION = ".json"
 	
 	final static String SERVER = "server"
 	final static String APP = "app"
 	final static String MODEL = "model"
+	final static String CONFIG = "config"
 	final static String REPOSITORY = "repository"
+	final static String ROUTE = "route"
 	final static String REPOSITORY_SUFFIX = "Repository"
 	final static String REPOSITORY_FACTORY = REPOSITORY_SUFFIX+"Factory"
+	final static String ROUTES_SUFFIX = "Routes"
 	
 	
 	def getServerLocation(){
 		return SERVER+PATH_SEPARATOR
 	}
 	
+	def getPackageJsonLocation(){
+		return serverLocation+"package"+JSON_EXTENSION
+	}
+	
+	def getServerJsLocation(){
+		return serverLocation+"server"+JS_EXTENSION
+	}
+	
 	def getAppLocation(){
 		return serverLocation+APP+PATH_SEPARATOR
+	}
+	
+	def getConfigLocation(){
+		return serverLocation+CONFIG+PATH_SEPARATOR
+	}
+	
+	def getConfigJsLocation(){
+		return configLocation+"config"+JS_EXTENSION
+	}
+	
+	def getConstantsJsLocation(){
+		return configLocation+"constants"+JS_EXTENSION
+	}
+	
+	def getExpressJsLocation(){
+		return configLocation+"express"+JS_EXTENSION
+	}
+	
+	def getLoggerJsLocation(){
+		return configLocation+"logger"+JS_EXTENSION
+	}
+	
+	def getRoutesConstantsJsLocation(){
+		return configLocation+"routesConstants"+JS_EXTENSION
 	}
 	
 	def getModelLocation(){
@@ -68,6 +104,14 @@ class LocationsUtil {
 	
 	def getRepositoryFactoryLocation(){
 		return repositoryLocation+REPOSITORY_FACTORY+JS_EXTENSION
+	}
+	
+	def getRouteLocation(){
+		return appLocation+ROUTE+PATH_SEPARATOR
+	}
+	
+	def getRouteIndexJsLocation(){
+		return routeLocation+"index"+JS_EXTENSION
 	}
 	
 }

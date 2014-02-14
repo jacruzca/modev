@@ -21,15 +21,7 @@
     <genClasses ecoreClass="RepositoryDsl.ecore#//Repository">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//Repository/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//Repository/belongsTo"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//Repository/springDataOperations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//Repository/operations"/>
-    </genClasses>
-    <genClasses ecoreClass="RepositoryDsl.ecore#//RepositorySpringDataOperation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositorySpringDataOperation/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//RepositorySpringDataOperation/returnType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositorySpringDataOperation/throwsException"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositorySpringDataOperation/query"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//RepositorySpringDataOperation/parameters"/>
     </genClasses>
     <genClasses ecoreClass="RepositoryDsl.ecore#//RepositoryOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositoryOperation/name"/>

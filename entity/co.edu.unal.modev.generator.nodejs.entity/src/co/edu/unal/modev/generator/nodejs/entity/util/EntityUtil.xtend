@@ -3,6 +3,7 @@ package co.edu.unal.modev.generator.nodejs.entity.util
 import co.edu.unal.modev.entity.entityDsl.Column
 import co.edu.unal.modev.entity.entityDsl.DATATYPE_ENUM
 import co.edu.unal.modev.entity.entityDsl.Entity
+import co.edu.unal.modev.entity.entityDsl.EntitiesModule
 
 class EntityUtil {
 
@@ -19,6 +20,11 @@ class EntityUtil {
 		}
 
 		return tableName
+	}
+	
+	def getEntityModule(Entity entity){
+		var module = entity.eContainer as EntitiesModule
+		return module 
 	}
 
 	def getColumnDataType(Column column) {

@@ -3,24 +3,31 @@ grammar co.edu.unal.modev.dbConfig.DbConfigDsl with org.eclipse.xtext.common.Ter
 generate dbConfigDsl "http://www.edu.co/unal/modev/dbConfig/DbConfigDsl"
 
 DBConfiguration:
-	config = DatabaseConfiguration
-;
+	config=DatabaseConfiguration;
 
 DatabaseConfiguration:
-	'db-configuration' name=ID '{'		
-		'datasource' datasource=STRING
-		
-		'engine' engine=DATABASEENGINE
-		'host' host=STRING
-		'user' user=STRING
-		'password' password=STRING
-		'port' port=STRING
-		'database' database=STRING
-		'schema' schema=STRING
-	'}'
+	'db-configuration' name=ID '{'
+	'environment' environment=ENVIRONMENT
+	'host' host=STRING
+	'user' user=STRING
+	'password' password=STRING
+	'port' port=STRING
+	'database' database=STRING
+	'schema' schema=STRING
+	'dialect' dialect=DIALECT
+	('datasource' datasource=STRING)?
+	'}';
+
+enum DIALECT:
+	MYSQL='MYSQL' |
+	SQLITE='SQLITE' |
+	POSTGRES='POSTGRES' |
+	MARIADB='MARIADB'
 ;
 
-enum DATABASEENGINE:
-	MYSQL='MYSQL' |
-	SQLSERVER = 'SQLSERVER'
+enum ENVIRONMENT:
+	DEVELOPMENT='DEVELOPMENT' |
+	TEST='TEST' |
+	INTEGRATION='INTEGRATION' |
+	PRODUCTION='PRODUCTION'
 ;

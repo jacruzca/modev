@@ -15,7 +15,7 @@ App:
 Config:
 	'configuration' name=STRING "{"
 		projectConfig=ProjectConfig
-		"dbConfig" dbConfig=[dbConfig::DatabaseConfiguration | ID]
+		"dbConfig" dbConfig+=[dbConfig::DatabaseConfiguration | ID]+
 	"}"
 ;
 
@@ -26,6 +26,8 @@ ProjectConfig:
 		'projectLocation' projectLocation=STRING
 		'packageName' packageName=STRING
 		'applicationVersion' applicationVersion=STRING
+		('serverPort' serverPort=INT)?
+		('webPort' webPort=INT)?
 	"}"
 ;
 

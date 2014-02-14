@@ -7,23 +7,32 @@
     editorPluginID="co.edu.unal.modev.dbConfig.editor" runtimeVersion="2.9">
   <genPackages prefix="DbConfigDsl" basePackage="co.edu.unal.modev.dbConfig" disposableProviderFactory="true"
       fileExtensions="dbConfig" ecorePackage="DbConfigDsl.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DbConfigDsl.ecore#//DATABASEENGINE">
-      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DATABASEENGINE/MYSQL"/>
-      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DATABASEENGINE/SQLSERVER"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DbConfigDsl.ecore#//DIALECT">
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DIALECT/MYSQL"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DIALECT/SQLITE"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DIALECT/POSTGRES"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DIALECT/MARIADB"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DbConfigDsl.ecore#//ENVIRONMENT">
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/DEVELOPMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/TEST"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/INTEGRATION"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/PRODUCTION"/>
     </genEnums>
     <genClasses ecoreClass="DbConfigDsl.ecore#//DBConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DbConfigDsl.ecore#//DBConfiguration/config"/>
     </genClasses>
     <genClasses ecoreClass="DbConfigDsl.ecore#//DatabaseConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/datasource"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/engine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/environment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/host"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/user"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/password"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/port"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/database"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/schema"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/dialect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DbConfigDsl.ecore#//DatabaseConfiguration/datasource"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

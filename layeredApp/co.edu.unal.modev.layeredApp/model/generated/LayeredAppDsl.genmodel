@@ -27,6 +27,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectLocation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/packageName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/applicationVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/serverPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/webPort"/>
     </genClasses>
     <genClasses ecoreClass="LayeredAppDsl.ecore#//PersistenceLayer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//PersistenceLayer/name"/>

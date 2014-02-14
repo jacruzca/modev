@@ -46,12 +46,12 @@ class GenerateIndexModelTemplate {
 	// load models
 	var models = [
 		«FOR entity: entities»
-		«entity.dbTableName» ,
+		{model: "«entity.name.toFirstUpper»", module: "«entity.entityModule.name»"} ,
 		«ENDFOR»
 	];
 	
 	models.forEach(function(model) {
-	  module.exports[model] = sequelize.import(__dirname + '/' + model);
+	  module.exports[model.model] = sequelize.import(__dirname + '/'+ model.module +'/'+ model.model);
 	});
 	
 	// describe relationships
@@ -61,11 +61,11 @@ class GenerateIndexModelTemplate {
 	  	«FOR relation: entity.relations»
 	  	«switch (relation) {
 	  		HasOneRelation:
-	  		'''«entity.dbTableName».hasOne(«relation.name.dbTableName»);'''
+	  		'''m.«entity.name.toFirstUpper».hasOne(m.«relation.name.name.toFirstUpper»);'''
 	  		HasManyRelation:
-	  		'''«entity.dbTableName».hasMany(«relation.name.dbTableName»);'''
+	  		'''m.«entity.name.toFirstUpper».hasMany(m.«relation.name.name.toFirstUpper»);'''
 	  		BelongsToRelation:
-	  		'''«entity.dbTableName».belongsTo(«relation.name.dbTableName»);'''
+	  		'''m.«entity.name.toFirstUpper».belongsTo(m.«relation.name.name.toFirstUpper»);'''
 	  	}»
 	  	«ENDFOR»
 	  «ENDFOR»

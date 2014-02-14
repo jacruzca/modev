@@ -10,7 +10,7 @@ class GenerateEntityTemplate {
 	
 	def generate(Entity entity)'''
 	
-	var logger = require("../../config/logger");
+	var logger = require("../../../config/logger");
 	
 	module.exports = function(sequelize, DataTypes) {
 		
@@ -31,10 +31,11 @@ class GenerateEntityTemplate {
 				«IF column.comment != null && !column.comment.empty»
 				comment: «column.comment»
 				«ENDIF»
-			}
+			},
 			«ENDFOR»
 			
-		}
+		});
+		
 		
 		return «entity.name»;
 	}
