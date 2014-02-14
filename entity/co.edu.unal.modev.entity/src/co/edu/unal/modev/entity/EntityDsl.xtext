@@ -30,7 +30,7 @@ Entity:
 ;
 
 PrimaryKey:
-	name=[Column | ID] ("autoIncrement" autoIncrement=BOOLEAN)?
+	name=[Column | ID] (autoIncrement?="autoIncrement")?
 ;
 
 Relation:
@@ -55,8 +55,9 @@ Column:
 		"type" type=DATATYPE_ENUM ("length" length=INT ("precision" precision=INT)?)?
 		("databaseType" databaseType=STRING)?
 		("languageType" languageType=STRING)?
-		("transient" transient=BOOLEAN)?
-		("allowNull" allowNull=BOOLEAN)?
+		(unique?="unique")?
+		(transient?="transient")?
+		(allowNull?="allowNull")?
 		("defaultValue" defaultValue=STRING)?
 		("comment" comment=STRING)?
 	"}"
@@ -73,8 +74,4 @@ enum DATATYPE_ENUM:
 	BOOLEAN = 'BOOLEAN' |
 	ENUM = 'ENUM' |
 	BLOB = 'BLOB'
-;
-
-terminal BOOLEAN returns ecore::EBoolean:
-    'true' | 'false' | 'TRUE' | 'FALSE'
 ;

@@ -31,8 +31,12 @@ ProjectConfig:
 
 PersistenceLayer:
 	"persistence-layer" name=ID "{"
-		entityModules+=[entity::EntitiesModule | ID]
-		repositoryModules+=[repository::RepositoriesModule | ID]
+		'entities' '{'
+			entityModules+=[entity::EntitiesModule | ID]
+		'}'
+		'repositories' '{'
+			repositoryModules+=[repository::RepositoriesModule | ID]
+		'}'
 	"}"
 ;
 

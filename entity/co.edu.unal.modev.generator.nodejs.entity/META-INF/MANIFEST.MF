@@ -10,4 +10,5 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: jacruzca-UNAL
-Export-Package: co.edu.unal.modev.generator.nodejs.entity
+Export-Package: co.edu.unal.modev.generator.nodejs.entity,
+ co.edu.unal.modev.generator.nodejs.entity.util

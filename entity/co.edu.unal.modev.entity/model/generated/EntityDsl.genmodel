@@ -50,6 +50,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/precision"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/databaseType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/languageType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/unique"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/transient"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/allowNull"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute EntityDsl.ecore#//Column/defaultValue"/>
