@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/co.edu.unal.modev.business/src-gen" editDirectory="/co.edu.unal.modev.business.edit/src"
+    editorDirectory="/co.edu.unal.modev.business.editor/src" modelPluginID="co.edu.unal.modev.business"
+    forceOverwrite="true" modelName="BusinessDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.business.edit"
+    editorPluginID="co.edu.unal.modev.business.editor" runtimeVersion="2.9">
+  <genPackages prefix="BusinessDsl" basePackage="co.edu.unal.modev.business" disposableProviderFactory="true"
+      fileExtensions="business" ecorePackage="BusinessDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//VOID">
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//VOID/VOID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//HTTP_VERB">
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/POST"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/PUT"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/OPTIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/TRACE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//HTTP_TYPE">
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/QUERY"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/ROUTE_PARAM"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/FILE"/>
+    </genEnums>
+    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessModule/business"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//Business">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//Business/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//Business/operations"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/httpVerb"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessReturnType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/voidType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessReturnType/entityType"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/httpType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessParameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessType/collectionType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessCollectionType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessCollectionType/listType"/>
+    </genClasses>
+    <genClasses ecoreClass="BusinessDsl.ecore#//LiteralType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//LiteralType/literal"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

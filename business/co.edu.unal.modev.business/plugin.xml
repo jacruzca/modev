@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.edu.co/unal/modev/business/BusinessDsl" 
+       class = "co.edu.unal.modev.business.businessDsl.BusinessDslPackage"
+       genModel = "model/generated/BusinessDsl.genmodel" /> 
+	
+  </extension>
+
+
+
+</plugin>

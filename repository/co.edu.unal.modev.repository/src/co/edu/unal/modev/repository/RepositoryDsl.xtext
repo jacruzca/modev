@@ -20,10 +20,10 @@ Repository:
 ;
 
 RepositoryOperation:
-	'operation' name=ID 'returnType' returnType=RepositoryReturnType ( 'throws' throwsException=EXCEPTION )? 
-	(	'('
+	'operation' name=ID ('returnType' returnType=RepositoryReturnType)? 
+	(	'{'
 				(parameters += RepositoryParameter)+
-		')'
+		'}'
 	)?
 ;
 
@@ -32,7 +32,7 @@ RepositoryReturnType:
 ;
 
 RepositoryParameter:
-	'parameter' name=STRING 'type' type=EntityType
+	'parameter' name=STRING ('type' type=EntityType)?
 ;
 
 EntityType:
@@ -40,26 +40,13 @@ EntityType:
 ;
 
 EntityCollectionType:
-	'Page<' pageType=EntityType '>' | 'List<' listType=EntityType '>' | 'Set<' setType=EntityType '>' | 'Map<' mapType1=EntityType ',' mapType2=EntityType '>'
+	'List<' listType=EntityType '>'
 ;
 
 LiteralType:
 	literal = STRING
 ;
 
-Boolean:
-	value = BOOLEAN_VALUE
-;
-
 enum VOID:
 	VOID='void'
-;
-
-enum EXCEPTION: 
-	NONE = "NONE" |  
-	OTHER_EXCEPTION = "Exception"
-;
-
-terminal BOOLEAN_VALUE :
-	('true' | 'false')
 ;

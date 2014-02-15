@@ -17,7 +17,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//RepositoryReturnType"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="throwsException" eType="#//EXCEPTION"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//RepositoryParameter" containment="true"/>
   </eClassifiers>
@@ -39,28 +38,13 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityCollectionType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pageType" eType="#//EntityType"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="listType" eType="#//EntityType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="setType" eType="#//EntityType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mapType1" eType="#//EntityType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mapType2" eType="#//EntityType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Boolean">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="VOID">
     <eLiterals name="VOID" literal="void"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="EXCEPTION">
-    <eLiterals name="NONE" literal="NONE"/>
-    <eLiterals name="OTHER_EXCEPTION" value="1" literal="Exception"/>
   </eClassifiers>
 </ecore:EPackage>

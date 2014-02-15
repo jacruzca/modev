@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.ui,
  co.edu.unal.modev.repository;bundle-version="1.0.0",
  co.edu.unal.modev.dbConfig;bundle-version="1.0.0",
  co.edu.unal.modev.generator.nodejs.entity;bundle-version="1.0.0",
- co.edu.unal.modev.generator.nodejs.repository;bundle-version="1.0.0"
+ co.edu.unal.modev.generator.nodejs.repository;bundle-version="1.0.0",
+ co.edu.unal.modev.generator.nodejs.business;bundle-version="1.0.0",
+ co.edu.unal.modev.business;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: co.edu.unal.modev.generator.nodejs.layeredApp,

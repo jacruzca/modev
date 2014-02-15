@@ -4,6 +4,8 @@ import co.edu.unal.modev.entity.entityDsl.EntitiesModule
 import co.edu.unal.modev.entity.entityDsl.Entity
 import co.edu.unal.modev.repository.repositoryDsl.RepositoriesModule
 import co.edu.unal.modev.repository.repositoryDsl.Repository
+import co.edu.unal.modev.business.businessDsl.Business
+import co.edu.unal.modev.business.businessDsl.BusinessModule
 
 class LocationsUtil {
 	
@@ -16,9 +18,11 @@ class LocationsUtil {
 	final static String MODEL = "model"
 	final static String CONFIG = "config"
 	final static String REPOSITORY = "repository"
+	final static String BUSINESS = "business"
 	final static String ROUTE = "route"
 	final static String REPOSITORY_SUFFIX = "Repository"
 	final static String REPOSITORY_FACTORY = REPOSITORY_SUFFIX+"Factory"
+	final static String BUSINESS_SUFFIX = "Business"
 	final static String ROUTES_SUFFIX = "Routes"
 	
 	
@@ -89,7 +93,7 @@ class LocationsUtil {
 	}
 	
 	/**
-	 * returns the entity location relative to the project
+	 * returns the repo location relative to the project
 	 */
 	def getRepositoryLocation(Repository repository){
 		var location = repositoryLocation as String
@@ -104,6 +108,24 @@ class LocationsUtil {
 	
 	def getRepositoryFactoryLocation(){
 		return repositoryLocation+REPOSITORY_FACTORY+JS_EXTENSION
+	}
+	
+	def getBusinessLocation(){
+		return appLocation+BUSINESS+PATH_SEPARATOR
+	}
+	
+	/**
+	 * returns the business location relative to the project
+	 */
+	def getBusinessLocation(Business business){
+		var location = businessLocation as String
+		//add module
+		var businessModule = business.eContainer as BusinessModule
+		location = location+ businessModule.name+PATH_SEPARATOR
+		//add filename
+		location = location+ business.name.toFirstUpper+JS_EXTENSION
+		
+		return location
 	}
 	
 	def getRouteLocation(){

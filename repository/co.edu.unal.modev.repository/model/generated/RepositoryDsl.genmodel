@@ -10,10 +10,6 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RepositoryDsl.ecore#//VOID">
       <genEnumLiterals ecoreEnumLiteral="RepositoryDsl.ecore#//VOID/VOID"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RepositoryDsl.ecore#//EXCEPTION">
-      <genEnumLiterals ecoreEnumLiteral="RepositoryDsl.ecore#//EXCEPTION/NONE"/>
-      <genEnumLiterals ecoreEnumLiteral="RepositoryDsl.ecore#//EXCEPTION/OTHER_EXCEPTION"/>
-    </genEnums>
     <genClasses ecoreClass="RepositoryDsl.ecore#//RepositoriesModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositoriesModule/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//RepositoriesModule/repositories"/>
@@ -26,7 +22,6 @@
     <genClasses ecoreClass="RepositoryDsl.ecore#//RepositoryOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositoryOperation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//RepositoryOperation/returnType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//RepositoryOperation/throwsException"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//RepositoryOperation/parameters"/>
     </genClasses>
     <genClasses ecoreClass="RepositoryDsl.ecore#//RepositoryReturnType">
@@ -43,17 +38,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//EntityType/literalType"/>
     </genClasses>
     <genClasses ecoreClass="RepositoryDsl.ecore#//EntityCollectionType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//EntityCollectionType/pageType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//EntityCollectionType/listType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//EntityCollectionType/setType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//EntityCollectionType/mapType1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RepositoryDsl.ecore#//EntityCollectionType/mapType2"/>
     </genClasses>
     <genClasses ecoreClass="RepositoryDsl.ecore#//LiteralType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//LiteralType/literal"/>
-    </genClasses>
-    <genClasses ecoreClass="RepositoryDsl.ecore#//Boolean">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RepositoryDsl.ecore#//Boolean/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

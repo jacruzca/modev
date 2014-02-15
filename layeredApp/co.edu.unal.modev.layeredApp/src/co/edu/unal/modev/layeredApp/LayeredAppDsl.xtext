@@ -3,6 +3,7 @@ grammar co.edu.unal.modev.layeredApp.LayeredAppDsl with org.eclipse.xtext.common
 import "http://www.edu.co/unal/modev/dbConfig/DbConfigDsl" as dbConfig
 import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
 import "http://www.edu.co/unal/modev/repository/RepositoryDsl" as repository
+import "http://www.edu.co/unal/modev/business/BusinessDsl" as business
 
 generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
 
@@ -10,6 +11,7 @@ generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
 App:
 	config=Config
 	persistenceLayer=PersistenceLayer
+	businessLayer=BusinessLayer
 ;
 	
 Config:
@@ -38,6 +40,17 @@ PersistenceLayer:
 		'}'
 		'repositories' '{'
 			repositoryModules+=[repository::RepositoriesModule | ID]
+		'}'
+	"}"
+;
+
+BusinessLayer:
+	"business-layer" name=ID "{"
+		'business' '{'
+			businessModules+=[business::BusinessModule | ID]
+		'}'
+		'dto' '{'
+			
 		'}'
 	"}"
 ;
