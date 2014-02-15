@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.edu.co/unal/modev/route/RouteDsl" 
+       class = "co.edu.unal.modev.route.routeDsl.RouteDslPackage"
+       genModel = "model/generated/RouteDsl.genmodel" /> 
+	
+  </extension>
+
+
+
+</plugin>

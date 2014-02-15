@@ -1,0 +1,20 @@
+grammar co.edu.unal.modev.route.RouteDsl with org.eclipse.xtext.common.Terminals
+
+import "http://www.edu.co/unal/modev/business/BusinessDsl" as business
+
+generate routeDsl "http://www.edu.co/unal/modev/route/RouteDsl"
+
+RoutesModule:
+	"routes-module" name=ID "{"
+		routes+=Route*
+	"}"
+;
+	
+FQN: ID ("." ID)*;
+	
+Route:
+	'route' name=ID '{'
+		"uri" uri=STRING
+		"operation" operation=[business::BusinessOperation | FQN]
+	'}'
+;

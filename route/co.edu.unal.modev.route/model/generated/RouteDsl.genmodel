@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/co.edu.unal.modev.route/src-gen" editDirectory="/co.edu.unal.modev.route.edit/src"
+    editorDirectory="/co.edu.unal.modev.route.editor/src" modelPluginID="co.edu.unal.modev.route"
+    forceOverwrite="true" modelName="RouteDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.route.edit"
+    editorPluginID="co.edu.unal.modev.route.editor" runtimeVersion="2.9" usedGenPackages="../../../co.edu.unal.modev.business/model/generated/BusinessDsl.genmodel#//businessDsl">
+  <genPackages prefix="RouteDsl" basePackage="co.edu.unal.modev.route" disposableProviderFactory="true"
+      fileExtensions="route" ecorePackage="RouteDsl.ecore#/">
+    <genClasses ecoreClass="RouteDsl.ecore#//RoutesModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//RoutesModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//RoutesModule/routes"/>
+    </genClasses>
+    <genClasses ecoreClass="RouteDsl.ecore#//Route">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//Route/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//Route/uri"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//Route/operation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
