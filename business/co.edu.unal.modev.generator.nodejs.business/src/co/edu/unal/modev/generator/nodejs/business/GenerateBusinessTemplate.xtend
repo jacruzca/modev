@@ -16,7 +16,7 @@ class GenerateBusinessTemplate {
 		
 		// Load configurations according to the selected environment
 		var env = process.env.NODE_ENV || 'development';
-		var config = require('../../config/config')[env];
+		var config = require('../../../config/config')[env];
 		
 		«FOR operation : business.operations»
 			

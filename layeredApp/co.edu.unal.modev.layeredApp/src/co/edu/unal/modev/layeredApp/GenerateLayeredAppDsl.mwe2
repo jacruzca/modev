@@ -27,6 +27,9 @@ Workflow {
     	//Business
     	registerGeneratedEPackage = "co.edu.unal.modev.business.businessDsl.BusinessDslPackage"
     	registerGenModelFile = "platform:/resource/co.edu.unal.modev.business/model/generated/BusinessDsl.genmodel"
+    	//Route
+    	registerGeneratedEPackage = "co.edu.unal.modev.route.routeDsl.RouteDslPackage"
+    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.route/model/generated/RouteDsl.genmodel"
     }
     
     component = DirectoryCleaner {

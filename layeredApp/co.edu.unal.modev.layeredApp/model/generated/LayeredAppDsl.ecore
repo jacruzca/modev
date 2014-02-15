@@ -9,6 +9,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="businessLayer" eType="#//BusinessLayer"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routeLayer" eType="#//RouteLayer"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Config">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,6 +40,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="businessModules" unique="false"
         upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessModule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RouteLayer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routesModules" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.route/model/generated/RouteDsl.ecore#//RoutesModule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TECHNOLOGY">
     <eLiterals name="NODEJS" literal="NodeJS"/>

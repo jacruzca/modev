@@ -6,6 +6,8 @@ import co.edu.unal.modev.repository.repositoryDsl.RepositoriesModule
 import co.edu.unal.modev.repository.repositoryDsl.Repository
 import co.edu.unal.modev.business.businessDsl.Business
 import co.edu.unal.modev.business.businessDsl.BusinessModule
+import co.edu.unal.modev.route.routeDsl.Route
+import co.edu.unal.modev.route.routeDsl.RoutesModule
 
 class LocationsUtil {
 	
@@ -130,6 +132,10 @@ class LocationsUtil {
 	
 	def getRouteLocation(){
 		return appLocation+ROUTE+PATH_SEPARATOR
+	}
+	
+	def getRouteModuleLocation(RoutesModule routesModule){
+		return routeLocation+routesModule.name.toFirstUpper+JS_EXTENSION
 	}
 	
 	def getRouteIndexJsLocation(){
