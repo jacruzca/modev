@@ -7,11 +7,11 @@ import java.util.List
 import co.edu.unal.modev.repository.repositoryDsl.RepositoryParameter
 
 class GenerateRepositoryTemplate {
-	
+
 	@Inject extension RepositoryUtil
-	
-	def generate(Repository repository)'''
-		var logger = require("../../config/logger");
+
+	def generate(Repository repository) '''
+		var logger = require("../../../config/logger");
 		/**
 		 * This module represents a repository for the table accounts
 		 * @param {Sequelize} «repository.belongsTo.name» the model created by sequelize
@@ -28,20 +28,22 @@ class GenerateRepositoryTemplate {
 		    return «repository.modelReferenceVariableName»;
 		}
 		
-		«FOR operation: repository.operations»
-		module.exports.«operation.name» = function(«operation.parameters.operationParameters» options, success, error) {
-			
-		}
+		«FOR operation : repository.operations»
+			module.exports.«operation.name» = function(«operation.parameters.operationParameters» options, success, error) {
+				/* PROTECTED REGION ID(«repository.name»_«operation.name») ENABLED START */
+				
+				/* PROTECTED REGION END */
+			}
 		«ENDFOR»
 	'''
-	
-	private def getOperationParameters(List<RepositoryParameter> params){
+
+	private def getOperationParameters(List<RepositoryParameter> params) {
 		var paramsReturn = "";
-		
-		for(param: params){
-			paramsReturn = paramsReturn + param.name + ", "		
+
+		for (param : params) {
+			paramsReturn = paramsReturn + param.name + ", "
 		}
-		
+
 		return paramsReturn
 	}
 }

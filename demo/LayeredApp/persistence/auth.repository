@@ -1,0 +1,23 @@
+repositories-module auth {
+	repository UserRepository belongsTo auth.User
+	{
+		operation getAllUsers returnType List<auth.User> {
+			parameter "offset"
+			parameter "limit"
+		}
+		
+		operation getById returnType auth.User {
+			parameter "id"
+		}
+	}
+	
+	repository RoleRepository belongsTo auth.Role {
+		operation getRoleById returnType auth.Role {
+			parameter "id"
+		}
+		operation getAllRoles {
+			parameter "offset"
+			parameter "limit"
+		}
+	}
+}

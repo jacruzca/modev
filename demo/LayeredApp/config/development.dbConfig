@@ -1,0 +1,10 @@
+db-configuration dev {
+	environment DEVELOPMENT
+	host "localhost"
+	user "test"
+	password "test"
+	port "3306"
+	database "unal"
+	schema "unal"
+	dialect MYSQL
+}

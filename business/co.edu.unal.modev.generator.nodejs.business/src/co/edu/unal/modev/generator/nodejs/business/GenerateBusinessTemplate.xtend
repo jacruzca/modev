@@ -31,6 +31,10 @@ class GenerateBusinessTemplate {
 						'''var «param.name» = req.query.«param.name»;'''
 				}»
 				«ENDFOR»
+				
+				/* PROTECTED REGION ID(«business.name»_«operation.name») ENABLED START */
+				
+				/* PROTECTED REGION END */
 			}
 			
 		«ENDFOR»

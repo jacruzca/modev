@@ -1,0 +1,16 @@
+routes-module AuthRoutes {
+	route users {
+		uri "/api/users"
+		operation auth.UserBusiness.getAllUsers
+	}
+	
+	route specificUser {
+		uri "/api/users/:id"
+		operation auth.UserBusiness.getUserById
+	}
+	
+	route roles{
+		uri "/api/roles"
+		operation auth.RoleBusiness.getAllRoles
+	}
+}

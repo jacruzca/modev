@@ -27,3 +27,8 @@ Export-Package: co.edu.unal.modev.layeredApp.ui.quickfix,
  co.edu.unal.modev.layeredApp.ui.contentassist.antlr,
  co.edu.unal.modev.layeredApp.ui.internal
 Bundle-Activator: co.edu.unal.modev.layeredApp.ui.internal.LayeredAppDslActivator
+Bundle-ClassPath: META-INF/lib/net.danieldietrich.protectedregions.core_2.0.2.201210252057.jar,
+ META-INF/lib/net.danieldietrich.protectedregions.xtext_2.0.2.201210252057.jar,
+ META-INF/lib/slf4j-api-1.6.1.jar,
+ META-INF/lib/slf4j-log4j12-1.6.1.jar,
+ .

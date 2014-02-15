@@ -1,0 +1,23 @@
+business-module auth {
+	business UserBusiness {
+		operation getUserById httpVerb GET {
+			parameter "id" httpType ROUTE_PARAM
+		}
+		
+		operation getAllUsers httpVerb GET {
+			parameter "offset" httpType ROUTE_PARAM
+			parameter "limit" httpType ROUTE_PARAM
+		}
+	}
+	
+	business RoleBusiness {
+		operation getAllRoles httpVerb GET {
+			parameter "offset" httpType ROUTE_PARAM
+			parameter "limit" httpType ROUTE_PARAM
+		}
+		
+		operation getRoleById httpVerb GET {
+			parameter "id" httpType ROUTE_PARAM
+		}
+	}
+}

@@ -5,12 +5,16 @@ package co.edu.unal.modev.layeredApp.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 
 import co.edu.unal.modev.generator.jee.layeredapp.JeeGenerator;
 import co.edu.unal.modev.generator.nodejs.layeredApp.NodejsGenerator;
 import co.edu.unal.modev.layeredApp.layeredAppDsl.TECHNOLOGY;
+import co.edu.unal.modev.layeredApp.ui.generator.LayeredAppParserFactory;
+import co.edu.unal.modev.layeredApp.ui.generator.LayeredAppProtectedRegionJavaIoFileSystemAccess;
 
 import com.google.inject.Binder;
+import com.google.inject.Provides;
 import com.google.inject.multibindings.MapBinder;
 
 /**
@@ -20,6 +24,15 @@ public class LayeredAppDslUiModule extends co.edu.unal.modev.layeredApp.ui.Abstr
 	public LayeredAppDslUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
+	@Provides
+	public JavaIoFileSystemAccess createJavaIoFileSystemAccess(LayeredAppProtectedRegionJavaIoFileSystemAccess fsa, LayeredAppParserFactory factory) {
+			fsa.support().addParser(factory.genericParser(), ".java",".js",".json");
+			fsa.support().addParser(factory.propertiesParser(), ".properties");
+			
+			return fsa;
+	}
+	
 	
 	@Override
 	public void configure(Binder binder) {

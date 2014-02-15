@@ -1,0 +1,10 @@
+db-configuration production {
+	environment PRODUCTION
+	host "localhost"
+	user "root"
+	password ""
+	port "3006"
+	database "unal"
+	schema "unal"
+	dialect MYSQL
+}

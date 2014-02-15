@@ -1,0 +1,104 @@
+entities-module auth {
+	entity User {
+		tableName "Users"
+		column id {
+			type INTEGER
+		}
+		column username {
+			type STRING
+			unique
+		}
+		column name {
+			type STRING
+			unique
+		}
+		column lastname {
+			type STRING
+		}
+		column email {
+			type STRING
+			unique
+		}
+		column password {
+			type STRING
+		}
+		column salt {
+			type STRING
+		}
+	
+		primary-keys {
+			id autoIncrement
+		}
+		relations {
+			belongsTo Role
+		}
+	}
+	
+	entity Role {
+		tableName "Roles"
+		column id {
+			type INTEGER
+		}
+		column name {
+			type STRING
+			unique
+		}
+		
+		primary-keys {
+			id autoIncrement
+		}
+		
+		relations {
+			hasMany Permission
+		}
+	}
+	
+	entity Permission {
+		tableName "Permissions"
+		column id {
+			type INTEGER
+		}
+		column name {
+			type STRING
+			unique
+		}
+		column httpVerb{
+			type STRING
+		}
+		column uri {
+			type STRING
+		}
+		
+		primary-keys{
+			id autoIncrement
+		}
+		
+		relations {
+			hasMany Role
+		}
+	}
+	
+	entity UserToken {
+		tableName "UsernameTokens"
+		column token {
+			type STRING
+		}
+		column salt {
+			type STRING
+		}
+		column expiration {
+			type BIGINT
+		}
+		column tokenType {
+			type STRING
+		}
+		
+		primary-keys {
+			token
+		}
+		
+		relations {
+			belongsTo User
+		}
+	}
+}

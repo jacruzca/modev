@@ -25,10 +25,12 @@ class GenerateRepositoryFactoryTemplate {
 		var repositoryFactory = {
 			«FOR repository: repositories»
 				«repository.repositoryFactoryGetterName»: function(){
-					return require("./«repository.repositoryModule.name»/«repository.name»").init(appReference.get("models").«repository.belongsTo.dbTableName»);
+					return require("./«repository.repositoryModule.name»/«repository.name»").init(appReference.get("models").«repository.belongsTo.name.toFirstUpper»);
 				},
 			«ENDFOR»
 		}
+		
+		return repositoryFactory;
 	}
 	'''
 }

@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.XtextResource;
@@ -43,11 +44,15 @@ import co.edu.unal.modev.layeredApp.ui.util.LayeredAppUtil;
 import co.edu.unal.modev.layeredApp.ui.util.WorkspaceUtils;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 public class GenerationHandler extends AbstractHandler implements IHandler{
 	
 	@Inject
 	IResourceDescriptions resourceDescriptions;
+	
+	@Inject
+	private Provider<EclipseResourceFileSystemAccess2> fileAccessProvider;
 
 	@Inject
 	IResourceSetProvider resourceSetProvider;

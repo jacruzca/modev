@@ -17,7 +17,7 @@ class RepositoryUtil {
 	}
 	
 	def getRepositoryFactoryGetterName(Repository repository){
-		return GET_PREFIX+repository.name.toFirstUpper+REPOSITORY_SUFFIX
+		return GET_PREFIX+repository.name.toFirstUpper
 	}
 	
 	def getRepositoryModule(Repository repository){
