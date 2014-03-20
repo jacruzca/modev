@@ -1,7 +1,7 @@
 configuration "projectConfig" {
 	project-config config {
 		technology NodeJS
-		projectName DemoProject
+		projectName Latest
 		projectLocation "demoFolder"
 		packageName "demo"
 		applicationVersion "1.0.0"

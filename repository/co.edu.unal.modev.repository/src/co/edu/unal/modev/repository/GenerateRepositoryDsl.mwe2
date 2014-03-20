@@ -15,9 +15,6 @@ Workflow {
     bean = StandaloneSetup {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
-    	//Entity
-    	registerGeneratedEPackage = "co.edu.unal.modev.entity.entityDsl.EntityDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel"
     }
     
     component = DirectoryCleaner {

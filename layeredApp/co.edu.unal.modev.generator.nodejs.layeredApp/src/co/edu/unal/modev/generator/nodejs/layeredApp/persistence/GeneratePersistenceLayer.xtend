@@ -14,6 +14,7 @@ import com.google.inject.Inject
 import java.util.ArrayList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
+import co.edu.unal.modev.relationalRepository.relationalRepositoryDsl.EntityMapper
 
 class GeneratePersistenceLayer {
 	
@@ -91,6 +92,14 @@ class GeneratePersistenceLayer {
 		for(repositoriesModule: persistenceLayer.repositoryModules){
 			//iterate all repos
 			for(repository: repositoriesModule.repositories){
+				
+				if(repository.belongsTo instanceof EntityMapper){
+					System.out.println("Relational!!!")	
+				}else{
+					System.out.println("NOT Relational! $$$")
+				}
+				
+				
 				//generate repo file
 				fsa.generateFile(repository.repositoryLocation, generateRepositoryTemplate.generate(repository))
 			}

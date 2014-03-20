@@ -1,0 +1,24 @@
+grammar co.edu.unal.modev.relationalRepository.RelationalRepositoryDsl with co.edu.unal.modev.repository.RepositoryDsl
+
+import "http://www.edu.co/unal/modev/repository/RepositoryDsl" as repositoryDsl
+import "http://www.edu.co/unal/modev/entity/EntityDsl" as entityDsl
+
+generate relationalRepositoryDsl "http://www.edu.co/unal/modev/relationalRepository/RelationalRepositoryDsl"
+
+RepositoriesModule returns repositoryDsl::RepositoriesModule:
+	"repositories-module" name=ID "{"
+		repositories+=Repository*
+	"}"
+;
+
+AbstractEntity returns repositoryDsl::AbstractEntity:
+	EntityMapper
+;
+
+EntityMapper returns repositoryDsl::AbstractEntity:
+	{EntityMapper} entity=[entityDsl::Entity | FQN]
+;
+
+FQN:
+	ID ("." ID)*
+;

@@ -1,7 +1,7 @@
 repositories-module auth {
 	repository UserRepository belongsTo auth.User
 	{
-		operation getAllUsers returnType List<auth.User> {
+		operation getAllUsers returnType "List<auth.User>" {
 			parameter "offset"
 			parameter "limit"
 		}

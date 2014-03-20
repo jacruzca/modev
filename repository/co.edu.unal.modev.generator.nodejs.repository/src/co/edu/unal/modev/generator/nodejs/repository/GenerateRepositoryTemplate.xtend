@@ -1,10 +1,11 @@
 package co.edu.unal.modev.generator.nodejs.repository
 
 import co.edu.unal.modev.generator.nodejs.repository.util.RepositoryUtil
+import co.edu.unal.modev.relationalRepository.relationalRepositoryDsl.EntityMapper
 import co.edu.unal.modev.repository.repositoryDsl.Repository
-import javax.inject.Inject
-import java.util.List
 import co.edu.unal.modev.repository.repositoryDsl.RepositoryParameter
+import java.util.List
+import javax.inject.Inject
 
 class GenerateRepositoryTemplate {
 
@@ -14,7 +15,11 @@ class GenerateRepositoryTemplate {
 		var logger = require("../../../config/logger");
 		/**
 		 * This module represents a repository for the table accounts
-		 * @param {Sequelize} «repository.belongsTo.name» the model created by sequelize
+		 «IF repository.hasEntity»
+		 	* @param {Sequelize} «repository.entity.name» the model created by sequelize
+		 «ELSE»
+		 	* @param {Sequelize} the model created by sequelize
+		 «ENDIF»
 		 */
 		var «repository.modelReferenceVariableName»;
 		

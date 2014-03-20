@@ -1,7 +1,5 @@
 grammar co.edu.unal.modev.repository.RepositoryDsl with org.eclipse.xtext.common.Terminals
 
-import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
-
 generate repositoryDsl "http://www.edu.co/unal/modev/repository/RepositoryDsl"
 
 RepositoriesModule:
@@ -13,10 +11,14 @@ RepositoriesModule:
 FQN: ID ("." ID)*;
 	
 Repository:
-	'repository' name=ID 'belongsTo' belongsTo=[entity::Entity|FQN]
+	'repository' name=ID ('belongsTo' belongsTo=AbstractEntity)?
 	'{'
 		(operations += RepositoryOperation)*
 	'}'
+;
+
+AbstractEntity:
+	{AbstractEntity} "not mapped"
 ;
 
 RepositoryOperation:
@@ -36,11 +38,7 @@ RepositoryParameter:
 ;
 
 EntityType:
-	collectionType=EntityCollectionType | type=[entity::Entity | FQN] | literalType = LiteralType 
-;
-
-EntityCollectionType:
-	'List<' listType=EntityType '>'
+	type=AbstractEntity | literalType = LiteralType 
 ;
 
 LiteralType:

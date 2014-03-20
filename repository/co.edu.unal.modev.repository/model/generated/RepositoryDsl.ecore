@@ -9,10 +9,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Repository">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="belongsTo" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="belongsTo" eType="#//AbstractEntity"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//RepositoryOperation" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractEntity"/>
   <eClassifiers xsi:type="ecore:EClass" name="RepositoryOperation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//RepositoryReturnType"
@@ -31,14 +33,9 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collectionType" eType="#//EntityCollectionType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//AbstractEntity"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="literalType" eType="#//LiteralType"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityCollectionType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listType" eType="#//EntityType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LiteralType">
