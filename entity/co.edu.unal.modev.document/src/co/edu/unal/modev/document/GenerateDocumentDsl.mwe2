@@ -1,12 +1,12 @@
-module co.edu.unal.modev.layeredApp.GenerateLayeredAppDsl
+module co.edu.unal.modev.document.GenerateDocumentDsl
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/co/edu/unal/modev/layeredApp/LayeredAppDsl.xtext"
-var fileExtensions = "layeredApp"
-var projectName = "co.edu.unal.modev.layeredApp"
+var grammarURI = "classpath:/co/edu/unal/modev/document/DocumentDsl.xtext"
+var fileExtensions = "document"
+var projectName = "co.edu.unal.modev.document"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
 var encoding = "UTF-8"
@@ -15,27 +15,9 @@ Workflow {
     bean = StandaloneSetup {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
-    	//DBConfig
-    	registerGeneratedEPackage = "co.edu.unal.modev.dbConfig.dbConfigDsl.DbConfigDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.genmodel"
-    	//MongoConfig
-    	registerGeneratedEPackage = "co.edu.unal.modev.mongoConfig.mongoConfigDsl.MongoConfigDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.genmodel"
-    	//Entity
-    	registerGeneratedEPackage = "co.edu.unal.modev.entity.entityDsl.EntityDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel"
-    	//Document
-    	registerGeneratedEPackage = "co.edu.unal.modev.document.documentDsl.DocumentDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.document/model/generated/DocumentDsl.genmodel"
-    	//Repository
-    	registerGeneratedEPackage = "co.edu.unal.modev.repository.repositoryDsl.RepositoryDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.repository/model/generated/RepositoryDsl.genmodel"
-    	//Business
-    	registerGeneratedEPackage = "co.edu.unal.modev.business.businessDsl.BusinessDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.business/model/generated/BusinessDsl.genmodel"
-    	//Route
-    	registerGeneratedEPackage = "co.edu.unal.modev.route.routeDsl.RouteDslPackage"
-    	registerGenModelFile = "platform:/resource/co.edu.unal.modev.route/model/generated/RouteDsl.genmodel"
+    	// The following two lines can be removed, if Xbase is not used.
+    	registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
+    	registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
     }
     
     component = DirectoryCleaner {

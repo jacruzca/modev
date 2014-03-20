@@ -24,7 +24,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  co.edu.unal.modev.business;bundle-version="1.0.0",
  co.edu.unal.modev.route;bundle-version="1.0.0",
  co.edu.unal.modev.relationalRepository;bundle-version="1.0.0",
- co.edu.unal.modev.repository;bundle-version="1.0.0"
+ co.edu.unal.modev.repository;bundle-version="1.0.0",
+ co.edu.unal.modev.mongoConfig;bundle-version="1.0.0",
+ co.edu.unal.modev.document;bundle-version="1.0.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

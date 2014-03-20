@@ -1,0 +1,49 @@
+grammar co.edu.unal.modev.document.DocumentDsl with org.eclipse.xtext.common.Terminals
+
+generate documentDsl "http://www.edu.co/unal/modev/document/DocumentDsl"
+
+DocumentsModule:
+	"documents-module" name=ID "{"
+		documents+=Document*
+	"}";
+
+FQN:
+	ID ("." ID)*;
+
+Document:
+	"document" name=FQN "{"
+		"properties" "{"
+			properties+=DocumentProperty*
+		"}"
+		("options" "{"
+			(autoIndex?="autoIndex")?
+			(bufferCommands?="bufferCommands")?
+			(capped?="capped")?
+			(id?="id")?
+			(minimize?="minimize")?
+			(safe?="safe")?
+			(shardKey?="shardKey")?
+			(strict?="strict")?
+			(versionKey?="versionKey")?
+			("collection" collection=STRING)?
+			("read" read=STRING)?
+		"}")?
+	"}";
+
+DocumentProperty:
+	"property" name=ID "type" type=DocumentPropertyType
+	("ref" ref=[Document|FQN])?
+	("default" default=STRING)?;
+
+DocumentPropertyType:
+	SimpleTypes;
+
+SimpleTypes:
+	'String' |
+	'Number' |
+	'Date' |
+	'Boolean' |
+	'ObjectId' |
+	'Buffer' |
+	'Array' |
+	'Mixed';

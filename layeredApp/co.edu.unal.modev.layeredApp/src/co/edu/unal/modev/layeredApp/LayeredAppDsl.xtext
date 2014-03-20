@@ -1,27 +1,26 @@
 grammar co.edu.unal.modev.layeredApp.LayeredAppDsl with org.eclipse.xtext.common.Terminals
 
 import "http://www.edu.co/unal/modev/dbConfig/DbConfigDsl" as dbConfig
+import "http://www.edu.co/unal/modev/mongoConfig/MongoConfigDsl" as mongoConfig
+import "http://www.edu.co/unal/modev/document/DocumentDsl" as document
 import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
 import "http://www.edu.co/unal/modev/repository/RepositoryDsl" as repository
 import "http://www.edu.co/unal/modev/business/BusinessDsl" as business
 import "http://www.edu.co/unal/modev/route/RouteDsl" as route
-
 generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
-
 
 App:
 	config=Config
 	persistenceLayer=PersistenceLayer
 	businessLayer=BusinessLayer
-	routeLayer=RouteLayer
-;
-	
+	routeLayer=RouteLayer;
+
 Config:
 	'configuration' name=STRING "{"
 		projectConfig=ProjectConfig
-		"dbConfig" dbConfig+=[dbConfig::DatabaseConfiguration | ID]+
-	"}"
-;
+		("dbConfig" dbConfig+=[dbConfig::DatabaseConfiguration|ID]*)
+		("mongoConfig" mongoConfig+=[mongoConfig::MongoConfiguration|ID]*)
+	"}";
 
 ProjectConfig:
 	'project-config' name=ID "{"
@@ -32,40 +31,38 @@ ProjectConfig:
 		'applicationVersion' applicationVersion=STRING
 		('serverPort' serverPort=INT)?
 		('webPort' webPort=INT)?
-	"}"
-;
+	"}";
 
 PersistenceLayer:
 	"persistence-layer" name=ID "{"
-		'entities' '{'
-			entityModules+=[entity::EntitiesModule | ID]
-		'}'
+		('documents' '{'
+			documentModules+=[document::DocumentsModule | ID]
+		'}')?
+		('entities' '{'
+			entityModules+=[entity::EntitiesModule|ID]
+		'}')?
 		'repositories' '{'
-			repositoryModules+=[repository::RepositoriesModule | ID]
+			repositoryModules+=[repository::RepositoriesModule|ID]
 		'}'
-	"}"
-;
+	"}";
 
 BusinessLayer:
 	"business-layer" name=ID "{"
 		'business' '{'
-			businessModules+=[business::BusinessModule | ID]
+			businessModules+=[business::BusinessModule|ID]
 		'}'
 		'dto' '{'
-			
+		
 		'}'
-	"}"
-;
+	"}";
 
 RouteLayer:
 	"route-layer" name=ID "{"
 		'routes' '{'
-			routesModules+=[route::RoutesModule | ID]
+			routesModules+=[route::RoutesModule|ID]
 		'}'
-	"}"
-;
+	"}";
 
 enum TECHNOLOGY:
-	NODEJS ='NodeJS' | 
-	JEE = 'JEE'
-;
+	NODEJS='NodeJS' |
+	JEE='JEE';

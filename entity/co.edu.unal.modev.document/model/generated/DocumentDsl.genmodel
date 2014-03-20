@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/co.edu.unal.modev.document/src-gen" editDirectory="/co.edu.unal.modev.document.edit/src"
+    editorDirectory="/co.edu.unal.modev.document.editor/src" modelPluginID="co.edu.unal.modev.document"
+    forceOverwrite="true" modelName="DocumentDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.document.edit"
+    editorPluginID="co.edu.unal.modev.document.editor" runtimeVersion="2.9">
+  <genPackages prefix="DocumentDsl" basePackage="co.edu.unal.modev.document" disposableProviderFactory="true"
+      fileExtensions="document" ecorePackage="DocumentDsl.ecore#/">
+    <genClasses ecoreClass="DocumentDsl.ecore#//DocumentsModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentsModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//DocumentsModule/documents"/>
+    </genClasses>
+    <genClasses ecoreClass="DocumentDsl.ecore#//Document">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//Document/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/autoIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/bufferCommands"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/capped"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/minimize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/safe"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/shardKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/strict"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/versionKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/collection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/read"/>
+    </genClasses>
+    <genClasses ecoreClass="DocumentDsl.ecore#//DocumentProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//DocumentProperty/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/default"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

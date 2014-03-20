@@ -18,6 +18,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" unique="false"
         upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mongoConfig" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.ecore#//MongoConfiguration"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectConfig">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,6 +33,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PersistenceLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="documentModules" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.document/model/generated/DocumentDsl.ecore#//DocumentsModule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityModules" unique="false"
         upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//EntitiesModule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryModules" unique="false"

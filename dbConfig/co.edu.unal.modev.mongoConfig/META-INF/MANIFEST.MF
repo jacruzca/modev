@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: co.edu.unal.modev.mongoConfig
-Bundle-Vendor: My Company
+Bundle-Vendor: jacruzca-UNAL
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: co.edu.unal.modev.mongoConfig; singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.common.types
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: co.edu.unal.modev.mongoConfig,
  co.edu.unal.modev.mongoConfig.services,
  co.edu.unal.modev.mongoConfig.mongoConfigDsl,
