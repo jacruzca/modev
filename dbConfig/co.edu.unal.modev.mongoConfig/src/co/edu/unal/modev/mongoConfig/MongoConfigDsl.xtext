@@ -1,0 +1,22 @@
+grammar co.edu.unal.modev.mongoConfig.MongoConfigDsl with org.eclipse.xtext.common.Terminals
+
+generate mongoConfigDsl "http://www.edu.co/unal/modev/mongoConfig/MongoConfigDsl"
+
+MongoDbConfiguration:
+	config=MongoConfiguration;
+
+MongoConfiguration:
+	'db-configuration' name=ID '{'
+	'environment' environment=ENVIRONMENT
+	'host' host=STRING
+	'database' database=STRING
+	'user' user=STRING
+	'password' password=STRING
+	'port' port=STRING
+	'}';
+
+enum ENVIRONMENT:
+	DEVELOPMENT='DEVELOPMENT' |
+	TEST='TEST' |
+	INTEGRATION='INTEGRATION' |
+	PRODUCTION='PRODUCTION';
