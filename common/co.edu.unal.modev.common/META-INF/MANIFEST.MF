@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Common
+Bundle-SymbolicName: co.edu.unal.modev.common
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: co.edu.unal.modev.common.Activator
+Bundle-Vendor: jacruzca-UNAL
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: co.edu.unal.modev.common
+
