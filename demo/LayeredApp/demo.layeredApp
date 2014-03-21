@@ -8,9 +8,15 @@ configuration "projectConfig" {
 	}
 	
 	dbConfig dev production
+	mongoConfig MongoDev MongoProduction
 }
 
 persistence-layer persistence {
+	
+	documents {
+		Articles
+	}
+	
 	entities {
 		auth
 	}

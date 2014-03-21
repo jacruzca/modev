@@ -1,0 +1,11 @@
+documents-module Articles {
+	document Article {
+		properties {
+			property title type String
+			property content type String
+		}
+		options{
+			
+		}
+	}
+}

@@ -25,8 +25,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SimpleTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Document"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SimpleTypes">
+    <eLiterals name="STRING" literal="String"/>
+    <eLiterals name="NUMBER" value="1" literal="Number"/>
+    <eLiterals name="DATE" value="2" literal="Date"/>
+    <eLiterals name="BOOLEAN" value="3" literal="Boolean"/>
+    <eLiterals name="OBJECTID" value="4" literal="ObjectId"/>
+    <eLiterals name="BUFFER" value="5" literal="Buffer"/>
+    <eLiterals name="ARRAY" value="6" literal="Array"/>
+    <eLiterals name="MIXED" value="7" literal="Mixed"/>
   </eClassifiers>
 </ecore:EPackage>

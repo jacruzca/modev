@@ -18,8 +18,8 @@ App:
 Config:
 	'configuration' name=STRING "{"
 		projectConfig=ProjectConfig
-		("dbConfig" dbConfig+=[dbConfig::DatabaseConfiguration|ID]*)
-		("mongoConfig" mongoConfig+=[mongoConfig::MongoConfiguration|ID]*)
+		("dbConfig" dbConfig+=[dbConfig::DatabaseConfiguration|ID]*)?
+		("mongoConfig" mongoConfig+=[mongoConfig::MongoConfiguration|ID]*)?
 	"}";
 
 ProjectConfig:

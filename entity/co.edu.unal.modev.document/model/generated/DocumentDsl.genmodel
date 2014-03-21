@@ -7,6 +7,16 @@
     editorPluginID="co.edu.unal.modev.document.editor" runtimeVersion="2.9">
   <genPackages prefix="DocumentDsl" basePackage="co.edu.unal.modev.document" disposableProviderFactory="true"
       fileExtensions="document" ecorePackage="DocumentDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DocumentDsl.ecore#//SimpleTypes">
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/OBJECTID"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/BUFFER"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/ARRAY"/>
+      <genEnumLiterals ecoreEnumLiteral="DocumentDsl.ecore#//SimpleTypes/MIXED"/>
+    </genEnums>
     <genClasses ecoreClass="DocumentDsl.ecore#//DocumentsModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentsModule/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//DocumentsModule/documents"/>

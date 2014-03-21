@@ -1,0 +1,8 @@
+db-configuration MongoDev {
+	environment DEVELOPMENT
+	host "localhost"
+	database "testDev"
+	user ""
+	password ""
+	port ""
+}

@@ -1,0 +1,8 @@
+db-configuration MongoProduction {
+	environment PRODUCTION
+	host "localhost"
+	database "testProd"
+	user ""
+	password ""
+	port ""
+}

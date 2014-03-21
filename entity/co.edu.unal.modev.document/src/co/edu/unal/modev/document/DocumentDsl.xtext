@@ -31,19 +31,16 @@ Document:
 	"}";
 
 DocumentProperty:
-	"property" name=ID "type" type=DocumentPropertyType
+	"property" name=ID "type" type=SimpleTypes
 	("ref" ref=[Document|FQN])?
 	("default" default=STRING)?;
 
-DocumentPropertyType:
-	SimpleTypes;
-
-SimpleTypes:
-	'String' |
-	'Number' |
-	'Date' |
-	'Boolean' |
-	'ObjectId' |
-	'Buffer' |
-	'Array' |
-	'Mixed';
+enum SimpleTypes:
+	STRING = 'String' |
+	NUMBER = 'Number' |
+	DATE = 'Date' |
+	BOOLEAN = 'Boolean' |
+	OBJECTID = 'ObjectId' |
+	BUFFER = 'Buffer' |
+	ARRAY = 'Array' |
+	MIXED = 'Mixed';
