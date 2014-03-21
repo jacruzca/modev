@@ -1,0 +1,8 @@
+repositories-module Articles {
+	
+	repository ArticlesRepository belongsTo Articles.Article {
+		operation getAllArticles returnType "List<Article>"
+		operation createArticle returnType Articles.Article
+	}
+	
+}

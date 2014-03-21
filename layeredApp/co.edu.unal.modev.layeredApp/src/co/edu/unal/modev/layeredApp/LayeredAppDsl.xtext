@@ -36,20 +36,20 @@ ProjectConfig:
 PersistenceLayer:
 	"persistence-layer" name=ID "{"
 		('documents' '{'
-			documentModules+=[document::DocumentsModule | ID]
+			documentModules+=[document::DocumentsModule | ID]*
 		'}')?
 		('entities' '{'
-			entityModules+=[entity::EntitiesModule|ID]
+			entityModules+=[entity::EntitiesModule|ID]*
 		'}')?
 		'repositories' '{'
-			repositoryModules+=[repository::RepositoriesModule|ID]
+			repositoryModules+=[repository::RepositoriesModule|ID]*
 		'}'
 	"}";
 
 BusinessLayer:
 	"business-layer" name=ID "{"
 		'business' '{'
-			businessModules+=[business::BusinessModule|ID]
+			businessModules+=[business::BusinessModule|ID]*
 		'}'
 		'dto' '{'
 		
@@ -59,7 +59,7 @@ BusinessLayer:
 RouteLayer:
 	"route-layer" name=ID "{"
 		'routes' '{'
-			routesModules+=[route::RoutesModule|ID]
+			routesModules+=[route::RoutesModule|ID]*
 		'}'
 	"}";
 

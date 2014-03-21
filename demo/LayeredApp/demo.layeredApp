@@ -23,6 +23,7 @@ persistence-layer persistence {
 	
 	repositories {
 		auth
+		Articles
 	}
 }
 
