@@ -7,6 +7,20 @@
     editorPluginID="co.edu.unal.modev.route.editor" runtimeVersion="2.9" usedGenPackages="../../../co.edu.unal.modev.business/model/generated/BusinessDsl.genmodel#//businessDsl">
   <genPackages prefix="RouteDsl" basePackage="co.edu.unal.modev.route" disposableProviderFactory="true"
       fileExtensions="route" ecorePackage="RouteDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RouteDsl.ecore#//HTTP_VERB">
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_VERB/GET"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_VERB/POST"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_VERB/PUT"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_VERB/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_VERB/OPTIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_VERB/TRACE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="RouteDsl.ecore#//HTTP_TYPE">
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/QUERY"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/BODY"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/ROUTE_PARAM"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/FILE"/>
+    </genEnums>
     <genClasses ecoreClass="RouteDsl.ecore#//RoutesModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//RoutesModule/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//RoutesModule/routes"/>
@@ -14,7 +28,13 @@
     <genClasses ecoreClass="RouteDsl.ecore#//Route">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//Route/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//Route/uri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//Route/httpVerb"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//Route/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//Route/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="RouteDsl.ecore#//HttpParameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//HttpParameter/param"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//HttpParameter/httpType"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

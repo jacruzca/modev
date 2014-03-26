@@ -10,6 +10,27 @@
   <eClassifiers xsi:type="ecore:EClass" name="Route">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpVerb" eType="#//HTTP_VERB"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//HttpParameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HttpParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="param" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpType" eType="#//HTTP_TYPE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HTTP_VERB">
+    <eLiterals name="GET" literal="GET"/>
+    <eLiterals name="POST" value="1" literal="POST"/>
+    <eLiterals name="PUT" value="2" literal="PUT"/>
+    <eLiterals name="DELETE" value="3" literal="DELETE"/>
+    <eLiterals name="OPTIONS" value="4" literal="OPTIONS"/>
+    <eLiterals name="TRACE" value="5" literal="TRACE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HTTP_TYPE">
+    <eLiterals name="QUERY" literal="QUERY"/>
+    <eLiterals name="BODY" value="1" literal="BODY"/>
+    <eLiterals name="ROUTE_PARAM" value="2" literal="ROUTE_PARAM"/>
+    <eLiterals name="FILE" value="3" literal="FILE"/>
   </eClassifiers>
 </ecore:EPackage>

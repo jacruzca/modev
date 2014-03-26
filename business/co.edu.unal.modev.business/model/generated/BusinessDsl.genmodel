@@ -10,20 +10,6 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//VOID">
       <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//VOID/VOID"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//HTTP_VERB">
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/GET"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/POST"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/PUT"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/DELETE"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/OPTIONS"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_VERB/TRACE"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//HTTP_TYPE">
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/QUERY"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/BODY"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/ROUTE_PARAM"/>
-      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//HTTP_TYPE/FILE"/>
-    </genEnums>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessModule/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessModule/business"/>
@@ -35,7 +21,6 @@
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/returnType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/httpVerb"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/parameters"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessReturnType">
@@ -44,7 +29,6 @@
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/httpType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessParameter/type"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessType">

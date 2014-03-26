@@ -23,20 +23,27 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DocumentProperty">
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractType" eSuperTypes="#//DocumentProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="many" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SimpleTypes"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Document"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SimpleTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inlineType" eType="#//Document"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refType" eType="#//RefType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Document"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SimpleTypes">
     <eLiterals name="STRING" literal="String"/>
     <eLiterals name="NUMBER" value="1" literal="Number"/>
     <eLiterals name="DATE" value="2" literal="Date"/>
     <eLiterals name="BOOLEAN" value="3" literal="Boolean"/>
-    <eLiterals name="OBJECTID" value="4" literal="ObjectId"/>
-    <eLiterals name="BUFFER" value="5" literal="Buffer"/>
-    <eLiterals name="ARRAY" value="6" literal="Array"/>
-    <eLiterals name="MIXED" value="7" literal="Mixed"/>
+    <eLiterals name="BUFFER" value="4" literal="Buffer"/>
+    <eLiterals name="ARRAY" value="5" literal="Array"/>
+    <eLiterals name="MIXED" value="6" literal="Mixed"/>
   </eClassifiers>
 </ecore:EPackage>

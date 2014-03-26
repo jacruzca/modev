@@ -20,9 +20,9 @@ Business:
 BusinessOperation:
 	'operation' name=ID  
 		('returnType' returnType=BusinessReturnType)?
-		('httpVerb' httpVerb=HTTP_VERB)? 
+		 
 	(	'{'
-				(parameters += BusinessParameter)+
+				(parameters += BusinessParameter)*
 		'}'
 	)?
 ;
@@ -32,8 +32,7 @@ BusinessReturnType:
 ;
 
 BusinessParameter:
-	'parameter' name=STRING 
-		'httpType' httpType=HTTP_TYPE
+	'parameter' name=FQN
 		('type' type=BusinessType)?
 ;
 
@@ -51,12 +50,4 @@ LiteralType:
 
 enum VOID:
 	VOID='void'
-;
-
-enum HTTP_VERB:
-	GET | POST | PUT | DELETE | OPTIONS | TRACE
-;
-
-enum HTTP_TYPE:
-	QUERY | BODY | ROUTE_PARAM | FILE
 ;

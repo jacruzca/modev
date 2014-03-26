@@ -1,15 +1,14 @@
 package co.edu.unal.modev.generator.nodejs.business
 
 import co.edu.unal.modev.business.businessDsl.Business
-import co.edu.unal.modev.generator.nodejs.business.util.BusinessUtil
-import javax.inject.Inject
-import co.edu.unal.modev.business.businessDsl.HTTP_TYPE
+import co.edu.unal.modev.business.businessDsl.BusinessOperation
+import co.edu.unal.modev.route.routeDsl.HTTP_TYPE
+import co.edu.unal.modev.route.routeDsl.Route
+import org.eclipse.emf.ecore.resource.Resource
 
 class GenerateBusinessTemplate {
 
-	@Inject extension BusinessUtil
-
-	def generate(Business business) '''
+	def generate(Business business, Resource resource) '''
 		var logger = require("../../../config/logger");
 		var constants = require("../../../config/constants");
 		var repositoryFactory = require("../../repository/RepositoryFactory").getRepositoryFactory();
@@ -21,14 +20,15 @@ class GenerateBusinessTemplate {
 		«FOR operation : business.operations»
 			
 			module.exports.«operation.name» = function(req, res){
-				«FOR param: operation.parameters»
+				«var route = operation.getRouteForBusinessOperation(resource)»
+				«FOR param: route.parameters»
 				«switch param.httpType{
 					case HTTP_TYPE.ROUTE_PARAM:
-						'''var «param.name» = req.params.«param.name»;'''
+						'''var «param.param.name» = req.params.«param.param.name»;'''
 					case HTTP_TYPE.BODY:
-						'''var «param.name» = req.body;'''
+						'''var «param.param.name» = req.body;'''
 					case HTTP_TYPE.QUERY:
-						'''var «param.name» = req.query.«param.name»;'''
+						'''var «param.param.name» = req.query.«param.param.name»;'''
 				}»
 				«ENDFOR»
 				
@@ -40,4 +40,18 @@ class GenerateBusinessTemplate {
 		«ENDFOR»
 		
 	'''
+	
+	/**
+	 * Search the route that matches the given business operation
+	 */
+	private def getRouteForBusinessOperation(BusinessOperation businessOperation, Resource resource){
+		
+		var route = null as Route;
+		
+		for(e: resource.allContents.toIterable.filter(Route).filter(r | r.operation.equals(businessOperation))){
+			route = e;
+		}
+		
+		return route;
+	}
 }

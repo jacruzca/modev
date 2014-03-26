@@ -11,10 +11,8 @@ FQN:
 	ID ("." ID)*;
 
 Document:
-	"document" name=FQN "{"
-		"properties" "{"
-			properties+=DocumentProperty*
-		"}"
+	"schema" name=FQN "{"
+		properties+=DocumentProperty*
 		("options" "{"
 			(autoIndex?="autoIndex")?
 			(bufferCommands?="bufferCommands")?
@@ -31,16 +29,21 @@ Document:
 	"}";
 
 DocumentProperty:
-	"property" name=ID "type" type=SimpleTypes
-	("ref" ref=[Document|FQN])?
-	("default" default=STRING)?;
+	AbstractType (many?='*')? name=ID ("default" default=STRING)?;
+	
+AbstractType:
+	type=SimpleTypes | inlineType=Document | refType = RefType
+;
+	
+RefType:
+	"ObjectId" ref=[Document | FQN]
+;
 
 enum SimpleTypes:
 	STRING = 'String' |
 	NUMBER = 'Number' |
 	DATE = 'Date' |
 	BOOLEAN = 'Boolean' |
-	OBJECTID = 'ObjectId' |
 	BUFFER = 'Buffer' |
 	ARRAY = 'Array' |
 	MIXED = 'Mixed';

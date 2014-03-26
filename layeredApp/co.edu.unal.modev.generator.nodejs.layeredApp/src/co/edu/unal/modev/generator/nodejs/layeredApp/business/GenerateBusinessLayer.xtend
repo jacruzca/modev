@@ -30,7 +30,7 @@ class GenerateBusinessLayer {
 		for(businessModule: businessLayer.businessModules){
 			for(business: businessModule.business){
 				//generate business
-				fsa.generateFile(business.businessLocation, generateBusinessTemplate.generate(business))
+				fsa.generateFile(business.businessLocation, generateBusinessTemplate.generate(business, resource))
 			}
 		}
 	}
