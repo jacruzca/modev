@@ -17,7 +17,7 @@ class GenerateServerJsTemplate {
 		
 		// bootstrap database connection and save it in express context
 		app.set("models", require("./app/model"));
-		var repositoryFactory = require("./app/repository/RepositoryFactory").init(app);
+		require("./app/repository/RepositoryFactory").init(app);
 		
 		//set some global constants
 		app.set("constants", require("./config/constants"));

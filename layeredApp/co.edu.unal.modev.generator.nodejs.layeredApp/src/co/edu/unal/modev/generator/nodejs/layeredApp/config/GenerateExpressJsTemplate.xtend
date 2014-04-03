@@ -30,7 +30,6 @@ class GenerateExpressJsTemplate {
 	
 		// set views path, template engine and default layout
 		app.set('views', config.root + '/app/view')
-		app.set('view engine', 'ejs')
 	
 		app.configure(function () {
 	
