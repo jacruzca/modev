@@ -1,12 +1,11 @@
 package co.edu.unal.modev.generator.nodejs.layeredApp.util
 
+import co.edu.unal.modev.business.businessDsl.Business
+import co.edu.unal.modev.business.businessDsl.BusinessModule
 import co.edu.unal.modev.entity.entityDsl.EntitiesModule
 import co.edu.unal.modev.entity.entityDsl.Entity
 import co.edu.unal.modev.repository.repositoryDsl.RepositoriesModule
 import co.edu.unal.modev.repository.repositoryDsl.Repository
-import co.edu.unal.modev.business.businessDsl.Business
-import co.edu.unal.modev.business.businessDsl.BusinessModule
-import co.edu.unal.modev.route.routeDsl.Route
 import co.edu.unal.modev.route.routeDsl.RoutesModule
 
 class LocationsUtil {

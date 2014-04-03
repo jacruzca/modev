@@ -1,7 +1,6 @@
 package co.edu.unal.modev.generator.nodejs.repository
 
 import co.edu.unal.modev.generator.nodejs.repository.util.RepositoryUtil
-import co.edu.unal.modev.relationalRepository.relationalRepositoryDsl.EntityMapper
 import co.edu.unal.modev.repository.repositoryDsl.Repository
 import co.edu.unal.modev.repository.repositoryDsl.RepositoryParameter
 import java.util.List

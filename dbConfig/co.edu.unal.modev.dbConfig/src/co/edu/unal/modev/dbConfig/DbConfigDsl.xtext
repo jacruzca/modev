@@ -7,7 +7,7 @@ DBConfiguration:
 
 DatabaseConfiguration:
 	'db-configuration' name=ID '{'
-	'environment' environment=ENVIRONMENT
+	'environment' environment=DB_ENVIRONMENT
 	'host' host=STRING
 	'user' user=STRING
 	'password' password=STRING
@@ -25,7 +25,7 @@ enum DIALECT:
 	MARIADB='MARIADB'
 ;
 
-enum ENVIRONMENT:
+enum DB_ENVIRONMENT:
 	DEVELOPMENT='DEVELOPMENT' |
 	TEST='TEST' |
 	INTEGRATION='INTEGRATION' |

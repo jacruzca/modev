@@ -13,11 +13,11 @@
       <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DIALECT/POSTGRES"/>
       <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DIALECT/MARIADB"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DbConfigDsl.ecore#//ENVIRONMENT">
-      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/DEVELOPMENT"/>
-      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/TEST"/>
-      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/INTEGRATION"/>
-      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//ENVIRONMENT/PRODUCTION"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DbConfigDsl.ecore#//DB_ENVIRONMENT">
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DB_ENVIRONMENT/DEVELOPMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DB_ENVIRONMENT/TEST"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DB_ENVIRONMENT/INTEGRATION"/>
+      <genEnumLiterals ecoreEnumLiteral="DbConfigDsl.ecore#//DB_ENVIRONMENT/PRODUCTION"/>
     </genEnums>
     <genClasses ecoreClass="DbConfigDsl.ecore#//DBConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DbConfigDsl.ecore#//DBConfiguration/config"/>
