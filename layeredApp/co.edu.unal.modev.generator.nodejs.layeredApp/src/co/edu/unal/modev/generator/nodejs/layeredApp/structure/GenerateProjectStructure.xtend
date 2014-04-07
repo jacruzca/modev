@@ -22,7 +22,7 @@ class GenerateProjectStructure {
 		var app = resource.app as App;
 		
 		//generate server.js
-		fsa.generateFile(serverJsLocation, generateServerJsTemplate.generate)
+		fsa.generateFile(serverJsLocation, generateServerJsTemplate.generate(resource, app.config.configCommon))
 		
 		//generate package.json
 		fsa.generateFile(packageJsonLocation, generatePackageJsonTemplate.generate(app.config))

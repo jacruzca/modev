@@ -11,7 +11,7 @@ RepositoriesModule:
 FQN: ID ("." ID)*;
 	
 Repository:
-	'repository' name=ID ('belongsTo' belongsTo=AbstractEntity)?
+	'repository' name=ID 'belongsTo' belongsTo=AbstractEntity
 	'{'
 		(operations += RepositoryOperation)*
 	'}'

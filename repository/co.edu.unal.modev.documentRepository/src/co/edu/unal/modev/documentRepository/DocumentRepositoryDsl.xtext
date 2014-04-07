@@ -1,0 +1,19 @@
+grammar co.edu.unal.modev.documentRepository.DocumentRepositoryDsl with co.edu.unal.modev.repository.RepositoryDsl
+
+import "http://www.edu.co/unal/modev/repository/RepositoryDsl" as repositoryDsl
+import "http://www.edu.co/unal/modev/document/DocumentDsl" as documentDsl
+generate documentRepositoryDsl "http://www.edu.co/unal/modev/documentRepository/DocumentRepositoryDsl"
+
+RepositoriesModule returns repositoryDsl::RepositoriesModule:
+	"repositories-module" name=ID "{"
+	repositories+=Repository*
+	"}";
+
+AbstractEntity returns repositoryDsl::AbstractEntity:
+	DocumentMapper;
+
+DocumentMapper returns repositoryDsl::AbstractEntity:
+	{DocumentMapper} document=[documentDsl::Document|FQN];
+
+FQN:
+	ID ("." ID)*;

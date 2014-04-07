@@ -1,8 +1,9 @@
 package co.edu.unal.modev.generator.nodejs.repository.util
 
+import co.edu.unal.modev.documentRepository.documentRepositoryDsl.DocumentMapper
+import co.edu.unal.modev.relationalRepository.relationalRepositoryDsl.EntityMapper
 import co.edu.unal.modev.repository.repositoryDsl.RepositoriesModule
 import co.edu.unal.modev.repository.repositoryDsl.Repository
-import co.edu.unal.modev.relationalRepository.relationalRepositoryDsl.EntityMapper
 
 class RepositoryUtil {
 
@@ -11,16 +12,20 @@ class RepositoryUtil {
 
 	def hasEntity(Repository repository) {
 		var has = false
-		
-		if (repository.belongsTo instanceof EntityMapper) {
+
+		if(repository.belongsTo instanceof EntityMapper) {
 			has = true
 		}
-		
+
 		return has
 	}
 
 	def getEntity(Repository repository) {
 		return (repository.belongsTo as EntityMapper).entity
+	}
+
+	def getDocument(Repository repository) {
+		return (repository.belongsTo as DocumentMapper).document
 	}
 
 	def getModelReferenceVariableName(Repository repository) {

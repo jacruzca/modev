@@ -29,14 +29,19 @@ Document:
 	"}";
 
 DocumentProperty:
-	AbstractType (many?='*')? name=ID ("default" default=STRING)?;
+	name=ID type=AbstractType 
+	(many?='*')? 
+	("default" defaultValue=STRING)?
+	(unique?='unique')?
+	(index?='index')?
+;
 	
 AbstractType:
-	type=SimpleTypes | inlineType=Document | refType = RefType
+	simple=SimpleTypes | inline=Document | ref= RefType
 ;
 	
 RefType:
-	"ObjectId" ref=[Document | FQN]
+	"ref" ref=[Document | FQN]
 ;
 
 enum SimpleTypes:

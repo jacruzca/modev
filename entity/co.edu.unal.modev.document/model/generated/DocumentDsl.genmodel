@@ -35,14 +35,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/collection"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//Document/read"/>
     </genClasses>
-    <genClasses ecoreClass="DocumentDsl.ecore#//DocumentProperty"/>
+    <genClasses ecoreClass="DocumentDsl.ecore#//DocumentProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//DocumentProperty/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/many"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/unique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/index"/>
+    </genClasses>
     <genClasses ecoreClass="DocumentDsl.ecore#//AbstractType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//AbstractType/many"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//AbstractType/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//AbstractType/default"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//AbstractType/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//AbstractType/inlineType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//AbstractType/refType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//AbstractType/simple"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//AbstractType/inline"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//AbstractType/ref"/>
     </genClasses>
     <genClasses ecoreClass="DocumentDsl.ecore#//RefType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//RefType/ref"/>

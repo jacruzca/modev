@@ -21,7 +21,8 @@ class GeneratePackageJsonTemplate {
 			    "passport-local": "~1.0.0",
 			    "sequelize": "~1.7.0",
 			    "mysql": "~2.1.1",
-			    "winston": "~0.7.3",
+			    "mongoose": "~3.8.8",
+			    "winston": "~0.7.3"
 			},
 			"devDependencies": {
 				"sqlite3": "~2.2.0",

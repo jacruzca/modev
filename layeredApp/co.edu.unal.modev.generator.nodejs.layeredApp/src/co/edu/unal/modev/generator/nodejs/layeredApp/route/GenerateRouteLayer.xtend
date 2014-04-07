@@ -40,7 +40,7 @@ class GenerateRouteLayer {
 		var app = resource.app as App
 		var routesLayer = app.routeLayer as RouteLayer
 		//generate index.js for routes
-		fsa.generateFile(routeIndexJsLocation, generateRoutesIndexJsTemplate.generate(routesLayer.routesModules))
+		fsa.generateFile(routeIndexJsLocation, generateRoutesIndexJsTemplate.generate(routesLayer.routesModules, app.config.configCommon))
 	}
 
 }

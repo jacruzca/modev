@@ -22,11 +22,10 @@ class GenerateRouteTemplate {
 		 */
 		module.exports = function (app, passport) {
 		
-		    var routes = routesConstants.getRoutes();
 			«FOR route : routesModule.routes»
 			«var business = route.operation.eContainer as Business»
 			
-			app.«route.httpVerb»(routes.«route.name», «business.name.toFirstLower».«route.operation.name»);
+			app.«route.httpVerb.toString.toLowerCase»('«route.uri»', «business.name.toFirstLower».«route.operation.name»);
 			
 			«ENDFOR»
 		};
