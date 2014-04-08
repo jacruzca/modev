@@ -61,17 +61,16 @@ class GenerateConfigJsTemplate {
 			 	db: {
 			 		dialect: "sqlite"
 			 	},
-		 	«var allMongoConfigTest = config.mongoConfig.filter(configItem|configItem.environment.equals(DB_ENVIRONMENT.TEST)).iterator»
-		 	«IF allMongoConfigTest.hasNext»
-			«var mongoConfig = allMongoConfigTest.next»
-				mongo: {
-					host: "«mongoConfig.host»",
-					port: "«mongoConfig.port»",
-					name: "«mongoConfig.database»",
-					user: "«mongoConfig.user»",
-					password: "«mongoConfig.password»"
-				},
-		 	«ENDIF»
+		 		«var mongoTestConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.TEST)).head»
+		  	 	«IF mongoTestConfig != null»
+		  	 		mongo: {
+		  	 			host: "«mongoTestConfig.host»",
+		  	 			port: "«mongoTestConfig.port»",
+		  	 			name: "«mongoTestConfig.database»",
+		  	 			user: "«mongoTestConfig.user»",
+		  	 			password: "«mongoTestConfig.password»"
+		  	 		},
+		  	 	«ENDIF»
 			 	app: {
 					name: '«config.projectConfig.projectName»',
 					port: «config.inferServerPort»,
@@ -97,13 +96,13 @@ class GenerateConfigJsTemplate {
 			«var allMongoConfigProd = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.PRODUCTION)).iterator»
 			«IF allMongoConfigProd.hasNext»
 				«var mongoConfig = allMongoConfigProd.next»
-				mongo: {
-					host: "«mongoConfig.host»",
-					port: "«mongoConfig.port»",
-					name: "«mongoConfig.database»",
-					user: "«mongoConfig.user»",
-					password: "«mongoConfig.password»"
-				},
+					mongo: {
+						host: "«mongoConfig.host»",
+						port: "«mongoConfig.port»",
+						name: "«mongoConfig.database»",
+						user: "«mongoConfig.user»",
+						password: "«mongoConfig.password»"
+					},
 			«ENDIF»
 				app: {
 					name: '«config.projectConfig.projectName»',

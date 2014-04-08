@@ -28,7 +28,8 @@ class GeneratePackageJsonTemplate {
 			},
 			"devDependencies": {
 				"sqlite3": "~2.2.0",
-				 "should": "~3.2.0",
+				 "chai": "~1.9.1",
+				 "chai-as-promised": "~4.1.1",
 				 "mocha": "~1.18.2",
 				 "rewire": "~1.1.2",
 				 "nodemon": "~1.0.17"
