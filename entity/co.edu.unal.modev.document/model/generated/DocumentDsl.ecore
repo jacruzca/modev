@@ -11,6 +11,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//DocumentProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compoundIndexes" upperBound="-1"
+        eType="#//CompoundIndex" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bufferCommands" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="capped" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -22,6 +24,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="read" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompoundIndex">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="indexAttributes" upperBound="-1"
+        eType="#//IndexAttributes" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IndexAttributes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" eType="#//DocumentProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ORDER_TYPE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ORDER_TYPE">
+    <eLiterals name="ASC" literal="1"/>
+    <eLiterals name="DESC" value="1" literal="-1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DocumentProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -13,6 +13,7 @@ FQN:
 Document:
 	"schema" name=FQN "{"
 		properties+=DocumentProperty*
+		compoundIndexes+=CompoundIndex*
 		("options" "{"
 			(autoIndex?="autoIndex")?
 			(bufferCommands?="bufferCommands")?
@@ -27,6 +28,21 @@ Document:
 			("read" read=STRING)?
 		"}")?
 	"}";
+
+CompoundIndex:
+	'compound-index' name=ID
+		indexAttributes+=IndexAttributes+
+	(unique?='unique')?	
+		
+;
+
+IndexAttributes:
+	'attribute' attribute=[DocumentProperty | ID] type=ORDER_TYPE
+;
+
+enum ORDER_TYPE:
+	ASC="1" | DESC="-1"
+;
 
 DocumentProperty:
 	name=ID type=AbstractType 

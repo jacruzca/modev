@@ -40,7 +40,7 @@ class GenerateDocumentalRepositoryTemplate {
 			«ENDIF»
 			*/
 			«endJavaProtectedRegion»
-			module.exports.«operation.name» = function(«operation.parameters.operationParameters» options, success, error) {
+			module.exports.«operation.name» = function(«operation.parameters.operationParameters») {
 				«startJavaProtectedRegion(getRepositoryOperationUniqueId("body", operation, configCommon))»
 				
 				«endJavaProtectedRegion»
@@ -56,6 +56,11 @@ class GenerateDocumentalRepositoryTemplate {
 
 		for (param : params) {
 			paramsReturn = paramsReturn + param.name + ", "
+		}
+		
+		//remove the last comma
+		if(!paramsReturn.empty){
+			paramsReturn = paramsReturn.substring(0,paramsReturn.length-2);	
 		}
 
 		return paramsReturn

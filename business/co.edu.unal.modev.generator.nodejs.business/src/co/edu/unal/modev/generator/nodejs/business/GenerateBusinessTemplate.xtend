@@ -20,7 +20,6 @@ class GenerateBusinessTemplate {
 		«startJavaProtectedRegion(getUniqueId("init", business, config))»
 		
 		var logger = require("../../../config/logger");
-		var constants = require("../../../config/constants");
 		var repositoryFactory = require("../../repository/RepositoryFactory").getRepositoryFactory();
 		
 		// Load configurations according to the selected environment

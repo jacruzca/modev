@@ -9,7 +9,6 @@ import java.util.List
 class GenerateRouteTemplate {
 
 	def generate(RoutesModule routesModule) '''
-		var routesConstants = require("../../config/routesConstants");
 		
 		«FOR business : routesModule.allInvolvedBusiness»
 			var «business.name.toFirstLower» = require("../business/«(business.eContainer as BusinessModule).name»/«business.

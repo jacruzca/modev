@@ -52,20 +52,12 @@ class LocationsUtil {
 		return configLocation + "config" + JS_EXTENSION
 	}
 
-	def getConstantsJsLocation() {
-		return configLocation + "constants" + JS_EXTENSION
-	}
-
 	def getExpressJsLocation() {
 		return configLocation + "express" + JS_EXTENSION
 	}
 
 	def getLoggerJsLocation() {
 		return configLocation + "logger" + JS_EXTENSION
-	}
-
-	def getRoutesConstantsJsLocation() {
-		return configLocation + "routesConstants" + JS_EXTENSION
 	}
 
 	def getModelLocation() {

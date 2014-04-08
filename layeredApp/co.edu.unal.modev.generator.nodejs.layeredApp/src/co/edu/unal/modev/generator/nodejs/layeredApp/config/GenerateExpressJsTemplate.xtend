@@ -13,7 +13,6 @@ class GenerateExpressJsTemplate {
 		
 		var express = require('express');
 		var logger = require("./logger");
-		var constants = require("./constants");
 		// Load configurations according to the selected environment
 		var env = process.env.NODE_ENV || 'development';
 		var config = require('./config')[env];
@@ -51,7 +50,7 @@ class GenerateExpressJsTemplate {
 				//bodyParser
 				app.use(express.json({limit: '50mb'}));
 				app.use(express.urlencoded());
-				app.use(express.multipart({uploadDir: constants.uploadDir}));
+				app.use(express.multipart({uploadDir: config.uploadDir}));
 		
 				app.use(express.methodOverride());
 		

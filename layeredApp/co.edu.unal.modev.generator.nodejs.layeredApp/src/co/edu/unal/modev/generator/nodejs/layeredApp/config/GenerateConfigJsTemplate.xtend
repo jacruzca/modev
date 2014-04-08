@@ -42,7 +42,7 @@ class GenerateConfigJsTemplate {
 		  	 		mongo: {
 		  	 			host: "«mongoDevConfig.host»",
 		  	 			port: "«mongoDevConfig.port»",
-		  	 			name: "«mongoDevConfig.name»",
+		  	 			name: "«mongoDevConfig.database»",
 		  	 			user: "«mongoDevConfig.user»",
 		  	 			password: "«mongoDevConfig.password»"
 		  	 		},
@@ -67,7 +67,7 @@ class GenerateConfigJsTemplate {
 				mongo: {
 					host: "«mongoConfig.host»",
 					port: "«mongoConfig.port»",
-					name: "«mongoConfig.name»",
+					name: "«mongoConfig.database»",
 					user: "«mongoConfig.user»",
 					password: "«mongoConfig.password»"
 				},
@@ -100,7 +100,7 @@ class GenerateConfigJsTemplate {
 				mongo: {
 					host: "«mongoConfig.host»",
 					port: "«mongoConfig.port»",
-					name: "«mongoConfig.name»",
+					name: "«mongoConfig.database»",
 					user: "«mongoConfig.user»",
 					password: "«mongoConfig.password»"
 				},

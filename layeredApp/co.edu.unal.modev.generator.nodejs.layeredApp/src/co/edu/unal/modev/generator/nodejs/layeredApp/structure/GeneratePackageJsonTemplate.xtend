@@ -22,6 +22,8 @@ class GeneratePackageJsonTemplate {
 			    "sequelize": "~1.7.0",
 			    "mysql": "~2.1.1",
 			    "mongoose": "~3.8.8",
+			    "mpromise": "~0.5.4",
+			    "q": "~2.0.0",
 			    "winston": "~0.7.3"
 			},
 			"devDependencies": {

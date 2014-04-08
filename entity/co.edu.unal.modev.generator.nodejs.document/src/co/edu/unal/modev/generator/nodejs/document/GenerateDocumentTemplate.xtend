@@ -7,6 +7,8 @@ import co.edu.unal.modev.document.documentDsl.DocumentProperty
 import co.edu.unal.modev.document.documentDsl.DocumentsModule
 import co.edu.unal.modev.generator.nodejs.document.util.DocumentUtil
 import javax.inject.Inject
+import co.edu.unal.modev.document.documentDsl.CompoundIndex
+import co.edu.unal.modev.document.documentDsl.ORDER_TYPE
 
 class GenerateDocumentTemplate {
 
@@ -27,11 +29,11 @@ class GenerateDocumentTemplate {
 		«FOR inlineProperty: document.properties.filter(prop | prop.type.inline != null)»
 			«var inlineDocument = inlineProperty.type.inline»
 			/**
-			 * «inlineDocument.name» Schema - SubDoc
+			 * «inlineDocument.name» - SubDoc
 			 */
-			var «inlineDocument.schemaName» = new Schema({
+			var «inlineDocument.schemaName» = {
 				
-				«FOR property : inlineDocument.properties»
+				«FOR property : inlineDocument.properties SEPARATOR ","»
 					«property.name» : { 
 							type: «property.propertyType»
 						«IF property.defaultValue != null && !property.defaultValue.trim.empty»
@@ -40,9 +42,9 @@ class GenerateDocumentTemplate {
 						«IF property.unique»
 							, unique: true
 						«ENDIF»
-					},
+					}
 				«ENDFOR»
-			});
+			};
 		«ENDFOR»
 		
 		/**
@@ -50,7 +52,7 @@ class GenerateDocumentTemplate {
 		 */
 		var «document.schemaName» = new Schema({
 			
-			«FOR property : document.properties»
+			«FOR property : document.properties SEPARATOR ","»
 				«property.name» : { 
 						type: «property.propertyType»
 					«IF property.defaultValue != null && !property.defaultValue.trim.empty»
@@ -62,9 +64,13 @@ class GenerateDocumentTemplate {
 					«IF property.index»
 						, index: true
 					«ENDIF»
-				},
+				}
 			«ENDFOR»
 		});
+		
+		«FOR indexes: document.compoundIndexes»
+		«document.schemaName».index({«indexes.indexObject»}, {«IF indexes.unique»unique: true«ENDIF»});
+		«ENDFOR»
 		
 		module.exports.model = function(){
 		    mongoose.model('«document.name»', «document.schemaName»);
@@ -75,6 +81,19 @@ class GenerateDocumentTemplate {
 		«startJavaProtectedRegion(getUniqueId("additionalMethods", document, config))»
 		«endJavaProtectedRegion»
 	'''
+	
+	private def getIndexObject(CompoundIndex index){
+		var res = "";
+		for(attr: index.indexAttributes){
+			res = res + ''' «attr.attribute.name»: «IF attr.type.equals(ORDER_TYPE.ASC)»1«ELSE»-1«ENDIF», '''
+		}
+		
+		if(!res.empty){
+			res = res.substring(0, res.length-2);
+		}
+		
+		res
+	}
 
 	private def getSchemaName(Document document) {
 		document.name + "Schema"

@@ -44,9 +44,6 @@ class GenerateServerJsTemplate {
 		//initialize repositories if required
 		require('./app/repository/RepositoryFactory').init(app);
 		
-		//set some global constants
-		app.set('constants', require('./config/constants'));
-		
 		// express settings
 		require('./config/express')(app, config, passport);
 		
