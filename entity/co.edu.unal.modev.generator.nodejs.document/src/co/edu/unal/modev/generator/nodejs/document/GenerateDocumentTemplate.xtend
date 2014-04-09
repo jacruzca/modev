@@ -26,7 +26,7 @@ class GenerateDocumentTemplate {
 		
 		«endJavaProtectedRegion»
 		
-		«FOR inlineProperty: document.properties.filter(prop | prop.type.inline != null)»
+		«FOR inlineProperty : document.properties.filter(prop|prop.type.inline != null)»
 			«var inlineDocument = inlineProperty.type.inline»
 			/**
 			 * «inlineDocument.name» - SubDoc
@@ -36,12 +36,15 @@ class GenerateDocumentTemplate {
 				«FOR property : inlineDocument.properties SEPARATOR ","»
 					«property.name» : { 
 							type: «property.propertyType»
-						«IF property.defaultValue != null && !property.defaultValue.trim.empty»
-							, default: «property.defaultValue»
-						«ENDIF»
-						«IF property.unique»
-							, unique: true
-						«ENDIF»
+					«IF property.defaultValue != null && !property.defaultValue.trim.empty»
+						, default: «property.defaultValue»
+					«ENDIF»
+					«IF property.unique»
+						, unique: true
+					«ENDIF»
+					«IF property.required»
+						, required: true
+					«ENDIF»
 					}
 				«ENDFOR»
 			};
@@ -54,22 +57,16 @@ class GenerateDocumentTemplate {
 			
 			«FOR property : document.properties SEPARATOR ","»
 				«property.name» : { 
-						type: «property.propertyType»
-					«IF property.defaultValue != null && !property.defaultValue.trim.empty»
-						, default: «property.defaultValue»
-					«ENDIF»
-					«IF property.unique»
-						, unique: true
-					«ENDIF»
-					«IF property.index»
-						, index: true
-					«ENDIF»
+						type: «property.propertyType»«IF property.unique», unique: true«ENDIF»«IF property.required», required: true«ENDIF»«IF property.index», index: true«ENDIF»
+				«IF property.defaultValue != null && !property.defaultValue.trim.empty»
+					, default: «property.defaultValue»
+				«ENDIF»
 				}
 			«ENDFOR»
 		});
 		
-		«FOR indexes: document.compoundIndexes»
-		«document.schemaName».index({«indexes.indexObject»}, {«IF indexes.unique»unique: true«ENDIF»});
+		«FOR indexes : document.compoundIndexes»
+			«document.schemaName».index({«indexes.indexObject»}, {«IF indexes.unique»unique: true«ENDIF»});
 		«ENDFOR»
 		
 		module.exports.model = function(){
@@ -81,17 +78,17 @@ class GenerateDocumentTemplate {
 		«startJavaProtectedRegion(getUniqueId("additionalMethods", document, config))»
 		«endJavaProtectedRegion»
 	'''
-	
-	private def getIndexObject(CompoundIndex index){
+
+	private def getIndexObject(CompoundIndex index) {
 		var res = "";
-		for(attr: index.indexAttributes){
+		for (attr : index.indexAttributes) {
 			res = res + ''' «attr.attribute.name»: «IF attr.type.equals(ORDER_TYPE.ASC)»1«ELSE»-1«ENDIF», '''
 		}
-		
-		if(!res.empty){
-			res = res.substring(0, res.length-2);
+
+		if(!res.empty) {
+			res = res.substring(0, res.length - 2);
 		}
-		
+
 		res
 	}
 
@@ -107,17 +104,17 @@ class GenerateDocumentTemplate {
 		if(propertyAbstractType.inline != null) {
 			type = propertyAbstractType.inline.schemaName
 		} else if(propertyAbstractType.ref != null) {
-			type = "Schema.ObjectId, ref: '" + propertyAbstractType.ref.ref.name+"'"
+			type = "Schema.ObjectId, ref: '" + propertyAbstractType.ref.ref.name + "'"
 		} else if(propertyAbstractType.simple != null) {
 			type = propertyAbstractType.simple.literal
 		}
-		
+
 		type
 	}
-	
-	private def getUniqueId(String id, Document document, ConfigCommon config){
+
+	private def getUniqueId(String id, Document document, ConfigCommon config) {
 		var module = document.documentModule as DocumentsModule
-		
-		config.projectName+"_"+config.packageName+"_"+module.name+"_Document_"+document.name+"_"+id
+
+		config.projectName + "_" + config.packageName + "_" + module.name + "_Document_" + document.name + "_" + id
 	}
 }

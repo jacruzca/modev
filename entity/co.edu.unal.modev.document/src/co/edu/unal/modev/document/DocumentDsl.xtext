@@ -48,6 +48,7 @@ DocumentProperty:
 	name=ID type=AbstractType 
 	(many?='*')? 
 	("default" defaultValue=STRING)?
+	(required?='required')?
 	(unique?='unique')?
 	(index?='index')?
 ;

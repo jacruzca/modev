@@ -19,6 +19,7 @@ import java.util.ArrayList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
 import co.edu.unal.modev.generator.nodejs.repository.GenerateDocumentalRepositoryTemplate
+import co.edu.unal.modev.generator.nodejs.repository.test.GenerateDocumentalRepositoryTestTemplate
 
 class GeneratePersistenceLayer {
 
@@ -31,6 +32,8 @@ class GeneratePersistenceLayer {
 	@Inject GenerateRepositoryFactoryTemplate generateRepositoryFactoryTemplate
 	@Inject GenerateRelationalIndexModelTemplate generateRelationalIndexModelTemplate
 	@Inject GenerateDocumentalIndexModelTemplate generateDocumentalIndexModelTemplate
+	
+	@Inject GenerateDocumentalRepositoryTestTemplate generateDocumentalRepositoryTestTemplate
 
 	def generate(Resource resource, JavaIoFileSystemAccess fsa) {
 
@@ -43,6 +46,8 @@ class GeneratePersistenceLayer {
 		generateRepositories(resource, fsa)
 
 		generateRepositoryFactory(resource, fsa)
+		
+		generateRepositoryTests(resource, fsa);
 
 	}
 
@@ -189,5 +194,33 @@ class GeneratePersistenceLayer {
 		var persistenceLayer = app.persistenceLayer;
 
 		fsa.generateFile(repositoryFactoryLocation, generateRepositoryFactoryTemplate.generate(persistenceLayer.allRepositoriesList, app.config.configCommon))
+	}
+	
+	/**
+	 * Generate tests for all repositories
+	 */
+	def generateRepositoryTests(Resource resource, JavaIoFileSystemAccess fsa) {
+		var app = resource.app as App;
+		var persistenceLayer = app.persistenceLayer;
+
+		//iterate all repo modules
+		for (repositoriesModule : persistenceLayer.repositoryModules) {
+
+			//iterate all repos
+			for (repository : repositoriesModule.repositories) {
+
+				//relational repository
+				if(repository.belongsTo instanceof EntityMapper) {
+
+					//generate repo test file
+
+				} else {
+
+					//documental repository test file
+					fsa.generateFile(repository.repositoryUnitTestLocation, generateDocumentalRepositoryTestTemplate.generate(repository, app.config.configCommon))
+				}
+
+			}
+		}
 	}
 }

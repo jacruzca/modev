@@ -50,64 +50,64 @@ class GenerateConfigJsTemplate {
 		  	 	
 				app: {
 				name: '«config.projectConfig.projectName»',
-						port: «config.inferServerPort»,
-						tokenExpiration: 3600000*2
+				port: «config.inferServerPort»,
+				tokenExpiration: 3600000*2
 				}
-		  	},
-		  	test: {
-			 	loggerLevel: "debug",
-			 	root: rootPath,
-			 	tokenHeader: "Secure-Token",
-			 	db: {
-			 		dialect: "sqlite"
-			 	},
-		 		«var mongoTestConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.TEST)).head»
-		  	 	«IF mongoTestConfig != null»
-		  	 		mongo: {
-		  	 			host: "«mongoTestConfig.host»",
-		  	 			port: "«mongoTestConfig.port»",
-		  	 			name: "«mongoTestConfig.database»",
-		  	 			user: "«mongoTestConfig.user»",
-		  	 			password: "«mongoTestConfig.password»"
-		  	 		},
-		  	 	«ENDIF»
-			 	app: {
-					name: '«config.projectConfig.projectName»',
-					port: «config.inferServerPort»,
-					tokenExpiration: 3600000*2
-				 }
+			},
+			test: {
+			loggerLevel: "debug",
+			root: rootPath,
+			tokenHeader: "Secure-Token",
+			db: {
+				dialect: "sqlite"
+			},
+			«var mongoTestConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.TEST)).head»
+			 	«IF mongoTestConfig != null»
+			 		mongo: {
+			 			host: "«mongoTestConfig.host»",
+			 			port: "«mongoTestConfig.port»",
+			 			name: "«mongoTestConfig.database»",
+			 			user: "«mongoTestConfig.user»",
+			 			password: "«mongoTestConfig.password»"
+			 		},
+			 	«ENDIF»
+			app: {
+			name: '«config.projectConfig.projectName»',
+			port: «config.inferServerPort»,
+			tokenExpiration: 3600000*2
+			}
 			},
 			production: {
-				loggerLevel: "info",
-				root: rootPath,
-				tokenHeader: "Secure-Token",
+			loggerLevel: "info",
+			root: rootPath,
+			tokenHeader: "Secure-Token",
 			«var allDbConfigProd = config.dbConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.PRODUCTION)).iterator»
 			«IF allDbConfigProd.hasNext»
-				«var dbConfig = allDbConfigProd.next»
-				db: {
-					host: "«dbConfig.host»",
-					port: "«dbConfig.port»",
-					name: "«dbConfig.database»",
-					user: "«dbConfig.user»",
-					password: "«dbConfig.password»",
-					dialect: "«dbConfig.dialect.dialectForSequelize»"
-				},
+			«var dbConfig = allDbConfigProd.next»
+			db: {
+				host: "«dbConfig.host»",
+				port: "«dbConfig.port»",
+				name: "«dbConfig.database»",
+				user: "«dbConfig.user»",
+				password: "«dbConfig.password»",
+				dialect: "«dbConfig.dialect.dialectForSequelize»"
+			},
 			«ENDIF»
 			«var allMongoConfigProd = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.PRODUCTION)).iterator»
 			«IF allMongoConfigProd.hasNext»
-				«var mongoConfig = allMongoConfigProd.next»
-					mongo: {
-						host: "«mongoConfig.host»",
-						port: "«mongoConfig.port»",
-						name: "«mongoConfig.database»",
-						user: "«mongoConfig.user»",
-						password: "«mongoConfig.password»"
-					},
+			«var mongoConfig = allMongoConfigProd.next»
+				mongo: {
+					host: "«mongoConfig.host»",
+					port: "«mongoConfig.port»",
+					name: "«mongoConfig.database»",
+					user: "«mongoConfig.user»",
+					password: "«mongoConfig.password»"
+				},
 			«ENDIF»
 				app: {
-					name: '«config.projectConfig.projectName»',
-						port: «config.inferServerPort»,
-						tokenExpiration: 3600000*2
+			name: '«config.projectConfig.projectName»',
+				port: «config.inferServerPort»,
+				tokenExpiration: 3600000*2
 				}
 			}
 		};

@@ -20,13 +20,13 @@ class LocationsUtil {
 	final static String APP = "app"
 	final static String MODEL = "model"
 	final static String CONFIG = "config"
+	final static String TEST = "test"
+	final static String UNIT = "unit"
 	final static String REPOSITORY = "repository"
 	final static String BUSINESS = "business"
 	final static String ROUTE = "route"
 	final static String REPOSITORY_SUFFIX = "Repository"
 	final static String REPOSITORY_FACTORY = REPOSITORY_SUFFIX + "Factory"
-	final static String BUSINESS_SUFFIX = "Business"
-	final static String ROUTES_SUFFIX = "Routes"
 
 	def getServerLocation() {
 		return SERVER + PATH_SEPARATOR
@@ -75,7 +75,7 @@ class LocationsUtil {
 		location = location + entitiesModule.name + PATH_SEPARATOR
 
 		//add filename
-		location = location + entity.name.toFirstUpper + JS_EXTENSION
+		location = location + entity.name + JS_EXTENSION
 
 		return location
 	}
@@ -91,7 +91,7 @@ class LocationsUtil {
 		location = location + documentsModule.name + PATH_SEPARATOR
 
 		//add filename
-		location = location + document.name.toFirstUpper + JS_EXTENSION
+		location = location + document.name + JS_EXTENSION
 
 		return location
 	}
@@ -99,7 +99,7 @@ class LocationsUtil {
 	def getRelationalIndexModelLocation() {
 		return modelLocation + "indexRelational" + JS_EXTENSION
 	}
-	
+
 	def getDocumentalIndexModelLocation() {
 		return modelLocation + "indexDocumental" + JS_EXTENSION
 	}
@@ -119,7 +119,7 @@ class LocationsUtil {
 		location = location + repositoriesModule.name + PATH_SEPARATOR
 
 		//add filename
-		location = location + repository.name.toFirstUpper + JS_EXTENSION
+		location = location + repository.name + JS_EXTENSION
 
 		return location
 	}
@@ -143,7 +143,7 @@ class LocationsUtil {
 		location = location + businessModule.name + PATH_SEPARATOR
 
 		//add filename
-		location = location + business.name.toFirstUpper + JS_EXTENSION
+		location = location + business.name + JS_EXTENSION
 
 		return location
 	}
@@ -153,11 +153,35 @@ class LocationsUtil {
 	}
 
 	def getRouteModuleLocation(RoutesModule routesModule) {
-		return routeLocation + routesModule.name.toFirstUpper + JS_EXTENSION
+		return routeLocation + routesModule.name + JS_EXTENSION
 	}
 
 	def getRouteIndexJsLocation() {
 		return routeLocation + "index" + JS_EXTENSION
+	}
+
+	def getUnitTestLocation() {
+		return serverLocation + TEST + PATH_SEPARATOR + UNIT + PATH_SEPARATOR
+	}
+	
+	def getRepositoryUnitTestLocation() {
+		return unitTestLocation + REPOSITORY + PATH_SEPARATOR
+	}
+	
+	/**
+	 * returns the repo location relative to the project
+	 */
+	def getRepositoryUnitTestLocation(Repository repository) {
+		var location = repositoryUnitTestLocation as String
+
+		//add module
+		var repositoriesModule = repository.eContainer as RepositoriesModule
+		location = location + repositoriesModule.name + PATH_SEPARATOR
+
+		//add filename
+		location = location + repository.name +"Test"+ JS_EXTENSION
+
+		return location
 	}
 
 }

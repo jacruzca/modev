@@ -54,6 +54,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DocumentDsl.ecore#//DocumentProperty/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/many"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/required"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/unique"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DocumentDsl.ecore#//DocumentProperty/index"/>
     </genClasses>
