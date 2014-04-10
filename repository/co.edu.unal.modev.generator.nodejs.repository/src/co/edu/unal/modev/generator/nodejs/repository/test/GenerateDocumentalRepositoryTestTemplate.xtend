@@ -30,6 +30,8 @@ class GenerateDocumentalRepositoryTestTemplate {
 		var repositoryFactory = require("../../../../app/repository/RepositoryFactory").getRepositoryFactory();
 		var «repository.repositoryVariableName» = null;
 		
+		var «repository.name.toFirstLower»Data = require('./data/«repository.name»Data');
+		
 		
 		var initialize = function(){
 			

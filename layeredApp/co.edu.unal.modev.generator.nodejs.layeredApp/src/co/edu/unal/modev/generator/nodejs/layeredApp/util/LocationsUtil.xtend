@@ -22,6 +22,7 @@ class LocationsUtil {
 	final static String CONFIG = "config"
 	final static String TEST = "test"
 	final static String UNIT = "unit"
+	final static String DATA = "data"
 	final static String REPOSITORY = "repository"
 	final static String BUSINESS = "business"
 	final static String ROUTE = "route"
@@ -163,13 +164,13 @@ class LocationsUtil {
 	def getUnitTestLocation() {
 		return serverLocation + TEST + PATH_SEPARATOR + UNIT + PATH_SEPARATOR
 	}
-	
+
 	def getRepositoryUnitTestLocation() {
 		return unitTestLocation + REPOSITORY + PATH_SEPARATOR
 	}
-	
+
 	/**
-	 * returns the repo location relative to the project
+	 * returns the repo test location relative to the project
 	 */
 	def getRepositoryUnitTestLocation(Repository repository) {
 		var location = repositoryUnitTestLocation as String
@@ -179,7 +180,23 @@ class LocationsUtil {
 		location = location + repositoriesModule.name + PATH_SEPARATOR
 
 		//add filename
-		location = location + repository.name +"Test"+ JS_EXTENSION
+		location = location + repository.name + "Test" + JS_EXTENSION
+
+		return location
+	}
+
+	/**
+	 * returns the repo data test location relative to the project
+	 */
+	def getRepositoryUnitDataTestLocation(Repository repository) {
+		var location = repositoryUnitTestLocation as String
+
+		//add module and the data folder
+		var repositoriesModule = repository.eContainer as RepositoriesModule
+		location = location + repositoriesModule.name + PATH_SEPARATOR + DATA + PATH_SEPARATOR
+
+		//add filename
+		location = location + repository.name + "Data" + JS_EXTENSION
 
 		return location
 	}

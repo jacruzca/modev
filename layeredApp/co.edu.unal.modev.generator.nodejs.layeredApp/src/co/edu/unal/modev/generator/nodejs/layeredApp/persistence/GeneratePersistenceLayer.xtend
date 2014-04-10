@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
 import co.edu.unal.modev.generator.nodejs.repository.GenerateDocumentalRepositoryTemplate
 import co.edu.unal.modev.generator.nodejs.repository.test.GenerateDocumentalRepositoryTestTemplate
+import co.edu.unal.modev.generator.nodejs.repository.test.GenerateDocumentDataTemplate
 
 class GeneratePersistenceLayer {
 
@@ -34,6 +35,7 @@ class GeneratePersistenceLayer {
 	@Inject GenerateDocumentalIndexModelTemplate generateDocumentalIndexModelTemplate
 	
 	@Inject GenerateDocumentalRepositoryTestTemplate generateDocumentalRepositoryTestTemplate
+	@Inject GenerateDocumentDataTemplate generateDocumentDataTemplate
 
 	def generate(Resource resource, JavaIoFileSystemAccess fsa) {
 
@@ -218,6 +220,9 @@ class GeneratePersistenceLayer {
 
 					//documental repository test file
 					fsa.generateFile(repository.repositoryUnitTestLocation, generateDocumentalRepositoryTestTemplate.generate(repository, app.config.configCommon))
+					
+					//document data test
+					fsa.generateFile(repository.repositoryUnitDataTestLocation, generateDocumentDataTemplate.generate(repository, app.config.configCommon))
 				}
 
 			}
