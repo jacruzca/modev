@@ -12,7 +12,7 @@ class GenerateRoutesIndexJsTemplate {
 
 	def generate(List<RoutesModule> routesModules, ConfigCommon configCommon) '''
 		«FOR module : routesModules»
-			var «module.name.toFirstLower» = require("./«module.name.toFirstUpper»");
+			var «module.name.toFirstLower» = require("./«module.name»");
 		«ENDFOR»
 		
 		«startJavaProtectedRegion(getUniqueId("init", configCommon))»

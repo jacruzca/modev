@@ -107,6 +107,6 @@ class GenerateBusinessTemplate {
 	private def getUniqueId(String id, Business business, ConfigCommon config) {
 		var module = business.businessModule as BusinessModule
 
-		config.projectName + "_" + config.packageName + "_" + module.name + "_Document_" + business.name + "_" + id
+		config.projectName + "_" + config.packageName + "_" + module.name + "_Business_" + business.name + "_" + id
 	}
 }

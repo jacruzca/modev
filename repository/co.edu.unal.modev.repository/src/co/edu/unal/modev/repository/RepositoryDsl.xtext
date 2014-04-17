@@ -34,7 +34,7 @@ RepositoryReturnType:
 ;
 
 RepositoryParameter:
-	'parameter' name=STRING ('type' type=EntityType)?
+	'parameter' name=ID ('type' type=EntityType)?
 ;
 
 EntityType:

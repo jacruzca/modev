@@ -1,6 +1,7 @@
 package co.edu.unal.modev.generator.nodejs.layeredApp.business
 
 import co.edu.unal.modev.generator.nodejs.business.GenerateBusinessTemplate
+import co.edu.unal.modev.generator.nodejs.business.test.GenerateBusinessTestTemplate
 import co.edu.unal.modev.generator.nodejs.layeredApp.util.LayeredAppUtil
 import co.edu.unal.modev.generator.nodejs.layeredApp.util.LocationsUtil
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App
@@ -15,6 +16,7 @@ class GenerateBusinessLayer {
 	@Inject extension LocationsUtil
 
 	@Inject GenerateBusinessTemplate generateBusinessTemplate
+	@Inject GenerateBusinessTestTemplate generateBusinessTestTemplate
 
 	def generate(Resource resource, JavaIoFileSystemAccess fsa) {
 
@@ -31,6 +33,9 @@ class GenerateBusinessLayer {
 
 				//generate business
 				fsa.generateFile(business.businessLocation, generateBusinessTemplate.generate(business, resource, app.config.configCommon))
+
+				//generate business test
+				fsa.generateFile(business.businessTestLocation, generateBusinessTestTemplate.generate(business, resource, app.config.configCommon))
 			}
 		}
 	}

@@ -132,6 +132,10 @@ class LocationsUtil {
 	def getBusinessLocation() {
 		return appLocation + BUSINESS + PATH_SEPARATOR
 	}
+	
+	def getBusinessTestLocation() {
+		return unitTestLocation + BUSINESS + PATH_SEPARATOR
+	}
 
 	/**
 	 * returns the business location relative to the project
@@ -145,6 +149,22 @@ class LocationsUtil {
 
 		//add filename
 		location = location + business.name + JS_EXTENSION
+
+		return location
+	}
+	
+	/**
+	 * returns the business location relative to the project
+	 */
+	def getBusinessTestLocation(Business business) {
+		var location = businessTestLocation as String
+
+		//add module
+		var businessModule = business.eContainer as BusinessModule
+		location = location + businessModule.name + PATH_SEPARATOR
+
+		//add filename
+		location = location + business.name +"Test"+ JS_EXTENSION
 
 		return location
 	}

@@ -13,4 +13,5 @@ Require-Bundle: org.eclipse.ui,
  co.edu.unal.modev.common;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: co.edu.unal.modev.generator.nodejs.business
+Export-Package: co.edu.unal.modev.generator.nodejs.business,
+ co.edu.unal.modev.generator.nodejs.business.test

@@ -30,9 +30,10 @@ Document:
 	"}";
 
 CompoundIndex:
-	'compound-index' name=ID
+	'compound-index' name=ID '{'
 		indexAttributes+=IndexAttributes+
-	(unique?='unique')?	
+		(unique?='unique')?	
+	'}'
 		
 ;
 
