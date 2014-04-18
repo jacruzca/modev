@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/co.edu.unal.modev.dto/src-gen" editDirectory="/co.edu.unal.modev.dto.edit/src"
+    editorDirectory="/co.edu.unal.modev.dto.editor/src" modelPluginID="co.edu.unal.modev.dto"
+    forceOverwrite="true" modelName="DtoDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.dto.edit"
+    editorPluginID="co.edu.unal.modev.dto.editor" runtimeVersion="2.9">
+  <genPackages prefix="DtoDsl" basePackage="co.edu.unal.modev.dto" disposableProviderFactory="true"
+      fileExtensions="abstractDto" ecorePackage="DtoDsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DtoDsl.ecore#//SimpleDtoTypes">
+      <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/BOOLEAN"/>
+    </genEnums>
+    <genClasses ecoreClass="DtoDsl.ecore#//DtosModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtosModule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DtoDsl.ecore#//DtosModule/dtos"/>
+    </genClasses>
+    <genClasses ecoreClass="DtoDsl.ecore#//Dto">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//Dto/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DtoDsl.ecore#//Dto/belongsTo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DtoDsl.ecore#//Dto/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="DtoDsl.ecore#//AbstractEntityMap"/>
+    <genClasses ecoreClass="DtoDsl.ecore#//DtoAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtoAttribute/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DtoDsl.ecore#//DtoAttribute/type"/>
+    </genClasses>
+    <genClasses ecoreClass="DtoDsl.ecore#//DtoType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtoType/simple"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DtoDsl.ecore#//DtoType/dtoType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtoType/literalType"/>
+    </genClasses>
+    <genClasses ecoreClass="DtoDsl.ecore#//AbstractEntity"/>
+  </genPackages>
+</genmodel:GenModel>

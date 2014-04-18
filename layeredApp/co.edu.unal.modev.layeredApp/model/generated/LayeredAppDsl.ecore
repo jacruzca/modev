@@ -44,6 +44,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="businessModules" unique="false"
         upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessModule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dtosModules" unique="false"
+        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.ecore#//DtosModule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RouteLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

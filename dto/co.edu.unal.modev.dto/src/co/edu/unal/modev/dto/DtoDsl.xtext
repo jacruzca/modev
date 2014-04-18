@@ -1,0 +1,29 @@
+grammar co.edu.unal.modev.dto.DtoDsl with org.eclipse.xtext.common.Terminals
+
+generate dtoDsl "http://www.edu.co/unal/modev/dto/DtoDsl"
+
+DtosModule:
+	"dtos-module" name=ID "{"
+	dtos+=Dto*
+	"}";
+
+Dto:
+	'dto' name=ID ('belongsTo' belongsTo=AbstractEntityMap)?
+	'{'
+	(attributes+=DtoAttribute)+
+	'}';
+
+AbstractEntityMap:
+	{AbstractEntity} "not mapped";
+
+DtoAttribute:
+	'attribute' name=ID 'type' type=DtoType;
+
+DtoType:
+	simple=SimpleDtoTypes | dtoType=[Dto] | literalType=STRING;
+
+enum SimpleDtoTypes:
+	STRING='String' |
+	NUMBER='Number' |
+	DATE='Date' |
+	BOOLEAN='Boolean';

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dtoDsl" nsURI="http://www.edu.co/unal/modev/dto/DtoDsl" nsPrefix="dtoDsl">
+  <eClassifiers xsi:type="ecore:EClass" name="DtosModule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dtos" upperBound="-1" eType="#//Dto"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Dto">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="belongsTo" eType="#//AbstractEntityMap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//DtoAttribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractEntityMap"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DtoAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//DtoType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DtoType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="simple" eType="#//SimpleDtoTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dtoType" eType="#//Dto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SimpleDtoTypes">
+    <eLiterals name="STRING" literal="String"/>
+    <eLiterals name="NUMBER" value="1" literal="Number"/>
+    <eLiterals name="DATE" value="2" literal="Date"/>
+    <eLiterals name="BOOLEAN" value="3" literal="Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractEntity" eSuperTypes="#//AbstractEntityMap"/>
+</ecore:EPackage>

@@ -6,6 +6,7 @@ import "http://www.edu.co/unal/modev/document/DocumentDsl" as document
 import "http://www.edu.co/unal/modev/entity/EntityDsl" as entity
 import "http://www.edu.co/unal/modev/repository/RepositoryDsl" as repository
 import "http://www.edu.co/unal/modev/business/BusinessDsl" as business
+import "http://www.edu.co/unal/modev/dto/DtoDsl" as dto
 import "http://www.edu.co/unal/modev/route/RouteDsl" as route
 generate layeredAppDsl "http://www.edu.co/unal/modev/layeredApp/LayeredAppDsl"
 
@@ -52,7 +53,7 @@ BusinessLayer:
 			businessModules+=[business::BusinessModule|ID]*
 		'}'
 		'dto' '{'
-		
+			dtosModules+=[dto::DtosModule|ID]
 		'}'
 	"}";
 

@@ -1,0 +1,19 @@
+grammar co.edu.unal.modev.dtoFromDocument.DtoFromDocumentDsl with co.edu.unal.modev.dto.DtoDsl
+
+import "http://www.edu.co/unal/modev/document/DocumentDsl" as documentDsl
+import "http://www.edu.co/unal/modev/dto/DtoDsl" as dtoDsl
+generate dtoFromDocumentDsl "http://www.edu.co/unal/modev/dtoFromDocument/DtoFromDocumentDsl"
+
+DtosModule returns dtoDsl::DtosModule:
+	"dtos-module" name=ID "{"
+	dtos+=Dto*
+	"}";
+
+AbstractEntityMap returns dtoDsl::AbstractEntityMap:
+	DocumentMapper;
+
+DocumentMapper returns dtoDsl::AbstractEntityMap:
+	{DocumentMapper} document=[documentDsl::Document|FQN];
+
+FQN:
+	ID ("." ID)*;
