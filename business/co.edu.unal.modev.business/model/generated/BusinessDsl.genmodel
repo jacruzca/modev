@@ -4,11 +4,17 @@
     editorDirectory="/co.edu.unal.modev.business.editor/src" modelPluginID="co.edu.unal.modev.business"
     forceOverwrite="true" modelName="BusinessDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.business.edit"
-    editorPluginID="co.edu.unal.modev.business.editor" runtimeVersion="2.9">
+    editorPluginID="co.edu.unal.modev.business.editor" runtimeVersion="2.9" usedGenPackages="../../../co.edu.unal.modev.dto/model/generated/DtoDsl.genmodel#//dtoDsl">
   <genPackages prefix="BusinessDsl" basePackage="co.edu.unal.modev.business" disposableProviderFactory="true"
       fileExtensions="business" ecorePackage="BusinessDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//VOID">
       <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//VOID/VOID"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//SimpleBusinessTypes">
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/BOOLEAN"/>
     </genEnums>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessModule/name"/>
@@ -21,19 +27,23 @@
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/many"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/parameters"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessReturnType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/voidType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessReturnType/entityType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/simple"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessReturnType/dtoType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/literalType"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessParameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/many"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessType/collectionType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessType/simple"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessType/dtoType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessType/literalType"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessCollectionType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessCollectionType/listType"/>

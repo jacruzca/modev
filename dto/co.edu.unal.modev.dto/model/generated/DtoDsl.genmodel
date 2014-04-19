@@ -26,6 +26,7 @@
     <genClasses ecoreClass="DtoDsl.ecore#//DtoAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtoAttribute/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DtoDsl.ecore#//DtoAttribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtoAttribute/many"/>
     </genClasses>
     <genClasses ecoreClass="DtoDsl.ecore#//DtoType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DtoDsl.ecore#//DtoType/simple"/>

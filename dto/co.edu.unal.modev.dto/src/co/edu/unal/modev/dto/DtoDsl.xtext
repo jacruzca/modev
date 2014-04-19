@@ -6,9 +6,11 @@ DtosModule:
 	"dtos-module" name=ID "{"
 	dtos+=Dto*
 	"}";
+	
+FQN: ID ("." ID)*;
 
 Dto:
-	'dto' name=ID ('belongsTo' belongsTo=AbstractEntityMap)?
+	'dto' name=FQN ('belongsTo' belongsTo=AbstractEntityMap)?
 	'{'
 	(attributes+=DtoAttribute)+
 	'}';
@@ -17,10 +19,11 @@ AbstractEntityMap:
 	{AbstractEntity} "not mapped";
 
 DtoAttribute:
-	name=ID type=DtoType;
+	name=ID ('type' type=DtoType (many?='*')?)?
+;
 
 DtoType:
-	simple=SimpleDtoTypes | dtoType=[Dto] | literalType=STRING;
+	simple=SimpleDtoTypes | dtoType=[Dto | FQN] | literalType=STRING;
 
 enum SimpleDtoTypes:
 	STRING='String' |

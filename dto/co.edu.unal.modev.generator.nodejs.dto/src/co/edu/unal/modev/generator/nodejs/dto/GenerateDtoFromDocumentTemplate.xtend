@@ -13,33 +13,29 @@ class GenerateDtoFromDocumentTemplate {
 	@Inject extension TemplateExtensions
 
 	def generate(Dto dto, ConfigCommon config) '''
+		«startJavaProtectedRegion(getUniqueId("init", dto, config))»
 		«var document = dto.documentFromDto»
 		var logger = require("../../../config/logger");
+		«endJavaProtectedRegion»
+		
+		«FOR attribute : dto.attributes.filter(e|e.type.dtoType != null) SEPARATOR ","»
+			var «attribute.type.dtoType.name.toFirstLower» = require('./«attribute.type.dtoType.name»');
+		«ENDFOR»
 		
 		module.exports.build = function (input) {
 			
 			«IF document != null»
 				
 				var «document.name»Rep = {
-					«FOR property : document.properties SEPARATOR ","»
-						«property.name» : input.«property.name»
+					«FOR attribute : dto.attributes SEPARATOR ","»
+						«IF document.properties.filter(e|e.name.equals(attribute.name)).size > 0»
+							«attribute.name» : input.«attribute.name»
+						«ELSE»
+							«attribute.name» : {}
+						«ENDIF»
 					«ENDFOR»
 				}
 				
-				«FOR inlineProperty : document.properties.filter(prop|prop.type.inline != null)»
-					«var inlineDocument = inlineProperty.type.inline»
-					var «inlineDocument.name»Rep = {};
-					if (typeof input.«inlineProperty.name» != 'undefined') {
-						var «inlineDocument.name»Rep = {
-							«FOR property : inlineDocument.properties SEPARATOR ","»
-								«property.name» : input.«inlineProperty.name».«property.name»
-							«ENDFOR»
-						};
-					}
-					
-					«document.name»Rep.«inlineProperty.name» = «inlineDocument.name»Rep;
-					
-				«ENDFOR»
 				«startJavaProtectedRegion(getUniqueId("customBuild", dto, config))»
 				«endJavaProtectedRegion»
 				

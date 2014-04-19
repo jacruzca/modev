@@ -1,5 +1,7 @@
 grammar co.edu.unal.modev.business.BusinessDsl with org.eclipse.xtext.common.Terminals
 
+import "http://www.edu.co/unal/modev/dto/DtoDsl" as dtoDsl
+
 generate businessDsl "http://www.edu.co/unal/modev/business/BusinessDsl"
 
 BusinessModule:
@@ -19,7 +21,7 @@ Business:
 
 BusinessOperation:
 	'operation' name=ID  
-		('returnType' returnType=BusinessReturnType)?
+		('returnType' returnType=BusinessReturnType (many?='*')? )?
 		 
 	(	'{'
 				(parameters += BusinessParameter)*
@@ -28,16 +30,16 @@ BusinessOperation:
 ;
 
 BusinessReturnType:
-	voidType=VOID | entityType=BusinessType
+	simple=SimpleBusinessTypes | dtoType=[dtoDsl::Dto | FQN] | literalType=STRING
 ;
 
 BusinessParameter:
 	'parameter' name=FQN
-		('type' type=BusinessType)?
+		('type' type=BusinessType (many?='*')?)?
 ;
 
 BusinessType:
-	collectionType=BusinessCollectionType | type=FQN 
+	simple=SimpleBusinessTypes | dtoType=[dtoDsl::Dto | FQN] | literalType=STRING
 ;
 
 BusinessCollectionType:
@@ -51,3 +53,9 @@ LiteralType:
 enum VOID:
 	VOID='void'
 ;
+
+enum SimpleBusinessTypes:
+	STRING='String' |
+	NUMBER='Number' |
+	DATE='Date' |
+	BOOLEAN='Boolean';
