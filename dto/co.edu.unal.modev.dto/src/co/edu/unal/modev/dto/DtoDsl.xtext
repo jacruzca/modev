@@ -17,7 +17,7 @@ AbstractEntityMap:
 	{AbstractEntity} "not mapped";
 
 DtoAttribute:
-	'attribute' name=ID 'type' type=DtoType;
+	name=ID type=DtoType;
 
 DtoType:
 	simple=SimpleDtoTypes | dtoType=[Dto] | literalType=STRING;

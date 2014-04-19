@@ -9,6 +9,8 @@ import co.edu.unal.modev.entity.entityDsl.Entity
 import co.edu.unal.modev.repository.repositoryDsl.RepositoriesModule
 import co.edu.unal.modev.repository.repositoryDsl.Repository
 import co.edu.unal.modev.route.routeDsl.RoutesModule
+import co.edu.unal.modev.dto.dtoDsl.Dto
+import co.edu.unal.modev.dto.dtoDsl.DtosModule
 
 class LocationsUtil {
 
@@ -25,6 +27,7 @@ class LocationsUtil {
 	final static String DATA = "data"
 	final static String REPOSITORY = "repository"
 	final static String BUSINESS = "business"
+	final static String DTO = "dto"
 	final static String ROUTE = "route"
 	final static String REPOSITORY_SUFFIX = "Repository"
 	final static String REPOSITORY_FACTORY = REPOSITORY_SUFFIX + "Factory"
@@ -133,6 +136,10 @@ class LocationsUtil {
 		return appLocation + BUSINESS + PATH_SEPARATOR
 	}
 	
+	def getDtoLocation() {
+		return appLocation + DTO + PATH_SEPARATOR
+	}
+	
 	def getBusinessTestLocation() {
 		return unitTestLocation + BUSINESS + PATH_SEPARATOR
 	}
@@ -165,6 +172,22 @@ class LocationsUtil {
 
 		//add filename
 		location = location + business.name +"Test"+ JS_EXTENSION
+
+		return location
+	}
+	
+	/**
+	 * returns the dto location relative to the project
+	 */
+	def getDtoLocation(Dto dto) {
+		var location = dtoLocation as String
+
+		//add module
+		var dtosModule = dto.eContainer as DtosModule
+		location = location + dtosModule.name + PATH_SEPARATOR
+
+		//add filename
+		location = location + dto.name + JS_EXTENSION
 
 		return location
 	}

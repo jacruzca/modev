@@ -9,6 +9,9 @@ import co.edu.unal.modev.layeredApp.layeredAppDsl.BusinessLayer
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
+import co.edu.unal.modev.generator.nodejs.dto.GenerateDtoFromDocumentTemplate
+import co.edu.unal.modev.document.documentDsl.Document
+import co.edu.unal.modev.dtoFromDocument.dtoFromDocumentDsl.DocumentMapper
 
 class GenerateBusinessLayer {
 
@@ -18,10 +21,30 @@ class GenerateBusinessLayer {
 	@Inject GenerateBusinessTemplate generateBusinessTemplate
 	@Inject GenerateBusinessTestTemplate generateBusinessTestTemplate
 
+	@Inject GenerateDtoFromDocumentTemplate generateDtoFromDocumentTemplate
+
 	def generate(Resource resource, JavaIoFileSystemAccess fsa) {
 
 		generateBusinessClasses(resource, fsa)
 
+		generateDtoClasses(resource, fsa)
+
+	}
+
+	private def generateDtoClasses(Resource resource, JavaIoFileSystemAccess fsa) {
+		var app = resource.app as App
+		var businessLayer = app.businessLayer as BusinessLayer
+
+		for (dtoModule : businessLayer.dtosModules) {
+			for (dto : dtoModule.dtos) {
+
+				if(dto.belongsTo instanceof DocumentMapper) {
+
+					//generate dto
+					fsa.generateFile(dto.dtoLocation, generateDtoFromDocumentTemplate.generate(dto, app.config.configCommon))
+				}
+			}
+		}
 	}
 
 	private def generateBusinessClasses(Resource resource, JavaIoFileSystemAccess fsa) {

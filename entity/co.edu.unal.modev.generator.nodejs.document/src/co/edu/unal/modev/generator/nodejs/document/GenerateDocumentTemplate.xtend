@@ -111,6 +111,7 @@ class GenerateDocumentTemplate {
 
 		type
 	}
+	
 
 	private def getUniqueId(String id, Document document, ConfigCommon config) {
 		var module = document.documentModule as DocumentsModule

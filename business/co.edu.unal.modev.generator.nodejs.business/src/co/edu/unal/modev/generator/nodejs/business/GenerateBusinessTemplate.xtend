@@ -19,8 +19,8 @@ class GenerateBusinessTemplate {
 	def generate(Business business, Resource resource, ConfigCommon config) '''
 		«startJavaProtectedRegion(getUniqueId("init", business, config))»
 		
-		var logger = require("../../../config/logger");
-		var repositoryFactory = require("../../repository/RepositoryFactory").getRepositoryFactory();
+		var logger = require('../../../config/logger');
+		var repositoryFactory = require('../../repository/RepositoryFactory').getRepositoryFactory();
 		
 		// Load configurations according to the selected environment
 		var env = process.env.NODE_ENV || 'development';

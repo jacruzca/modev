@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dto
+Bundle-SymbolicName: co.edu.unal.modev.generator.nodejs.dto
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: co.edu.unal.modev.generator.nodejs.dto.Activator
+Bundle-Vendor: jacruzca-UNAL
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ co.edu.unal.modev.dto;bundle-version="1.0.0",
+ co.edu.unal.modev.dtoFromDocument;bundle-version="1.0.0",
+ co.edu.unal.modev.document;bundle-version="1.0.0",
+ co.edu.unal.modev.common;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: co.edu.unal.modev.generator.nodejs.dto
