@@ -56,12 +56,20 @@ class GenerateDocumentTemplate {
 		var «document.schemaName» = new Schema({
 			
 			«FOR property : document.properties SEPARATOR ","»
-				«property.name» : { 
-						type: «property.propertyType»«IF property.unique», unique: true«ENDIF»«IF property.required», required: true«ENDIF»«IF property.index», index: true«ENDIF»
+				«IF property.many»
+					«property.name» : [{
+				«ELSE»
+					«property.name» : {
+				«ENDIF»
+					type: «property.propertyType»«IF property.unique», unique: true«ENDIF»«IF property.required», required: true«ENDIF»«IF property.index», index: true«ENDIF»
 				«IF property.defaultValue != null && !property.defaultValue.trim.empty»
 					, default: «property.defaultValue»
 				«ENDIF»
-				}
+				«IF property.many»
+					}]
+				«ELSE»
+					}
+				«ENDIF»
 			«ENDFOR»
 		});
 		
@@ -111,7 +119,6 @@ class GenerateDocumentTemplate {
 
 		type
 	}
-	
 
 	private def getUniqueId(String id, Document document, ConfigCommon config) {
 		var module = document.documentModule as DocumentsModule
