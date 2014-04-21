@@ -21,6 +21,9 @@ class GenerateBusinessTestTemplate {
 		var rewire = require("rewire");
 		var Promise = require('mpromise');
 		
+		var chai = require("chai");
+		chai.should();
+		
 		«endJavaProtectedRegion»
 		
 		describe('«business.name» tests', function () {
