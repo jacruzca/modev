@@ -20,7 +20,7 @@ class GenerateDocumentalRepositoryTestTemplate {
 		var logger = require("../../../../config/logger");
 		var mongoose = require('mongoose');
 		var Q = require("q");
-		var env = process.env.NODE_ENV || 'development';
+		var env = process.env.NODE_ENV || 'test';
 		var config = require('../../../../config/config')[env];
 			
 		var chai = require("chai");

@@ -34,18 +34,30 @@ class GenerateDocumentTemplate {
 			var «inlineDocument.schemaName» = {
 				
 				«FOR property : inlineDocument.properties SEPARATOR ","»
-					«property.name» : { 
-							type: «property.propertyType»
-					«IF property.defaultValue != null && !property.defaultValue.trim.empty»
-						, default: «property.defaultValue»
+					«IF property.type.inline != null»
+						«IF property.many»
+							«property.name» : [«property.propertyType»]
+						«ELSE»
+							«property.name» : «property.propertyType»
+						«ENDIF»
+					«ELSE»
+						«IF property.many»
+							«property.name» : [{
+						«ELSE»
+							«property.name» : {
+						«ENDIF»
+								type: «property.propertyType»
+						«IF property.defaultValue != null && !property.defaultValue.trim.empty»
+							, default: «property.defaultValue»
+						«ENDIF»
+						«IF property.unique»
+							, unique: true
+						«ENDIF»
+						«IF property.required»
+							, required: true
+						«ENDIF»
+						}
 					«ENDIF»
-					«IF property.unique»
-						, unique: true
-					«ENDIF»
-					«IF property.required»
-						, required: true
-					«ENDIF»
-					}
 				«ENDFOR»
 			};
 		«ENDFOR»
@@ -56,19 +68,27 @@ class GenerateDocumentTemplate {
 		var «document.schemaName» = new Schema({
 			
 			«FOR property : document.properties SEPARATOR ","»
-				«IF property.many»
-					«property.name» : [{
+				«IF property.type.inline != null»
+					«IF property.many»
+						«property.name» : [«property.propertyType»]
+					«ELSE»
+						«property.name» : «property.propertyType»
+					«ENDIF»
 				«ELSE»
-					«property.name» : {
-				«ENDIF»
-					type: «property.propertyType»«IF property.unique», unique: true«ENDIF»«IF property.required», required: true«ENDIF»«IF property.index», index: true«ENDIF»
-				«IF property.defaultValue != null && !property.defaultValue.trim.empty»
-					, default: «property.defaultValue»
-				«ENDIF»
-				«IF property.many»
-					}]
-				«ELSE»
-					}
+					«IF property.many»
+						«property.name» : [{
+					«ELSE»
+						«property.name» : {
+					«ENDIF»
+						type: «property.propertyType»«IF property.unique», unique: true«ENDIF»«IF property.required», required: true«ENDIF»«IF property.index», index: true«ENDIF»
+					«IF property.defaultValue != null && !property.defaultValue.trim.empty»
+						, default: «property.defaultValue»
+					«ENDIF»
+					«IF property.many»
+						}]
+					«ELSE»
+						}
+					«ENDIF»
 				«ENDIF»
 			«ENDFOR»
 		});
