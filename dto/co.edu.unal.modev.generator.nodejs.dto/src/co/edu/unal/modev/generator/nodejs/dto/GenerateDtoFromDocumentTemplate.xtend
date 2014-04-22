@@ -18,7 +18,7 @@ class GenerateDtoFromDocumentTemplate {
 		var logger = require("../../../config/logger");
 		«endJavaProtectedRegion»
 		
-		«FOR attribute : dto.attributes.filter(e|e.type.dtoType != null) SEPARATOR ","»
+		«FOR attribute : dto.attributes.filter(e|e.type.dtoType != null)»
 			var «attribute.type.dtoType.name.toFirstLower» = require('./«attribute.type.dtoType.name»');
 		«ENDFOR»
 		
