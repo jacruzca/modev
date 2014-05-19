@@ -32,11 +32,11 @@ class GenerateBusinessTemplate {
 			
 			module.exports.«operation.name» = function(req, res){
 				«operation.printHTTPParams(resource)»
-				
+
 				«startJavaProtectedRegion(getBusinessOperationUniqueId("body", operation, config))»
-				
+
 				«endJavaProtectedRegion»
-			}
+			};
 			
 		«ENDFOR»
 		

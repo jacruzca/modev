@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_hO4e4N7iEeOjiML-cUR2rg" type="EcoreTools" name="DtoFromDocumentDsl.ecorediag" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_hPI9kN7iEeOjiML-cUR2rg" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_hPJkoN7iEeOjiML-cUR2rg" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_hPJkod7iEeOjiML-cUR2rg" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_hPJkot7iEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_hPJko97iEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_hPJkpN7iEeOjiML-cUR2rg"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_hPKLsN7iEeOjiML-cUR2rg" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_hPKLsd7iEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_hPKLst7iEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_hPKLs97iEeOjiML-cUR2rg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_hPI9kd7iEeOjiML-cUR2rg" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="DtoFromDocumentDsl.ecore#//DocumentMapper"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hPI9kt7iEeOjiML-cUR2rg"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_hO4e4d7iEeOjiML-cUR2rg"/>
+  <element xmi:type="ecore:EPackage" href="DtoFromDocumentDsl.ecore#/"/>
+</notation:Diagram>

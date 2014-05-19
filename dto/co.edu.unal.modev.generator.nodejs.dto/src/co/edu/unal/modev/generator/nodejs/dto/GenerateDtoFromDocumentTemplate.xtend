@@ -23,9 +23,9 @@ class GenerateDtoFromDocumentTemplate {
 		«ENDFOR»
 		
 		module.exports.build = function (input) {
-			
+
 			«IF document != null»
-				
+
 				var «document.name»Rep = {
 					«FOR attribute : dto.attributes SEPARATOR ","»
 						«IF document.properties.filter(e|e.name.equals(attribute.name)).size > 0»
@@ -34,16 +34,16 @@ class GenerateDtoFromDocumentTemplate {
 							«attribute.name» : {}
 						«ENDIF»
 					«ENDFOR»
-				}
-				
+				};
+
 				«startJavaProtectedRegion(getUniqueId("customBuild", dto, config))»
 				«endJavaProtectedRegion»
-				
+
 				return «document.name»Rep;
 			«ELSE»
 				return input;
 			«ENDIF»
-		}
+		};
 		
 		«startJavaProtectedRegion(getUniqueId("additionalBuildMethods", dto, config))»
 		«endJavaProtectedRegion»
@@ -56,7 +56,7 @@ class GenerateDtoFromDocumentTemplate {
 		            var builtInput = module.exports.build(inputList[i]);
 		            arrayResult.push(builtInput);
 		        }
-		        
+
 		        «startJavaProtectedRegion(getUniqueId("customBuildList", dto, config))»
 				«endJavaProtectedRegion»
 		
@@ -65,7 +65,7 @@ class GenerateDtoFromDocumentTemplate {
 		    } else {
 		        return module.exports.build(inputList);
 		    }
-		}
+		};
 		
 		«startJavaProtectedRegion(getUniqueId("additionalBuildListMethods", dto, config))»
 		«endJavaProtectedRegion»

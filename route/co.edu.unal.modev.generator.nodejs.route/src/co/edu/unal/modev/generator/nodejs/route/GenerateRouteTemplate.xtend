@@ -20,15 +20,15 @@ class GenerateRouteTemplate {
 		 * @param {Express} app the app element from express
 		 */
 		module.exports = function (app, passport) {
-		
+
 			«FOR route : routesModule.routes»
 			«var business = route.operation.eContainer as Business»
-			
+
 			app.«route.httpVerb.toString.toLowerCase»('«route.uri»', «business.name.toFirstLower».«route.operation.name»);
-			
+
 			«ENDFOR»
 		};
-			
+
 	'''
 
 	private def getAllInvolvedBusiness(RoutesModule routesModule) {

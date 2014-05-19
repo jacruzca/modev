@@ -31,24 +31,24 @@ class GenerateBusinessTestTemplate {
 		«FOR operation : business.operations»
 			
 				describe('«operation.name» function', function () {
-					
+
 					«startJavaProtectedRegion(getBusinessOperationUniqueId("bodyTest", operation, config))»
 					it('should be OK', function(done){
 						//import dependencies with rewire. Ready to be mocked
 						var «business.name.toFirstLower» = rewire("../../../../app/business/«business.businessModule.name»/«business.name»");
-						
+
 						 //set expected values
 						 var expectedResult = {
 						 	foo: 1
 						 };
-						 
+
 						 var expectedStatus = 200;
 			
 			            //mock the request
 			            var request = {
-			            	
+
 			            };
-			            
+
 			            //mock the response
 			            var response = {
 			                status: function (status) {
@@ -59,11 +59,11 @@ class GenerateBusinessTestTemplate {
 			                    obj.should.be.equal(expectedResult);
 			                    done();
 			                }
-			            }
+			            };
 			            
 			            //mock persistence methods
 			            «business.name.toFirstLower».__set__('repositoryFactory', {
-			                
+
 			            });
 			            
 			            //call the method we want to test

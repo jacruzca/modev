@@ -44,7 +44,7 @@ class GenerateDocumentalRepositoryTemplate {
 				«startJavaProtectedRegion(getRepositoryOperationUniqueId("body", operation, configCommon))»
 				
 				«endJavaProtectedRegion»
-			}
+			};
 		«ENDFOR»
 		
 		«startJavaProtectedRegion(getUniqueId("additional", repository, configCommon))»

@@ -21,10 +21,10 @@ class GenerateExpressJsTemplate {
 		
 		«startJavaProtectedRegion(getUniqueId("body", configCommon))»
 		module.exports = function (app, config, passport) {
-			
+
 			// don't use logger for test env
 			if (process.env.NODE_ENV !== 'test') {
-				app.use(express.logger('dev'))
+				app.use(express.logger('dev'));
 			}
 		
 			// should be placed before express.static
@@ -33,13 +33,13 @@ class GenerateExpressJsTemplate {
 				  return /json|text|javascript|css/.test(res.getHeader('Content-Type'))
 				},
 				level: 9
-			}))
+			}));
 		
-			app.use(express.favicon())
-			app.use(express.static(config.root + '/public'))
+			app.use(express.favicon());
+			app.use(express.static(config.root + '/public'));
 		
 			// set views path, template engine and default layout
-			app.set('views', config.root + '/app/view')
+			app.set('views', config.root + '/app/view');
 		
 			app.configure(function () {
 		
@@ -56,7 +56,7 @@ class GenerateExpressJsTemplate {
 		
 				// use passport session
 				   app.use(passport.initialize());
-				   //app.use(passport.session())
+				   //app.use(passport.session());
 		
 				// routes should be at the last
 				app.use(app.router);
@@ -89,11 +89,11 @@ class GenerateExpressJsTemplate {
 		
 			// development env config
 			app.configure('development', function () {
-				app.locals.pretty = true
+				app.locals.pretty = true;
 			});
-			
+
 			«endJavaProtectedRegion»
-		}
+		};
 	'''
 
 	private def getUniqueId(String id, ConfigCommon configCommon) {

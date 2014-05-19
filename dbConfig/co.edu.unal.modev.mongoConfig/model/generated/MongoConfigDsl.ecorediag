@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_xmS6YN6vEeOjiML-cUR2rg" type="EcoreTools" name="MongoConfigDsl.ecorediag" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_xmV9sN6vEeOjiML-cUR2rg" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_xmWkwN6vEeOjiML-cUR2rg" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_xmWkwd6vEeOjiML-cUR2rg" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_xmWkwt6vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xmWkw96vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xmWkxN6vEeOjiML-cUR2rg"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_xmWkxd6vEeOjiML-cUR2rg" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_xmWkxt6vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xmWkx96vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xmWkyN6vEeOjiML-cUR2rg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_xmV9sd6vEeOjiML-cUR2rg" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="MongoConfigDsl.ecore#//MongoDbConfiguration"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xmV9st6vEeOjiML-cUR2rg" x="25" y="5"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_xmWkyd6vEeOjiML-cUR2rg" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_xmWkzN6vEeOjiML-cUR2rg" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_xmWkzd6vEeOjiML-cUR2rg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_xmXL1N6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXL1d6vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmXL1t6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/environment"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXL196vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmXL2N6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/host"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXL2d6vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmXL2t6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/database"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXL296vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmXy4N6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/user"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXy4d6vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmXy4t6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/password"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXy496vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmXy5N6vEeOjiML-cUR2rg" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MongoConfigDsl.ecore#//MongoConfiguration/port"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmXy5d6vEeOjiML-cUR2rg"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_xmWkzt6vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xmWkz96vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xmWk0N6vEeOjiML-cUR2rg"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_xmXL0N6vEeOjiML-cUR2rg" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_xmXL0d6vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xmXL0t6vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xmXL096vEeOjiML-cUR2rg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_xmWkyt6vEeOjiML-cUR2rg" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="MongoConfigDsl.ecore#//MongoConfiguration"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xmWky96vEeOjiML-cUR2rg" x="280" y="5"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_xmXy5t6vEeOjiML-cUR2rg" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_xmYZ8N6vEeOjiML-cUR2rg" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_xmYZ8d6vEeOjiML-cUR2rg" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_xmYZ9d6vEeOjiML-cUR2rg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/DEVELOPMENT"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmYZ9t6vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmYZ996vEeOjiML-cUR2rg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/TEST"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmYZ-N6vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmYZ-d6vEeOjiML-cUR2rg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/INTEGRATION"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmYZ-t6vEeOjiML-cUR2rg"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_xmYZ-96vEeOjiML-cUR2rg" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/PRODUCTION"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xmYZ_N6vEeOjiML-cUR2rg"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_xmYZ8t6vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_xmYZ896vEeOjiML-cUR2rg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_xmYZ9N6vEeOjiML-cUR2rg"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_xmXy596vEeOjiML-cUR2rg" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xmXy6N6vEeOjiML-cUR2rg" x="35" y="60"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_xmS6Yd6vEeOjiML-cUR2rg"/>
+  <element xmi:type="ecore:EPackage" href="MongoConfigDsl.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_xmZBAN6vEeOjiML-cUR2rg" type="3002" source="_xmV9sN6vEeOjiML-cUR2rg" target="_xmWkyd6vEeOjiML-cUR2rg">
+    <children xmi:type="notation:Node" xmi:id="_xmZBBN6vEeOjiML-cUR2rg" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_xmZBBd6vEeOjiML-cUR2rg" x="-18" y="-13"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_xmZBBt6vEeOjiML-cUR2rg" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_xmZBB96vEeOjiML-cUR2rg" x="2" y="22"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_xmZBAd6vEeOjiML-cUR2rg" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_xmZBAt6vEeOjiML-cUR2rg" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="MongoConfigDsl.ecore#//MongoDbConfiguration/config"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xmZBA96vEeOjiML-cUR2rg" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xmmcYN6vEeOjiML-cUR2rg" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xmmcYd6vEeOjiML-cUR2rg" id="(0.011194029850746268,0.047337278106508875)"/>
+  </edges>
+</notation:Diagram>

@@ -26,10 +26,10 @@ class GenerateLoggerJsTemplate {
 	    new (winston.transports.Console)({
 	      colorize: true,
 	      level: level
-	    }),
+	    })
 	    //new (winston.transports.File)({ filename: 'logs/log.log', level: level })
 	  ],
-	  colors: config.colors,
+	  colors: config.colors
 	});
 	'''
 }

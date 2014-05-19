@@ -22,11 +22,11 @@ class GenerateDocumentalRepositoryTestTemplate {
 		var Q = require("q");
 		var env = process.env.NODE_ENV || 'test';
 		var config = require('../../../../config/config')[env];
-			
+		
 		var chai = require("chai");
 		chai.should();
 		chai.use(require("chai-as-promised"));
-			
+		
 		var repositoryFactory = require("../../../../app/repository/RepositoryFactory").getRepositoryFactory();
 		var «repository.repositoryVariableName» = null;
 		
@@ -34,21 +34,21 @@ class GenerateDocumentalRepositoryTestTemplate {
 		
 		
 		var initialize = function(){
-			
+		
 			require('../../../../app/model/«repository.document.documentModule.name»/«repository.document.name»').model();
-			
+		
 			«repository.repositoryVariableName» = repositoryFactory.«repository.repositoryFactoryGetterName»();
-		}
+		};
 		
 		«endJavaProtectedRegion»
 		
 		describe('«repository.name» tests', function(){
-			
+		
 			«startJavaProtectedRegion(getUniqueId("config", repository, configCommon))»
 			before(function(done){
 				mongoose.connect('mongodb://'+config.mongo.host+':'+config.mongo.port+'/'+config.mongo.name+'', function (err, res) {
 					if (err) throw err;
-					
+		
 		            initialize();
 		
 		            done();
@@ -63,22 +63,22 @@ class GenerateDocumentalRepositoryTestTemplate {
 			«endJavaProtectedRegion»
 			
 			«FOR operation : repository.operations»
-			
+
 				describe('«operation.name» function', function () {
 					«startJavaProtectedRegion(getRepositoryOperationUniqueId("body", operation, configCommon))»
 					it('should be fulfilled', function(){
-						
+		
 						«FOR param: operation.parameters»
 						var «param.name» = null;
 						«ENDFOR»
-						
+		
 						var promise = «repository.repositoryVariableName».«operation.name»(«operation.parameters.operationParameters»);
-						
+
 						return Q.all([
 			                promise.should.be.fulfilled
 			            ]);
 					});
-					
+
 					it('should be rejected', function(){
 						
 						«FOR param: operation.parameters»
@@ -86,7 +86,7 @@ class GenerateDocumentalRepositoryTestTemplate {
 						«ENDFOR»
 						
 						var promise = «repository.repositoryVariableName».«operation.name»(«operation.parameters.operationParameters»);
-						
+
 						return Q.all([
 			                promise.should.be.rejected
 			            ]);
@@ -94,7 +94,7 @@ class GenerateDocumentalRepositoryTestTemplate {
 					«endJavaProtectedRegion»
 				});
 			«ENDFOR»
-			
+		
 			«startJavaProtectedRegion(getUniqueId("additional", repository, configCommon))»
 			«endJavaProtectedRegion»
 		});

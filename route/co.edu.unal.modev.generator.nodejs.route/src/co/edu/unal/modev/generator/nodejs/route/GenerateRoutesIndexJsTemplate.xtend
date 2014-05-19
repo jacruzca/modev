@@ -44,14 +44,14 @@ class GenerateRoutesIndexJsTemplate {
 				}else{
 					next();
 				}
-				 
+
 			});
 			«endJavaProtectedRegion»
-			
+
 			«FOR module : routesModules»
 			«module.name.toFirstLower»(app, passport);
 			«ENDFOR»
-			
+
 			«startJavaProtectedRegion(getUniqueId("additional", configCommon))»
 			«endJavaProtectedRegion»
 		}

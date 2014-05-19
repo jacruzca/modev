@@ -61,7 +61,7 @@ class GenerateConfigJsTemplate {
 			db: {
 				dialect: "sqlite"
 			},
-			«var mongoTestConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.TEST)).head»
+				«var mongoTestConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.TEST)).head»
 			 	«IF mongoTestConfig != null»
 			 		mongo: {
 			 			host: "«mongoTestConfig.host»",

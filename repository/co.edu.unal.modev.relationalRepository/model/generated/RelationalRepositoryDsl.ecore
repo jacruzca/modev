@@ -4,5 +4,6 @@
     nsPrefix="relationalRepositoryDsl">
   <eClassifiers xsi:type="ecore:EClass" name="EntityMapper" eSuperTypes="../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//AbstractEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="ecore:EClass ../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//AbstractEntity"/>
   </eClassifiers>
 </ecore:EPackage>

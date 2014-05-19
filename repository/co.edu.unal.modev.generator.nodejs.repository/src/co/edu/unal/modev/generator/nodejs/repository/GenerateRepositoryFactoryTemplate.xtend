@@ -37,13 +37,13 @@ class GenerateRepositoryFactoryTemplate {
 						}
 					«ENDIF»
 				«ENDFOR»
-			}
+			};
 			
 			«startJavaProtectedRegion(getUniqueId("additionalRepos", configCommon))»
 			«endJavaProtectedRegion»
 			
 			return repositoryFactory;
-		}
+		};
 		
 		«startJavaProtectedRegion(getUniqueId("additional", configCommon))»
 		«endJavaProtectedRegion»

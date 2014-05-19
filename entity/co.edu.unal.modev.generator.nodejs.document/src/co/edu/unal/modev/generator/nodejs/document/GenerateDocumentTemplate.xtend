@@ -32,7 +32,7 @@ class GenerateDocumentTemplate {
 			 * «inlineDocument.name» - SubDoc
 			 */
 			var «inlineDocument.schemaName» = {
-				
+
 				«FOR property : inlineDocument.properties SEPARATOR ","»
 					«IF property.type.inline != null»
 						«IF property.many»
@@ -66,7 +66,7 @@ class GenerateDocumentTemplate {
 		 * «document.name» Schema
 		 */
 		var «document.schemaName» = new Schema({
-			
+
 			«FOR property : document.properties SEPARATOR ","»
 				«IF property.type.inline != null»
 					«IF property.many»

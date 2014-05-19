@@ -30,21 +30,21 @@ class GenerateDocumentDataTemplate {
 					«ENDFOR»
 				};
 			«ENDFOR»
-			
+
 			«startJavaProtectedRegion(getUniqueId("custom_subdocs", repository, configCommon))»
 			«endJavaProtectedRegion»
-		    
+
 		    var «document.name» = {
 		    	«FOR property : document.properties SEPARATOR ","»
 		    		«property.name»: «property.propertyValue»
 				«ENDFOR»
-		    }
-		    
+		    };
+
 		    «startJavaProtectedRegion(getUniqueId("custom", repository, configCommon))»
 			«endJavaProtectedRegion»
 		
 		    return «document.name»;
-		}
+		};
 		
 		«startJavaProtectedRegion(getUniqueId("additional", repository, configCommon))»
 		«endJavaProtectedRegion»
