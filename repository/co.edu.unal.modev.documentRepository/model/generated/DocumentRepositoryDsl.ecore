@@ -4,12 +4,5 @@
     nsPrefix="documentRepositoryDsl">
   <eClassifiers xsi:type="ecore:EClass" name="DocumentMapper" eSuperTypes="../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//AbstractEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="document" eType="ecore:EClass ../../../co.edu.unal.modev.document/model/generated/DocumentDsl.ecore#//Document"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="implements" eType="ecore:EClass ../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//AbstractEntity">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="attribute"/>
-        <details key="processing" value="strict"/>
-        <details key="affiliation" value="#implements"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

@@ -13,7 +13,7 @@ BusinessModule:
 FQN: ID ("." ID)*;
 	
 Business:
-	'business' name=ID
+	'business' name=ID 'description' description=STRING
 	'{'
 		(operations += BusinessOperation)*
 	'}'
@@ -21,8 +21,8 @@ Business:
 
 BusinessOperation:
 	'operation' name=ID  
-		('returnType' returnType=BusinessReturnType (many?='*')? )?
-		 
+		'returnType' returnType=BusinessReturnType (many?='*')?
+		'description' description=STRING
 	(	'{'
 				(parameters += BusinessParameter)*
 		'}'
@@ -30,24 +30,18 @@ BusinessOperation:
 ;
 
 BusinessReturnType:
-	simple=SimpleBusinessTypes | dtoType=[dtoDsl::Dto | FQN] | literalType=STRING
+	simple=SimpleBusinessTypes | dtoType=[dtoDsl::Dto | FQN] | void=VOID | literalType=STRING
 ;
 
 BusinessParameter:
 	'parameter' name=FQN
-		('type' type=BusinessType (many?='*')?)?
+		'type' type=BusinessType (many?='*')?
+		(required?='required')?
+		'description' description=STRING
 ;
 
 BusinessType:
 	simple=SimpleBusinessTypes | dtoType=[dtoDsl::Dto | FQN] | literalType=STRING
-;
-
-BusinessCollectionType:
-	'List<' listType=BusinessType '>'
-;
-
-LiteralType:
-	literal = STRING
 ;
 
 enum VOID:
@@ -57,5 +51,6 @@ enum VOID:
 enum SimpleBusinessTypes:
 	STRING='String' |
 	NUMBER='Number' |
+	DECIMAL='Decimal' |
 	DATE='Date' |
 	BOOLEAN='Boolean';

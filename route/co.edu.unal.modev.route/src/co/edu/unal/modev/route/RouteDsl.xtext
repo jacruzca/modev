@@ -17,12 +17,23 @@ Route:
 		"uri" uri=STRING
 		'httpVerb' httpVerb=HTTP_VERB
 		"operation" operation=[business::BusinessOperation | FQN]
-		(parameters += HttpParameter)*
+		'parameters' '{'
+			(parameters += HttpParameter)*
+		'}'
+		'responseMessages' '{'
+			(responseMessages += ResponseMessage)*
+		'}'
 	'}'
 ;
 
+ResponseMessage:
+	'code' code=INT
+	'message' message=STRING
+;
+
 HttpParameter:
-	'parameter' param=[business::BusinessParameter | FQN] 'httpType' httpType=HTTP_TYPE
+	'parameter' param=[business::BusinessParameter | FQN] 
+	'httpType' httpType=HTTP_TYPE
 ;
 
 enum HTTP_VERB:
@@ -30,5 +41,5 @@ enum HTTP_VERB:
 ;
 
 enum HTTP_TYPE:
-	QUERY | BODY | ROUTE_PARAM | FILE
+	QUERY | BODY | ROUTE_PARAM | FILE | NAMED
 ;

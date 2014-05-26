@@ -13,6 +13,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="BusinessDsl.ecore#//SimpleBusinessTypes">
       <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/DATE"/>
       <genEnumLiterals ecoreEnumLiteral="BusinessDsl.ecore#//SimpleBusinessTypes/BOOLEAN"/>
     </genEnums>
@@ -22,34 +23,33 @@
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//Business">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//Business/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//Business/description"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//Business/operations"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessOperation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/returnType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/many"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessOperation/description"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/parameters"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessReturnType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/simple"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessReturnType/dtoType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/void"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/literalType"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessParameter/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/many"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/description"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessType/simple"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessType/dtoType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessType/literalType"/>
-    </genClasses>
-    <genClasses ecoreClass="BusinessDsl.ecore#//BusinessCollectionType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessCollectionType/listType"/>
-    </genClasses>
-    <genClasses ecoreClass="BusinessDsl.ecore#//LiteralType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//LiteralType/literal"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

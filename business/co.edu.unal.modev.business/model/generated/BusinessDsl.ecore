@@ -9,6 +9,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Business">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//BusinessOperation" containment="true"/>
   </eClassifiers>
@@ -17,12 +18,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//BusinessReturnType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="many" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//BusinessParameter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessReturnType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dtoType" eType="ecore:EClass ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.ecore#//Dto"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simple" eType="#//SimpleBusinessTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dtoType" eType="ecore:EClass ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.ecore#//Dto"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="void" eType="#//VOID"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessParameter">
@@ -30,18 +33,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//BusinessType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="many" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simple" eType="#//SimpleBusinessTypes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dtoType" eType="ecore:EClass ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.ecore#//Dto"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BusinessCollectionType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listType" eType="#//BusinessType"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LiteralType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="literal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="VOID">
     <eLiterals name="VOID" literal="void"/>
@@ -49,7 +47,8 @@
   <eClassifiers xsi:type="ecore:EEnum" name="SimpleBusinessTypes">
     <eLiterals name="STRING" literal="String"/>
     <eLiterals name="NUMBER" value="1" literal="Number"/>
-    <eLiterals name="DATE" value="2" literal="Date"/>
-    <eLiterals name="BOOLEAN" value="3" literal="Boolean"/>
+    <eLiterals name="DECIMAL" value="2" literal="Decimal"/>
+    <eLiterals name="DATE" value="3" literal="Date"/>
+    <eLiterals name="BOOLEAN" value="4" literal="Boolean"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -14,6 +14,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessOperation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//HttpParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="responseMessages" upperBound="-1"
+        eType="#//ResponseMessage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResponseMessage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HttpParameter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="param" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessParameter"/>
@@ -32,5 +38,6 @@
     <eLiterals name="BODY" value="1" literal="BODY"/>
     <eLiterals name="ROUTE_PARAM" value="2" literal="ROUTE_PARAM"/>
     <eLiterals name="FILE" value="3" literal="FILE"/>
+    <eLiterals name="NAMED" value="4" literal="NAMED"/>
   </eClassifiers>
 </ecore:EPackage>

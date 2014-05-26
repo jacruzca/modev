@@ -6,7 +6,7 @@ generate documentRepositoryDsl "http://www.edu.co/unal/modev/documentRepository/
 
 RepositoriesModule returns repositoryDsl::RepositoriesModule:
 	"repositories-module" name=ID "{"
-	repositories+=Repository*
+		repositories+=Repository*
 	"}";
 
 AbstractEntity returns repositoryDsl::AbstractEntity:

@@ -11,7 +11,7 @@ RepositoriesModule:
 FQN: ID ("." ID)*;
 	
 Repository:
-	'repository' name=ID 'belongsTo' belongsTo=AbstractEntity
+	'repository' name=ID 'belongsTo' belongsTo=AbstractEntity 'description' description=STRING
 	'{'
 		(operations += RepositoryOperation)*
 	'}'
@@ -22,7 +22,7 @@ AbstractEntity:
 ;
 
 RepositoryOperation:
-	'operation' name=ID ('returnType' returnType=RepositoryReturnType)? 
+	'operation' name=ID 'returnType' returnType=RepositoryReturnType (many?='*')? 'description' description=STRING
 	(	'{'
 				(parameters += RepositoryParameter)+
 		'}'
@@ -30,15 +30,15 @@ RepositoryOperation:
 ;
 
 RepositoryReturnType:
-	voidType=VOID | entityType=EntityType
+	voidType=VOID | repositoryType=RepositoryType
 ;
 
 RepositoryParameter:
-	'parameter' name=ID ('type' type=EntityType)?
+	'parameter' name=ID 'type' type=RepositoryType (many?='*')? 'description' description=STRING
 ;
 
-EntityType:
-	type=AbstractEntity | literalType = LiteralType 
+RepositoryType:
+	entityType=AbstractEntity | simple=SimpleRepositoryTypes | literalType = LiteralType 
 ;
 
 LiteralType:
@@ -48,3 +48,10 @@ LiteralType:
 enum VOID:
 	VOID='void'
 ;
+
+enum SimpleRepositoryTypes:
+	STRING='String' |
+	NUMBER='Number' |
+	DECIMAL='Decimal' |
+	DATE='Date' |
+	BOOLEAN='Boolean';
