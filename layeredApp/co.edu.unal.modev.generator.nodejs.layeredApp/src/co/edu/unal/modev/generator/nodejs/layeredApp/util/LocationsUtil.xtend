@@ -11,6 +11,7 @@ import co.edu.unal.modev.repository.repositoryDsl.Repository
 import co.edu.unal.modev.route.routeDsl.RoutesModule
 import co.edu.unal.modev.dto.dtoDsl.Dto
 import co.edu.unal.modev.dto.dtoDsl.DtosModule
+import co.edu.unal.modev.layeredApp.layeredAppDsl.App
 
 class LocationsUtil {
 
@@ -30,6 +31,7 @@ class LocationsUtil {
 	final static String DTO = "dto"
 	final static String ROUTE = "route"
 	final static String REPOSITORY_SUFFIX = "Repository"
+	final static String API_DOC_MODULE = "api-doc"
 	final static String REPOSITORY_FACTORY = REPOSITORY_SUFFIX + "Factory"
 
 	def getServerLocation() {
@@ -242,6 +244,14 @@ class LocationsUtil {
 		location = location + repository.name + "Data" + JS_EXTENSION
 
 		return location
+	}
+	
+	def apiDocBusinessLocation(App app){
+		var apiDocBusinessModule = businessLocation + API_DOC_MODULE + PATH_SEPARATOR
+		
+		var location = apiDocBusinessModule + "APIDocBusiness.js"
+		
+		location
 	}
 
 }

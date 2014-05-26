@@ -21,6 +21,8 @@ class GenerateRoutesIndexJsTemplate {
 		var env = process.env.NODE_ENV || 'development';
 		var config = require('../../config/config')[env];
 		
+		var apiDocBusiness = require('../business/api-doc/APIDocBusiness');
+		
 		«endJavaProtectedRegion»
 		
 		
@@ -52,7 +54,11 @@ class GenerateRoutesIndexJsTemplate {
 			«module.name.toFirstLower»(app, passport);
 			«ENDFOR»
 
-			«startJavaProtectedRegion(getUniqueId("additional", configCommon))»
+
+			//routes for the api-doc
+			app.get('/api-docs', apiDocBusiness.apiDoc);
+	
+			«startJavaProtectedRegion(getUniqueId("additionalRoutes", configCommon))»
 			«endJavaProtectedRegion»
 		}
 	'''

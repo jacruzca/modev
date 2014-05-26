@@ -53,7 +53,7 @@ class GenerateBusinessTemplate {
 
 			for (param : route.parameters) {
 				switch param.httpType {
-					case HTTP_TYPE.ROUTE_PARAM:
+					case HTTP_TYPE.NAMED:
 						res = res + '''
 						var «param.param.name» = req.params.«param.param.name»;
 						'''
@@ -82,10 +82,12 @@ class GenerateBusinessTemplate {
 		var routeLayer = app.routeLayer
 
 		for (rModule : routeLayer.routesModules) {
-			for (route : rModule.routes) {
-				if(route.operation.equals(businessOperation)) {
-					return route
-				}
+			for (rContext : rModule.resourcesContext) {
+				for (route : rContext.routes) {
+					if(route.operation.equals(businessOperation)) {
+						return route
+					}
+				}	
 			}
 		}
 

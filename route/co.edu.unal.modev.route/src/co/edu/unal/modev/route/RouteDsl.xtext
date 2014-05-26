@@ -6,11 +6,17 @@ generate routeDsl "http://www.edu.co/unal/modev/route/RouteDsl"
 
 RoutesModule:
 	"routes-module" name=ID "{"
-		routes+=Route*
+		resourcesContext+=ResourcesContext*
 	"}"
 ;
 	
 FQN: ID ("." ID)*;
+
+ResourcesContext:
+	'resource-context' name=ID 'basePath' basePath=STRING 'description' description=STRING '{'
+		routes+=Route*
+	'}'
+;
 	
 Route:
 	'route' name=ID '{'
@@ -41,5 +47,5 @@ enum HTTP_VERB:
 ;
 
 enum HTTP_TYPE:
-	QUERY | BODY | ROUTE_PARAM | FILE | NAMED
+	QUERY | BODY | FILE | NAMED
 ;

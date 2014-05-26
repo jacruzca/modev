@@ -27,6 +27,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/technology"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectDescription"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectLocation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/packageName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/applicationVersion"/>

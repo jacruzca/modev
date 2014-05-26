@@ -27,6 +27,7 @@ ProjectConfig:
 	'project-config' name=ID "{"
 		'technology' technology=TECHNOLOGY
 		'projectName' projectName=ID
+		'projectDescription' projectDescription=STRING
 		'projectLocation' projectLocation=STRING
 		'packageName' packageName=STRING
 		'applicationVersion' applicationVersion=STRING

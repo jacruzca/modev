@@ -18,13 +18,18 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RouteDsl.ecore#//HTTP_TYPE">
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/QUERY"/>
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/BODY"/>
-      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/ROUTE_PARAM"/>
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/FILE"/>
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/NAMED"/>
     </genEnums>
     <genClasses ecoreClass="RouteDsl.ecore#//RoutesModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//RoutesModule/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//RoutesModule/routes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//RoutesModule/resourcesContext"/>
+    </genClasses>
+    <genClasses ecoreClass="RouteDsl.ecore#//ResourcesContext">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//ResourcesContext/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//ResourcesContext/basePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//ResourcesContext/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RouteDsl.ecore#//ResourcesContext/routes"/>
     </genClasses>
     <genClasses ecoreClass="RouteDsl.ecore#//Route">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//Route/name"/>

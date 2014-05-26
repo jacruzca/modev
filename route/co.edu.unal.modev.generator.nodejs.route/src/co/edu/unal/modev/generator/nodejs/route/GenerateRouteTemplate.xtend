@@ -21,11 +21,19 @@ class GenerateRouteTemplate {
 		 */
 		module.exports = function (app, passport) {
 
-			«FOR route : routesModule.routes»
+			«FOR routeContext : routesModule.resourcesContext»
+			
+			/**
+			 * Routes for the context «routeContext.name» with basePath "«routeContext.basePath»".
+			 * Description: «routeContext.description»
+			 */
+			
+			«FOR route : routeContext.routes»
 			«var business = route.operation.eContainer as Business»
 
 			app.«route.httpVerb.toString.toLowerCase»('«route.uri»', «business.name.toFirstLower».«route.operation.name»);
 
+			«ENDFOR»
 			«ENDFOR»
 		};
 
@@ -34,10 +42,12 @@ class GenerateRouteTemplate {
 	private def getAllInvolvedBusiness(RoutesModule routesModule) {
 		var businessList = new ArrayList<Business>
 
-		for (route : routesModule.routes) {
-			var business = route.operation.eContainer as Business
-			if (!businessList.alreadyExistsInList(business)) {
-				businessList.add(business)
+		for (routeContext : routesModule.resourcesContext) {
+			for (route : routeContext.routes) {
+				var business = route.operation.eContainer as Business
+				if (!businessList.alreadyExistsInList(business)) {
+					businessList.add(business)
+				}
 			}
 		}
 

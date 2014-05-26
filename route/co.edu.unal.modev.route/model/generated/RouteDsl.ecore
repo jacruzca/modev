@@ -4,6 +4,13 @@
     nsPrefix="routeDsl">
   <eClassifiers xsi:type="ecore:EClass" name="RoutesModule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcesContext" upperBound="-1"
+        eType="#//ResourcesContext" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourcesContext">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="routes" upperBound="-1"
         eType="#//Route" containment="true"/>
   </eClassifiers>
@@ -36,8 +43,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="HTTP_TYPE">
     <eLiterals name="QUERY" literal="QUERY"/>
     <eLiterals name="BODY" value="1" literal="BODY"/>
-    <eLiterals name="ROUTE_PARAM" value="2" literal="ROUTE_PARAM"/>
-    <eLiterals name="FILE" value="3" literal="FILE"/>
-    <eLiterals name="NAMED" value="4" literal="NAMED"/>
+    <eLiterals name="FILE" value="2" literal="FILE"/>
+    <eLiterals name="NAMED" value="3" literal="NAMED"/>
   </eClassifiers>
 </ecore:EPackage>

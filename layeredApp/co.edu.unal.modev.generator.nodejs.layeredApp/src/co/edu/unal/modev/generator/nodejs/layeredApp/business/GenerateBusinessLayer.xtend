@@ -1,7 +1,10 @@
 package co.edu.unal.modev.generator.nodejs.layeredApp.business
 
+import co.edu.unal.modev.dtoFromDocument.dtoFromDocumentDsl.DocumentMapper
 import co.edu.unal.modev.generator.nodejs.business.GenerateBusinessTemplate
 import co.edu.unal.modev.generator.nodejs.business.test.GenerateBusinessTestTemplate
+import co.edu.unal.modev.generator.nodejs.doc.GenerateApiDocBusinessTemplate
+import co.edu.unal.modev.generator.nodejs.dto.GenerateDtoFromDocumentTemplate
 import co.edu.unal.modev.generator.nodejs.layeredApp.util.LayeredAppUtil
 import co.edu.unal.modev.generator.nodejs.layeredApp.util.LocationsUtil
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App
@@ -9,9 +12,6 @@ import co.edu.unal.modev.layeredApp.layeredAppDsl.BusinessLayer
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
-import co.edu.unal.modev.generator.nodejs.dto.GenerateDtoFromDocumentTemplate
-import co.edu.unal.modev.document.documentDsl.Document
-import co.edu.unal.modev.dtoFromDocument.dtoFromDocumentDsl.DocumentMapper
 
 class GenerateBusinessLayer {
 
@@ -20,6 +20,7 @@ class GenerateBusinessLayer {
 
 	@Inject GenerateBusinessTemplate generateBusinessTemplate
 	@Inject GenerateBusinessTestTemplate generateBusinessTestTemplate
+	@Inject GenerateApiDocBusinessTemplate generateApiDocBusinessTemplate
 
 	@Inject GenerateDtoFromDocumentTemplate generateDtoFromDocumentTemplate
 
@@ -28,6 +29,17 @@ class GenerateBusinessLayer {
 		generateBusinessClasses(resource, fsa)
 
 		generateDtoClasses(resource, fsa)
+
+		generateAPIDocumentationClasses(resource, fsa);
+
+	}
+
+	def generateAPIDocumentationClasses(Resource resource, JavaIoFileSystemAccess fsa) {
+
+		var app = resource.app as App
+
+		//generate APIDocBusiness.js
+		fsa.generateFile(app.apiDocBusinessLocation, generateApiDocBusinessTemplate.generate(app))
 
 	}
 
