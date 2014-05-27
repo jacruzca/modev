@@ -47,5 +47,5 @@ enum HTTP_VERB:
 ;
 
 enum HTTP_TYPE:
-	QUERY | BODY | FILE | NAMED
+	QUERY | BODY | FILE | NAMED | HEADER
 ;

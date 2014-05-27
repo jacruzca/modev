@@ -8,9 +8,11 @@ import co.edu.unal.modev.common.TemplateExtensions
 import co.edu.unal.modev.dto.dtoDsl.DtoAttribute
 import co.edu.unal.modev.dto.dtoDsl.SimpleDtoTypes
 import co.edu.unal.modev.generator.nodejs.doc.exceptions.RouteParamNotFoundException
+import co.edu.unal.modev.generator.nodejs.doc.exceptions.UnsupportedTypeException
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App
 import co.edu.unal.modev.layeredApp.layeredAppDsl.Config
 import co.edu.unal.modev.layeredApp.layeredAppDsl.ENVIRONMENT_LIST
+import co.edu.unal.modev.route.routeDsl.HTTP_TYPE
 import co.edu.unal.modev.route.routeDsl.ResourcesContext
 import co.edu.unal.modev.route.routeDsl.Route
 import com.google.inject.Inject
@@ -18,6 +20,7 @@ import com.google.inject.Inject
 import static co.edu.unal.modev.business.businessDsl.SimpleBusinessTypes.*
 import static co.edu.unal.modev.dto.dtoDsl.SimpleDtoTypes.*
 import static co.edu.unal.modev.layeredApp.layeredAppDsl.ENVIRONMENT_LIST.*
+import static co.edu.unal.modev.route.routeDsl.HTTP_TYPE.*
 
 class GenerateApiDocResourceContextBusinessTemplate {
 
@@ -54,9 +57,9 @@ class GenerateApiDocResourceContextBusinessTemplate {
 											{
 												name: "«param.name»",
 												description: "«param.description»",
-												required: "«IF param.required»true«ELSE»false«ENDIF»",
-												type: "«param.type.toString»",
-												paramType: "«route.getRouteParam(param).param.name»",
+												required: «IF param.required»true«ELSE»false«ENDIF»,
+												type: "«param.mapOperationParamType»",
+												paramType: "«route.getRouteParam(param).httpType.mapHttpType»",
 												allowMultiple: false,
 											}
 										«ENDFOR»
@@ -74,24 +77,22 @@ class GenerateApiDocResourceContextBusinessTemplate {
 						}
 					«ENDFOR»
 				],
-				models: [
+				models: {
 					«FOR dtoModule : app.businessLayer.dtosModules»
 						«FOR dto : dtoModule.dtos SEPARATOR ","»
-							{
+							«dto.name»: {
 								id: "«dto.name»",
-								properties: [
+								properties: {
 									«FOR attribute : dto.attributes SEPARATOR ","»
-										{
-											«attribute.name» : {
-												type: "«attribute.dtoAttributeType»"	
-											}
+										«attribute.name» : {
+											type: "«attribute.dtoAttributeType»"	
 										}
 									«ENDFOR»
-								]
+								}
 							}
 						«ENDFOR»
 					«ENDFOR»
-				]
+				}
 			};
 			
 			«startJavaProtectedRegion(getUniqueId("additionalRoutes", configCommon, resourcesContext))»
@@ -102,24 +103,57 @@ class GenerateApiDocResourceContextBusinessTemplate {
 		
 	'''
 
-	private def getDtoAttributeType(DtoAttribute dtoAttribute) {
-		if(dtoAttribute.type.simple != null) {
-			return dtoAttribute.type.simple.mapSimpleAttributeType
-		} else if(dtoAttribute.type.dtoType != null) {
-			return dtoAttribute.type.dtoType.name
-		} else {
-			return dtoAttribute.type.literalType
+	private def mapHttpType(HTTP_TYPE http_TYPE) {
+		switch http_TYPE {
+			case BODY:
+				return "body"
+			case FILE:
+				return "form"
+			case HEADER:
+				return "header"
+			case NAMED:
+				return "path"
+			case QUERY:
+				return "query"
+			default:
+				return "path"
 		}
 	}
 
-	private def mapReturnType(BusinessOperation businessOperation) {
-		if(businessOperation.returnType.simple != null) {
-			return businessOperation.returnType.simple.mapSimpleReturnType
-		} else if(businessOperation.returnType.dtoType != null) {
-			return businessOperation.returnType.dtoType.name
-		} else {
-			return businessOperation.returnType.literalType
+	private def getDtoAttributeType(DtoAttribute dtoAttribute) {
+		if(dtoAttribute.type.dtoType != null) {
+			return dtoAttribute.type.dtoType.name
+		} else if(dtoAttribute.type.literalType != null && !dtoAttribute.type.literalType.trim.empty) {
+			return dtoAttribute.type.literalType
+		} else if(dtoAttribute.type.simple != null) {
+			return dtoAttribute.type.simple.mapSimpleAttributeType
 		}
+
+		throw new UnsupportedTypeException("Tipo de dato no soportado")
+	}
+
+	private def mapOperationParamType(BusinessParameter businessParameter) {
+		if(businessParameter.type.dtoType != null) {
+			return businessParameter.type.dtoType.name
+		} else if(businessParameter.type.literalType != null && !businessParameter.type.literalType.trim.empty) {
+			return businessParameter.type.literalType
+		} else if(businessParameter.type.simple != null) {
+			return businessParameter.type.simple.mapSimpleReturnType
+		}
+
+		throw new UnsupportedTypeException("Tipo de dato no soportado")
+	}
+
+	private def mapReturnType(BusinessOperation businessOperation) {
+		if(businessOperation.returnType.dtoType != null) {
+			return businessOperation.returnType.dtoType.name
+		} else if(businessOperation.returnType.literalType != null && !businessOperation.returnType.literalType.trim.empty) {
+			return businessOperation.returnType.literalType
+		} else if(businessOperation.returnType.simple != null) {
+			return businessOperation.returnType.simple.mapSimpleReturnType
+		}
+
+		throw new UnsupportedTypeException("Tipo de dato no soportado")
 	}
 
 	private def mapSimpleReturnType(SimpleBusinessTypes simpleBusinessTypes) {

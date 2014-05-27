@@ -20,6 +20,7 @@
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/BODY"/>
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/FILE"/>
       <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/NAMED"/>
+      <genEnumLiterals ecoreEnumLiteral="RouteDsl.ecore#//HTTP_TYPE/HEADER"/>
     </genEnums>
     <genClasses ecoreClass="RouteDsl.ecore#//RoutesModule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RouteDsl.ecore#//RoutesModule/name"/>

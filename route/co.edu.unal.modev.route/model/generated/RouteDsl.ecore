@@ -45,5 +45,6 @@
     <eLiterals name="BODY" value="1" literal="BODY"/>
     <eLiterals name="FILE" value="2" literal="FILE"/>
     <eLiterals name="NAMED" value="3" literal="NAMED"/>
+    <eLiterals name="HEADER" value="4" literal="HEADER"/>
   </eClassifiers>
 </ecore:EPackage>
