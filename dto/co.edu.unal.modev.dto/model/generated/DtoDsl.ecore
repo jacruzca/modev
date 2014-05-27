@@ -21,15 +21,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="many" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DtoType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dtoType" eType="#//Dto"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="simple" eType="#//SimpleDtoTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dtoType" eType="#//Dto"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="literalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SimpleDtoTypes">
     <eLiterals name="STRING" literal="String"/>
     <eLiterals name="NUMBER" value="1" literal="Number"/>
-    <eLiterals name="DATE" value="2" literal="Date"/>
-    <eLiterals name="BOOLEAN" value="3" literal="Boolean"/>
+    <eLiterals name="DECIMAL" value="2" literal="Decimal"/>
+    <eLiterals name="DATE" value="3" literal="Date"/>
+    <eLiterals name="BOOLEAN" value="4" literal="Boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractEntity" eSuperTypes="#//AbstractEntityMap"/>
 </ecore:EPackage>

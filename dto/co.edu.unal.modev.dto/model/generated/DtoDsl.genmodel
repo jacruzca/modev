@@ -10,6 +10,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="DtoDsl.ecore#//SimpleDtoTypes">
       <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/DATE"/>
       <genEnumLiterals ecoreEnumLiteral="DtoDsl.ecore#//SimpleDtoTypes/BOOLEAN"/>
     </genEnums>

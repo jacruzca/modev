@@ -28,5 +28,6 @@ DtoType:
 enum SimpleDtoTypes:
 	STRING='String' |
 	NUMBER='Number' |
+	DECIMAL='Decimal' |
 	DATE='Date' |
 	BOOLEAN='Boolean';
