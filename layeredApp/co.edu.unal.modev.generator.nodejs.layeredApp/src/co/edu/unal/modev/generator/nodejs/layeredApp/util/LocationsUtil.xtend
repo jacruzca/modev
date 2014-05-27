@@ -12,6 +12,7 @@ import co.edu.unal.modev.route.routeDsl.RoutesModule
 import co.edu.unal.modev.dto.dtoDsl.Dto
 import co.edu.unal.modev.dto.dtoDsl.DtosModule
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App
+import co.edu.unal.modev.route.routeDsl.ResourcesContext
 
 class LocationsUtil {
 
@@ -250,6 +251,14 @@ class LocationsUtil {
 		var apiDocBusinessModule = businessLocation + API_DOC_MODULE + PATH_SEPARATOR
 		
 		var location = apiDocBusinessModule + "APIDocBusiness.js"
+		
+		location
+	}
+	
+	def resourceApiDocBusinessLocation(RoutesModule routesModule, ResourcesContext resourcesContext){
+		var apiDocBusinessModule = businessLocation + API_DOC_MODULE + PATH_SEPARATOR
+		
+		var location = apiDocBusinessModule +routesModule.name + PATH_SEPARATOR +  resourcesContext.name.toFirstUpper + "APIDocBusiness.js"
 		
 		location
 	}

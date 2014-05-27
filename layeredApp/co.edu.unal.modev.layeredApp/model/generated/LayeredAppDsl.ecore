@@ -16,21 +16,31 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="projectConfig" eType="#//ProjectConfig"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mongoConfig" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.ecore#//MongoConfiguration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="test" eType="#//Environment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="development" eType="#//Environment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="qa" eType="#//Environment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="production" eType="#//Environment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Environment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="webPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" eType="ecore:EClass ../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mongoConfig" eType="ecore:EClass ../../../co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.ecore#//MongoConfiguration"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectConfig">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="#//ENVIRONMENT_LIST"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="technology" eType="#//TECHNOLOGY"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="webPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PersistenceLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -56,5 +66,11 @@
   <eClassifiers xsi:type="ecore:EEnum" name="TECHNOLOGY">
     <eLiterals name="NODEJS" literal="NodeJS"/>
     <eLiterals name="JEE" value="1" literal="JEE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ENVIRONMENT_LIST">
+    <eLiterals name="DEVELOPMENT" literal="DEVELOPMENT"/>
+    <eLiterals name="TEST" value="1" literal="TEST"/>
+    <eLiterals name="QA" value="2" literal="QA"/>
+    <eLiterals name="PRODUCTION" value="3" literal="PRODUCTION"/>
   </eClassifiers>
 </ecore:EPackage>

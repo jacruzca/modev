@@ -11,6 +11,12 @@
       <genEnumLiterals ecoreEnumLiteral="LayeredAppDsl.ecore#//TECHNOLOGY/NODEJS"/>
       <genEnumLiterals ecoreEnumLiteral="LayeredAppDsl.ecore#//TECHNOLOGY/JEE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="LayeredAppDsl.ecore#//ENVIRONMENT_LIST">
+      <genEnumLiterals ecoreEnumLiteral="LayeredAppDsl.ecore#//ENVIRONMENT_LIST/DEVELOPMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="LayeredAppDsl.ecore#//ENVIRONMENT_LIST/TEST"/>
+      <genEnumLiterals ecoreEnumLiteral="LayeredAppDsl.ecore#//ENVIRONMENT_LIST/QA"/>
+      <genEnumLiterals ecoreEnumLiteral="LayeredAppDsl.ecore#//ENVIRONMENT_LIST/PRODUCTION"/>
+    </genEnums>
     <genClasses ecoreClass="LayeredAppDsl.ecore#//App">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//App/config"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//App/persistenceLayer"/>
@@ -20,19 +26,27 @@
     <genClasses ecoreClass="LayeredAppDsl.ecore#//Config">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Config/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/projectConfig"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/dbConfig"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/mongoConfig"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/test"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/development"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/qa"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/production"/>
+    </genClasses>
+    <genClasses ecoreClass="LayeredAppDsl.ecore#//Environment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/basePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/serverPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/webPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Environment/dbConfig"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Environment/mongoConfig"/>
     </genClasses>
     <genClasses ecoreClass="LayeredAppDsl.ecore#//ProjectConfig">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/environment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/technology"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectDescription"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectLocation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/packageName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/applicationVersion"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/serverPort"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/webPort"/>
     </genClasses>
     <genClasses ecoreClass="LayeredAppDsl.ecore#//PersistenceLayer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//PersistenceLayer/name"/>

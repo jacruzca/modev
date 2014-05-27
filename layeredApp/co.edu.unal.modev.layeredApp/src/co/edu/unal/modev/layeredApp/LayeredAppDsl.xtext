@@ -18,21 +18,44 @@ App:
 
 Config:
 	'configuration' name=STRING "{"
+		
 		projectConfig=ProjectConfig
-		("dbConfig" dbConfig+=[dbConfig::DatabaseConfiguration|ID]*)?
-		("mongoConfig" mongoConfig+=[mongoConfig::MongoConfiguration|ID]*)?
+		
+		'test-environment' '{'
+			test=Environment
+		'}'
+		
+		'dev-environment' '{'
+			development=Environment
+		'}'
+		
+		'qa-environment' '{'
+			qa=Environment
+		'}'
+		
+		'production-environment' '{'
+			production=Environment
+		'}'
+		
 	"}";
+	
+Environment:
+	'basePath' basePath = STRING
+	'serverPort' serverPort=INT
+	'webPort' webPort=INT
+	("dbConfig" dbConfig=[dbConfig::DatabaseConfiguration|ID])?
+	("mongoConfig" mongoConfig=[mongoConfig::MongoConfiguration|ID])?	
+;
 
 ProjectConfig:
 	'project-config' name=ID "{"
+		'environment' environment=ENVIRONMENT_LIST
 		'technology' technology=TECHNOLOGY
 		'projectName' projectName=ID
 		'projectDescription' projectDescription=STRING
 		'projectLocation' projectLocation=STRING
 		'packageName' packageName=STRING
 		'applicationVersion' applicationVersion=STRING
-		('serverPort' serverPort=INT)?
-		('webPort' webPort=INT)?
 	"}";
 
 PersistenceLayer:
@@ -68,3 +91,10 @@ RouteLayer:
 enum TECHNOLOGY:
 	NODEJS='NodeJS' |
 	JEE='JEE';
+	
+enum ENVIRONMENT_LIST:
+	DEVELOPMENT='DEVELOPMENT' |
+	TEST='TEST' |
+	QA='QA' |
+	PRODUCTION='PRODUCTION'
+;

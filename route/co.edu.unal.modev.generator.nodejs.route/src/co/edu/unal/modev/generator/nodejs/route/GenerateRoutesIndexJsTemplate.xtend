@@ -21,9 +21,15 @@ class GenerateRoutesIndexJsTemplate {
 		var env = process.env.NODE_ENV || 'development';
 		var config = require('../../config/config')[env];
 		
+		«endJavaProtectedRegion»
+		
 		var apiDocBusiness = require('../business/api-doc/APIDocBusiness');
 		
-		«endJavaProtectedRegion»
+		«FOR routeModule: routesModules»
+				«FOR resContext: routeModule.resourcesContext»
+					var «resContext.name»ResourceBusiness = require('../business/api-doc/«routeModule.name»/«resContext.name.toFirstUpper»APIDocBusiness');
+				«ENDFOR»
+		«ENDFOR»
 		
 		
 		
@@ -57,6 +63,13 @@ class GenerateRoutesIndexJsTemplate {
 
 			//routes for the api-doc
 			app.get('/api-docs', apiDocBusiness.apiDoc);
+			
+			«FOR routeModule: routesModules»
+				«FOR resContext: routeModule.resourcesContext»
+					//routes for the «resContext.name» resource context
+					app.get('/api-docs«resContext.basePath»', «resContext.name»ResourceBusiness.apiDoc);
+				«ENDFOR»
+			«ENDFOR»
 	
 			«startJavaProtectedRegion(getUniqueId("additionalRoutes", configCommon))»
 			«endJavaProtectedRegion»

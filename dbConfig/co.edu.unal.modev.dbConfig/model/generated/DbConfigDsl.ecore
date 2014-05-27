@@ -8,7 +8,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DatabaseConfiguration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="#//DB_ENVIRONMENT"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="user" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -23,11 +22,5 @@
     <eLiterals name="SQLITE" value="1" literal="SQLITE"/>
     <eLiterals name="POSTGRES" value="2" literal="POSTGRES"/>
     <eLiterals name="MARIADB" value="3" literal="MARIADB"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="DB_ENVIRONMENT">
-    <eLiterals name="DEVELOPMENT" literal="DEVELOPMENT"/>
-    <eLiterals name="TEST" value="1" literal="TEST"/>
-    <eLiterals name="INTEGRATION" value="2" literal="INTEGRATION"/>
-    <eLiterals name="PRODUCTION" value="3" literal="PRODUCTION"/>
   </eClassifiers>
 </ecore:EPackage>

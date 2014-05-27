@@ -7,16 +7,9 @@ MongoDbConfiguration:
 
 MongoConfiguration:
 	'db-configuration' name=ID '{'
-	'environment' environment=MONGO_ENVIRONMENT
-	'host' host=STRING
-	'database' database=STRING
-	'user' user=STRING
-	'password' password=STRING
-	'port' port=STRING
+		'host' host=STRING
+		'database' database=STRING
+		'user' user=STRING
+		'password' password=STRING
+		'port' port=STRING
 	'}';
-
-enum MONGO_ENVIRONMENT:
-	DEVELOPMENT='DEVELOPMENT' |
-	TEST='TEST' |
-	INTEGRATION='INTEGRATION' |
-	PRODUCTION='PRODUCTION';

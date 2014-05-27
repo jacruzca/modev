@@ -7,18 +7,11 @@
     editorPluginID="co.edu.unal.modev.mongoConfig.editor" runtimeVersion="2.9">
   <genPackages prefix="MongoConfigDsl" basePackage="co.edu.unal.modev.mongoConfig"
       disposableProviderFactory="true" fileExtensions="mongoConfig" ecorePackage="MongoConfigDsl.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT">
-      <genEnumLiterals ecoreEnumLiteral="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/DEVELOPMENT"/>
-      <genEnumLiterals ecoreEnumLiteral="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/TEST"/>
-      <genEnumLiterals ecoreEnumLiteral="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/INTEGRATION"/>
-      <genEnumLiterals ecoreEnumLiteral="MongoConfigDsl.ecore#//MONGO_ENVIRONMENT/PRODUCTION"/>
-    </genEnums>
     <genClasses ecoreClass="MongoConfigDsl.ecore#//MongoDbConfiguration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MongoConfigDsl.ecore#//MongoDbConfiguration/config"/>
     </genClasses>
     <genClasses ecoreClass="MongoConfigDsl.ecore#//MongoConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MongoConfigDsl.ecore#//MongoConfiguration/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MongoConfigDsl.ecore#//MongoConfiguration/environment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MongoConfigDsl.ecore#//MongoConfiguration/host"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MongoConfigDsl.ecore#//MongoConfiguration/database"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MongoConfigDsl.ecore#//MongoConfiguration/user"/>

@@ -2,10 +2,8 @@ package co.edu.unal.modev.generator.nodejs.layeredApp.config
 
 import co.edu.unal.modev.common.ConfigCommon
 import co.edu.unal.modev.common.TemplateExtensions
-import co.edu.unal.modev.dbConfig.dbConfigDsl.DB_ENVIRONMENT
 import co.edu.unal.modev.dbConfig.dbConfigDsl.DIALECT
 import co.edu.unal.modev.layeredApp.layeredAppDsl.Config
-import co.edu.unal.modev.mongoConfig.mongoConfigDsl.MONGO_ENVIRONMENT
 import com.google.inject.Inject
 
 class GenerateConfigJsTemplate {
@@ -25,19 +23,18 @@ class GenerateConfigJsTemplate {
 		  	 	loggerLevel: "debug",
 		  	 	root: rootPath,
 		  	 	tokenHeader: "Secure-Token",
-		  	 	«var allDbConfigDevelopment = config.dbConfig.filter(configItem|configItem.environment.equals(DB_ENVIRONMENT.DEVELOPMENT)).iterator»
-		  	 	«IF allDbConfigDevelopment.hasNext»
-		  	 		«var dbConfig = allDbConfigDevelopment.next»
+		  	 	«var dbDevConfig = config.development.dbConfig»
+		  	 	«IF dbDevConfig != null»
 		  	 		db: {
-		  	 			host: "«dbConfig.host»",
-		  	 			port: "«dbConfig.port»",
-		  	 			name: "«dbConfig.database»",
-		  	 			user: "«dbConfig.user»",
-		  	 			password: "«dbConfig.password»",
-		  	 			dialect: "«dbConfig.dialect.dialectForSequelize»"
+		  	 			host: "«dbDevConfig.host»",
+		  	 			port: "«dbDevConfig.port»",
+		  	 			name: "«dbDevConfig.database»",
+		  	 			user: "«dbDevConfig.user»",
+		  	 			password: "«dbDevConfig.password»",
+		  	 			dialect: "«dbDevConfig.dialect.dialectForSequelize»"
 		  	 		},
 		  	 	«ENDIF»
-		  	 	«var mongoDevConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.DEVELOPMENT)).head»
+		  	 	«var mongoDevConfig = config.development.mongoConfig»
 		  	 	«IF mongoDevConfig != null»
 		  	 		mongo: {
 		  	 			host: "«mongoDevConfig.host»",
@@ -49,19 +46,19 @@ class GenerateConfigJsTemplate {
 		  	 	«ENDIF»
 		  	 	
 				app: {
-				name: '«config.projectConfig.projectName»',
-				port: «config.inferServerPort»,
-				tokenExpiration: 3600000*2
+					name: '«config.projectConfig.projectName»',
+					port: «config.development.serverPort»,
+					tokenExpiration: 3600000*2
 				}
 			},
 			test: {
-			loggerLevel: "debug",
-			root: rootPath,
-			tokenHeader: "Secure-Token",
-			db: {
-				dialect: "sqlite"
-			},
-				«var mongoTestConfig = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.TEST)).head»
+				loggerLevel: "debug",
+				root: rootPath,
+				tokenHeader: "Secure-Token",
+				db: {
+					dialect: "sqlite"
+				},
+				«var mongoTestConfig = config.test.mongoConfig»
 			 	«IF mongoTestConfig != null»
 			 		mongo: {
 			 			host: "«mongoTestConfig.host»",
@@ -71,43 +68,73 @@ class GenerateConfigJsTemplate {
 			 			password: "«mongoTestConfig.password»"
 			 		},
 			 	«ENDIF»
-			app: {
-			name: '«config.projectConfig.projectName»',
-			port: «config.inferServerPort»,
-			tokenExpiration: 3600000*2
-			}
+				app: {
+					name: '«config.projectConfig.projectName»',
+					port: «config.test.serverPort»,
+					tokenExpiration: 3600000*2
+				}
+			},
+			qa: {
+		  	 	loggerLevel: "info",
+		  	 	root: rootPath,
+		  	 	tokenHeader: "Secure-Token",
+		  	 	«var dbQAConfig = config.qa.dbConfig»
+		  	 	«IF dbQAConfig != null»
+		  	 		db: {
+		  	 			host: "«dbQAConfig.host»",
+		  	 			port: "«dbQAConfig.port»",
+		  	 			name: "«dbQAConfig.database»",
+		  	 			user: "«dbQAConfig.user»",
+		  	 			password: "«dbQAConfig.password»",
+		  	 			dialect: "«dbQAConfig.dialect.dialectForSequelize»"
+		  	 		},
+		  	 	«ENDIF»
+		  	 	«var mongoQAConfig = config.qa.mongoConfig»
+		  	 	«IF mongoQAConfig != null»
+		  	 		mongo: {
+		  	 			host: "«mongoQAConfig.host»",
+		  	 			port: "«mongoQAConfig.port»",
+		  	 			name: "«mongoQAConfig.database»",
+		  	 			user: "«mongoQAConfig.user»",
+		  	 			password: "«mongoQAConfig.password»"
+		  	 		},
+		  	 	«ENDIF»
+		  	 	
+				app: {
+					name: '«config.projectConfig.projectName»',
+					port: «config.qa.serverPort»,
+					tokenExpiration: 3600000*2
+				}
 			},
 			production: {
-			loggerLevel: "info",
-			root: rootPath,
-			tokenHeader: "Secure-Token",
-			«var allDbConfigProd = config.dbConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.PRODUCTION)).iterator»
-			«IF allDbConfigProd.hasNext»
-			«var dbConfig = allDbConfigProd.next»
-			db: {
-				host: "«dbConfig.host»",
-				port: "«dbConfig.port»",
-				name: "«dbConfig.database»",
-				user: "«dbConfig.user»",
-				password: "«dbConfig.password»",
-				dialect: "«dbConfig.dialect.dialectForSequelize»"
-			},
+				loggerLevel: "info",
+				root: rootPath,
+				tokenHeader: "Secure-Token",
+				«var allDbConfigProd = config.production.dbConfig»
+				«IF allDbConfigProd != null»
+				db: {
+					host: "«allDbConfigProd.host»",
+					port: "«allDbConfigProd.port»",
+					name: "«allDbConfigProd.database»",
+					user: "«allDbConfigProd.user»",
+					password: "«allDbConfigProd.password»",
+					dialect: "«allDbConfigProd.dialect.dialectForSequelize»"
+				},
 			«ENDIF»
-			«var allMongoConfigProd = config.mongoConfig.filter(configItem|configItem.environment.equals(MONGO_ENVIRONMENT.PRODUCTION)).iterator»
-			«IF allMongoConfigProd.hasNext»
-			«var mongoConfig = allMongoConfigProd.next»
+			«var allMongoConfigProd = config.production.mongoConfig»
+			«IF allMongoConfigProd != null»
 				mongo: {
-					host: "«mongoConfig.host»",
-					port: "«mongoConfig.port»",
-					name: "«mongoConfig.database»",
-					user: "«mongoConfig.user»",
-					password: "«mongoConfig.password»"
+					host: "«allMongoConfigProd.host»",
+					port: "«allMongoConfigProd.port»",
+					name: "«allMongoConfigProd.database»",
+					user: "«allMongoConfigProd.user»",
+					password: "«allMongoConfigProd.password»"
 				},
 			«ENDIF»
 				app: {
-			name: '«config.projectConfig.projectName»',
-				port: «config.inferServerPort»,
-				tokenExpiration: 3600000*2
+					name: '«config.projectConfig.projectName»',
+					port: «config.production.serverPort»,
+					tokenExpiration: 3600000*2
 				}
 			}
 		};
@@ -116,15 +143,6 @@ class GenerateConfigJsTemplate {
 		«endJavaProtectedRegion»
 		
 	'''
-
-	private def inferServerPort(Config config) {
-		val serverPort = config.projectConfig.serverPort
-		if(serverPort > 0) {
-			return serverPort
-		} else {
-			return 3001
-		}
-	}
 
 	private def getDialectForSequelize(DIALECT dialect) {
 		switch dialect {

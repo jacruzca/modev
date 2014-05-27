@@ -12,6 +12,7 @@ import co.edu.unal.modev.layeredApp.layeredAppDsl.BusinessLayer
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
+import co.edu.unal.modev.generator.nodejs.doc.GenerateApiDocResourceContextBusinessTemplate
 
 class GenerateBusinessLayer {
 
@@ -21,6 +22,7 @@ class GenerateBusinessLayer {
 	@Inject GenerateBusinessTemplate generateBusinessTemplate
 	@Inject GenerateBusinessTestTemplate generateBusinessTestTemplate
 	@Inject GenerateApiDocBusinessTemplate generateApiDocBusinessTemplate
+	@Inject GenerateApiDocResourceContextBusinessTemplate generateApiDocResourceContextBusinessTemplate
 
 	@Inject GenerateDtoFromDocumentTemplate generateDtoFromDocumentTemplate
 
@@ -39,8 +41,14 @@ class GenerateBusinessLayer {
 		var app = resource.app as App
 
 		//generate APIDocBusiness.js
-		fsa.generateFile(app.apiDocBusinessLocation, generateApiDocBusinessTemplate.generate(app))
-
+		fsa.generateFile(app.apiDocBusinessLocation, generateApiDocBusinessTemplate.generate(app, app.config.configCommon))
+		
+		//generate for each resource context
+		for(routeModule: app.routeLayer.routesModules){
+			for(resContext: routeModule.resourcesContext){
+				fsa.generateFile(routeModule.resourceApiDocBusinessLocation(resContext), generateApiDocResourceContextBusinessTemplate.generate(app, resContext, app.config.configCommon))			}
+		} 
+		
 	}
 
 	private def generateDtoClasses(Resource resource, JavaIoFileSystemAccess fsa) {
