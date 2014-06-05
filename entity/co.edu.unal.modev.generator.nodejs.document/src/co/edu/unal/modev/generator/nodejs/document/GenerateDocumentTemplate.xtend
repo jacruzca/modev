@@ -16,7 +16,11 @@ class GenerateDocumentTemplate {
 	@Inject extension TemplateExtensions
 
 	def generate(Document document, ConfigCommon config) '''
-		
+		/**
+		 * The document module with the mongoose «document.name» schema
+		 * @module model/«document.documentModule.name»/«document.name»
+		 */
+
 		«startJavaProtectedRegion(getUniqueId("init", document, config))»
 		var logger = require("../../../config/logger");
 		

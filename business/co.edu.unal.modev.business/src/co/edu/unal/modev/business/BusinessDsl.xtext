@@ -30,7 +30,7 @@ BusinessOperation:
 ;
 
 BusinessReturnType:
-	simple=SimpleBusinessTypes | dtoType=[dtoDsl::Dto | FQN] | void=VOID | literalType=STRING
+	void=VOID | businessType=BusinessType
 ;
 
 BusinessParameter:

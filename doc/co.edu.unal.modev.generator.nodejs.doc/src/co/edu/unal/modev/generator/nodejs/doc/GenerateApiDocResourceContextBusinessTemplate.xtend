@@ -21,16 +21,24 @@ import static co.edu.unal.modev.business.businessDsl.SimpleBusinessTypes.*
 import static co.edu.unal.modev.dto.dtoDsl.SimpleDtoTypes.*
 import static co.edu.unal.modev.layeredApp.layeredAppDsl.ENVIRONMENT_LIST.*
 import static co.edu.unal.modev.route.routeDsl.HTTP_TYPE.*
+import co.edu.unal.modev.route.routeDsl.RoutesModule
 
 class GenerateApiDocResourceContextBusinessTemplate {
 
 	@Inject extension TemplateExtensions
 
 	def generate(App app, ResourcesContext resourcesContext, ConfigCommon configCommon) '''
-		
+		«var routesModule = resourcesContext.eContainer as RoutesModule»
 		/**
 		 * Exports the API declaration for «resourcesContext.name» following the Swagger specification v1.2
+		 * @module business/api-doc/«routesModule.name»/«resourcesContext.name»APIDocBusiness
 		 * @see https://github.com/wordnik/swagger-spec
+		 */
+		
+		/**
+		 * the apiDoc method export a json object containing the documentation
+		 * @param {Request} req the http request
+		 * @param {Response} req the http response
 		 */
 		module.exports.apiDoc = function (req, res) {
 		
@@ -145,12 +153,16 @@ class GenerateApiDocResourceContextBusinessTemplate {
 	}
 
 	private def mapReturnType(BusinessOperation businessOperation) {
-		if(businessOperation.returnType.dtoType != null) {
-			return businessOperation.returnType.dtoType.name
-		} else if(businessOperation.returnType.literalType != null && !businessOperation.returnType.literalType.trim.empty) {
-			return businessOperation.returnType.literalType
-		} else if(businessOperation.returnType.simple != null) {
-			return businessOperation.returnType.simple.mapSimpleReturnType
+		if(businessOperation.returnType.businessType != null) {
+			if(businessOperation.returnType.businessType.dtoType != null) {
+				return businessOperation.returnType.businessType.dtoType.name
+			} else if(businessOperation.returnType.businessType.literalType != null && !businessOperation.returnType.businessType.literalType.trim.empty) {
+				return businessOperation.returnType.businessType.literalType
+			} else if(businessOperation.returnType.businessType.simple != null) {
+				return businessOperation.returnType.businessType.simple.mapSimpleReturnType
+			}
+		} else {
+			return "undefined"
 		}
 
 		throw new UnsupportedTypeException("Tipo de dato no soportado")

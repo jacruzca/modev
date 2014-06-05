@@ -34,10 +34,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessOperation/parameters"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessReturnType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/simple"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessReturnType/dtoType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/void"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessReturnType/literalType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BusinessDsl.ecore#//BusinessReturnType/businessType"/>
     </genClasses>
     <genClasses ecoreClass="BusinessDsl.ecore#//BusinessParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BusinessDsl.ecore#//BusinessParameter/name"/>

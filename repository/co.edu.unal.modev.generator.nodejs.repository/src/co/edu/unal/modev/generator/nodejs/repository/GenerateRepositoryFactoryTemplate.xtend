@@ -13,40 +13,65 @@ class GenerateRepositoryFactoryTemplate {
 	@Inject extension TemplateExtensions
 
 	def generate(List<Repository> repositories, ConfigCommon configCommon) '''
-		«startJavaProtectedRegion(getUniqueId("init", configCommon))»
-		var logger = require("../../config/logger");
-		var appReference = null;
 		
-		«endJavaProtectedRegion»
+			/**
+			 * A factory module for repositories
+			 * @module repository/RepositoryFactory
+			 */
 		
-		module.exports.init = function(app) {
-		    appReference = app;
-		};
-		
-		module.exports.getRepositoryFactory = function() {
-			var repositoryFactory = {
-				«FOR repository : repositories SEPARATOR ","»
-					«IF repository.hasEntity»
-						«repository.repositoryFactoryGetterName»: function(){
-							return require("./«repository.repositoryModule.name»/«repository.name»").init(appReference.get("models").«repository.entity.name.toFirstUpper»);
-							
-						}
-					«ELSE»
-						«repository.repositoryFactoryGetterName»: function(){
-							return require("./«repository.repositoryModule.name»/«repository.name»");
-						}
-					«ENDIF»
-				«ENDFOR»
-			};
+			«startJavaProtectedRegion(getUniqueId("init", configCommon))»
+			var logger = require("../../config/logger");
+			var appReference = null;
 			
-			«startJavaProtectedRegion(getUniqueId("additionalRepos", configCommon))»
 			«endJavaProtectedRegion»
 			
-			return repositoryFactory;
-		};
-		
-		«startJavaProtectedRegion(getUniqueId("additional", configCommon))»
-		«endJavaProtectedRegion»
+			/**
+			 * Initializes the repository factory passing the express app as dependency
+			 * @param {Express} app - The express app
+			 */
+			module.exports.init = function(app) {
+			    appReference = app;
+			};
+			
+			/**
+			 * Returns the repository factory object with the appropiate methods
+			 * for each repository
+			 * @returns {object} a repositoryFactory object
+			 */
+			module.exports.getRepositoryFactory = function() {
+				var repositoryFactory = {
+					«FOR repository : repositories SEPARATOR ","»
+						«IF repository.hasEntity»
+							/**
+							 * Creates a new «repository.name» module. It corresponds to
+							 * the relational entity «repository.entity.name»
+							 * @returns {«repository.name»} a «repository.name» module
+							 */
+							«repository.repositoryFactoryGetterName»: function(){
+								return require("./«repository.repositoryModule.name»/«repository.name»").init(appReference.get("models").«repository.entity.name.toFirstUpper»);
+								
+							}
+						«ELSE»
+							/**
+							 * Creates a new «repository.name» module. It corresponds to
+							 * the document «repository.document.name»
+							 * @returns {«repository.name»} a «repository.name» module
+							 */
+							«repository.repositoryFactoryGetterName»: function(){
+								return require("./«repository.repositoryModule.name»/«repository.name»");
+							}
+						«ENDIF»
+					«ENDFOR»
+				};
+				
+				«startJavaProtectedRegion(getUniqueId("additionalRepos", configCommon))»
+				«endJavaProtectedRegion»
+				
+				return repositoryFactory;
+			};
+			
+			«startJavaProtectedRegion(getUniqueId("additional", configCommon))»
+			«endJavaProtectedRegion»
 	'''
 
 	private def getUniqueId(String id, ConfigCommon config) {

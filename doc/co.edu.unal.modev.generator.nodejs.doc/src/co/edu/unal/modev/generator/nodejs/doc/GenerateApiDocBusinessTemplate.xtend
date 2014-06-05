@@ -10,10 +10,16 @@ class GenerateApiDocBusinessTemplate {
 	@Inject extension TemplateExtensions
 
 	def generate(App app, ConfigCommon configCommon) '''
-		
 		/**
 		 * Exports the resource listing for the Swagger specification v1.2
+		 * @module business/api-doc/APIDocBusiness
 		 * @see https://github.com/wordnik/swagger-spec
+		 */
+		
+		/**
+		 * the apiDoc method export a json object containing the documentation
+		 * @param {Request} req the http request
+		 * @param {Response} req the http response
 		 */
 		module.exports.apiDoc = function (req, res) {
 		

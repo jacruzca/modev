@@ -10,6 +10,7 @@ import co.edu.unal.modev.generator.nodejs.business.util.BusinessUtil
 import co.edu.unal.modev.route.routeDsl.HTTP_TYPE
 import com.google.inject.Inject
 import org.eclipse.emf.ecore.resource.Resource
+import co.edu.unal.modev.business.businessDsl.BusinessParameter
 
 class GenerateBusinessTemplate {
 
@@ -17,6 +18,10 @@ class GenerateBusinessTemplate {
 	@Inject extension TemplateExtensions
 
 	def generate(Business business, Resource resource, ConfigCommon config) '''
+		/**
+		* This module represents a set of business methods
+		* @module business/«business.businessModule.name»/«business.name»
+		*/
 		«startJavaProtectedRegion(getUniqueId("init", business, config))»
 		
 		var logger = require('../../../config/logger');
@@ -30,6 +35,15 @@ class GenerateBusinessTemplate {
 		
 		«FOR operation : business.operations»
 			
+			/**
+			 * «operation.description»
+			«FOR param : operation.parameters»	
+				* @param {«param.mapOperationParamType»} (HTTP Type: «operation.getMatchingRouteParam(param, resource).httpType.getName») «param.name» «param.description»
+			«ENDFOR»
+			«IF operation.returnType != null»
+				* @returns {«operation.mapReturnType»} 
+			«ENDIF»
+			 */
 			module.exports.«operation.name» = function(req, res){
 				«operation.printHTTPParams(resource)»
 
@@ -41,7 +55,19 @@ class GenerateBusinessTemplate {
 		«ENDFOR»
 		
 	'''
-
+	
+	def getMatchingRouteParam(BusinessOperation operation, BusinessParameter businessParameter, Resource resource){
+		var route = operation.getRouteForBusinessOperation(resource)
+		
+		for(param: route.parameters){
+			if(param.param.name.equals(businessParameter.name)){
+				return param
+			}
+		}
+		
+		throw new RouteNotFoundException("Route or param not found")
+	}
+	
 	/**
 	 * Returns (if present) the variables corresponding to the HTTP params
 	 * Printed in order that the developer has easy access to them

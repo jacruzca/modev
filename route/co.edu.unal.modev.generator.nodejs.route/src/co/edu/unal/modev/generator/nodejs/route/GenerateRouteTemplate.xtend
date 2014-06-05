@@ -10,6 +10,11 @@ class GenerateRouteTemplate {
 
 	def generate(RoutesModule routesModule) '''
 		
+		/**
+		 * The module representing the «routesModule.name» routes module
+		 * @module route/«routesModule.name»
+		 */
+		
 		«FOR business : routesModule.allInvolvedBusiness»
 			var «business.name.toFirstLower» = require("../business/«(business.eContainer as BusinessModule).name»/«business.
 			name.toFirstUpper»");

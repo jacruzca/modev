@@ -13,6 +13,12 @@ class GenerateDtoFromDocumentTemplate {
 	@Inject extension TemplateExtensions
 
 	def generate(Dto dto, ConfigCommon config) '''
+		
+		/**
+		 * The module representing the «dto.name» DTO
+		 * @module dto/«dto.dtoModule.name»/«dto.name»
+		 */
+		
 		«startJavaProtectedRegion(getUniqueId("init", dto, config))»
 		«var document = dto.documentFromDto»
 		var logger = require("../../../config/logger");
