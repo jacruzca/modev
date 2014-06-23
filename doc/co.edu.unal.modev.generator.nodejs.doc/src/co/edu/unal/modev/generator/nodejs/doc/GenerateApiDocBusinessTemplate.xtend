@@ -24,13 +24,18 @@ class GenerateApiDocBusinessTemplate {
 		module.exports.apiDoc = function (req, res) {
 		
 			var apiDoc = {
+				//current api version
 				apiVersion: '«app.config.projectConfig.applicationVersion»',
 				swaggerVersion: '1.2',
 				apis: [
 					«FOR routeModule : app.routeLayer.routesModules»
+						// documentation for the module «routeModule.name»
 						«FOR resContext : routeModule.resourcesContext SEPARATOR ","»
+							// documentation for the context «resContext.name»
 							{
+								//the base path of the context
 								path: '«resContext.basePath»',
+								//a general description of the context/module
 								description: '«resContext.description»'
 							}
 						«ENDFOR»

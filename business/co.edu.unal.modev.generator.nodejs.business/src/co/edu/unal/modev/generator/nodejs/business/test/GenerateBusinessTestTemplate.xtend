@@ -25,13 +25,23 @@ class GenerateBusinessTestTemplate {
 		chai.should();
 		
 		«endJavaProtectedRegion»
-		
+		/**
+		 * Unit tests for the business module «business.name»
+		 */
+		 
 		describe('«business.name» tests', function () {
 		
 		«FOR operation : business.operations»
-			
-				describe('«operation.name» function', function () {
 
+				/**
+				 * Unit test cases for the operation «operation.name»
+				 */
+				 
+				describe('«operation.name» function', function () {
+					
+					/**
+					 * Test case for the normal flow of the operation «operation.name»
+					 */
 					«startJavaProtectedRegion(getBusinessOperationUniqueId("bodyTest", operation, config))»
 					it('should be OK', function(done){
 						//import dependencies with rewire. Ready to be mocked

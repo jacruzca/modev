@@ -45,38 +45,50 @@ class GenerateApiDocResourceContextBusinessTemplate {
 			var apiDoc = {
 				apiVersion: '«app.config.projectConfig.applicationVersion»',
 				swaggerVersion: '1.2',
-				basePath: "«app.config.getBasePath(app.config.projectConfig.environment)»",
-				resourcePath: "«resourcesContext.basePath»",
+				basePath: '«app.config.getBasePath(app.config.projectConfig.environment)»',
+				resourcePath: '«resourcesContext.basePath»',
 				produces: [
-					"application/json"
+					'application/json'
 				],
 				apis: [
 					«FOR route : resourcesContext.routes SEPARATOR ","»
+						//documentation for the route «route.name» with business operation «route.operation.name»
 						{
+							//the path for this route
 							path: "«route.uri»",
+							//a set of operations available
 							operations: [
 								{
+									//the http method used for this operation
 									method: "«route.httpVerb»",
+									//a brief description of the operation
 									summary: "«route.operation.description»",
+									//the return type of the operation
 									type: "«route.operation.mapReturnType»",
-									nickname: "«route.operation.name»",
+									nickname: '«route.operation.name»',
+									//the list of parameters the operation is accepting
 									parameters: [
 										«FOR param : route.operation.parameters SEPARATOR ","»
+											//documentation for the parameter «param.name»
 											{
-												name: "«param.name»",
-												description: "«param.description»",
+												name: '«param.name»',
+												description: '«param.description»',
+												//if the parameter is mandatory or not
 												required: «IF param.required»true«ELSE»false«ENDIF»,
-												type: "«param.mapOperationParamType»",
-												paramType: "«route.getRouteParam(param).httpType.mapHttpType»",
-												allowMultiple: false,
+												//the data type of the parameter
+												type: '«param.mapOperationParamType»',
+												//the type according to the HTTP protocol (e.g. body, query)
+												paramType: '«route.getRouteParam(param).httpType.mapHttpType»',
+												allowMultiple: false
 											}
 										«ENDFOR»
 									],
+									//the corresponding response messages for this operation
 									responseMessages: [
 										«FOR response : route.responseMessages SEPARATOR ","»
 											{
 												code: «response.code»,
-												message: "«response.message»"
+												message: '«response.message»'
 											}
 										«ENDFOR»
 									]
@@ -87,13 +99,15 @@ class GenerateApiDocResourceContextBusinessTemplate {
 				],
 				models: {
 					«FOR dtoModule : app.businessLayer.dtosModules»
+						//the DTO module «dtoModule.name»
 						«FOR dto : dtoModule.dtos SEPARATOR ","»
+							//the specification of the DTO «dto.name»
 							«dto.name»: {
 								id: "«dto.name»",
 								properties: {
 									«FOR attribute : dto.attributes SEPARATOR ","»
 										«attribute.name» : {
-											type: "«attribute.dtoAttributeType»"	
+											type: "«attribute.dtoAttributeType»"
 										}
 									«ENDFOR»
 								}

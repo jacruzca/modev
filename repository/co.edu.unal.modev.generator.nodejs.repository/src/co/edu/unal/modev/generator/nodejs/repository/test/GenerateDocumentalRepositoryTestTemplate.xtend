@@ -42,6 +42,10 @@ class GenerateDocumentalRepositoryTestTemplate {
 		
 		«endJavaProtectedRegion»
 		
+		/**
+		 * Unit tests for the repository «repository.name»
+		 */
+		 
 		describe('«repository.name» tests', function(){
 		
 			«startJavaProtectedRegion(getUniqueId("config", repository, configCommon))»
@@ -64,7 +68,14 @@ class GenerateDocumentalRepositoryTestTemplate {
 			
 			«FOR operation : repository.operations»
 
+				/**
+				 * Unit test cases for the operation «operation.name»
+				 */
 				describe('«operation.name» function', function () {
+					
+					/**
+					 * Test case for the normal flow of the operation «operation.name»
+					 */
 					«startJavaProtectedRegion(getRepositoryOperationUniqueId("body", operation, configCommon))»
 					it('should be fulfilled', function(){
 		
@@ -78,7 +89,10 @@ class GenerateDocumentalRepositoryTestTemplate {
 			                promise.should.be.fulfilled
 			            ]);
 					});
-
+					
+					/**
+					 * Test case for the exceptional flow of the operation «operation.name»
+					 */
 					it('should be rejected', function(){
 						
 						«FOR param: operation.parameters»
