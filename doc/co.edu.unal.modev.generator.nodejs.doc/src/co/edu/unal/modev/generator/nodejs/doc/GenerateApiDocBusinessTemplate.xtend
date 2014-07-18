@@ -28,7 +28,7 @@ class GenerateApiDocBusinessTemplate {
 				apiVersion: '«app.config.projectConfig.applicationVersion»',
 				swaggerVersion: '1.2',
 				apis: [
-					«FOR routeModule : app.routeLayer.routesModules»
+					«FOR routeModule : app.routeLayer.routesModules SEPARATOR ","»
 						// documentation for the module «routeModule.name»
 						«FOR resContext : routeModule.resourcesContext SEPARATOR ","»
 							// documentation for the context «resContext.name»

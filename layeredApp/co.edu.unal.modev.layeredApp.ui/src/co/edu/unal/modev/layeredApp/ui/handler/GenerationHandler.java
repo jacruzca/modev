@@ -12,6 +12,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -22,10 +23,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.internal.ide.model.WorkbenchWorkspace;
 import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess;
 import org.eclipse.xtext.resource.IResourceDescriptions;
@@ -46,25 +51,26 @@ import co.edu.unal.modev.layeredApp.ui.util.WorkspaceUtils;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-public class GenerationHandler extends AbstractHandler implements IHandler{
-	
+public class GenerationHandler extends AbstractHandler implements IHandler {
+
 	@Inject
 	IResourceDescriptions resourceDescriptions;
-	
+
 	@Inject
 	private Provider<EclipseResourceFileSystemAccess2> fileAccessProvider;
 
 	@Inject
 	IResourceSetProvider resourceSetProvider;
-	
+
 	@Inject
 	GeneratorFactory generatorFactory;
 
 	@Inject
 	private JavaIoFileSystemAccess fsa;
-	
+
 	/**
 	 * Creates the eclipse resource object
+	 * 
 	 * @param project
 	 * @param filePath
 	 * @return
@@ -72,15 +78,15 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 	private Resource getResource(IProject project, String filePath) {
 		URI uri = URI.createPlatformResourceURI(filePath, true);
 		ResourceSet rs = resourceSetProvider.get(project);
-		
+
 		System.out.println(project.getLocation());
-		
+
 		loadAllReferences(rs, project.getLocation());
-		
+
 		Resource r = rs.getResource(uri, true);
 		return r;
 	}
-	
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
@@ -106,7 +112,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 							@Override
 							public Boolean exec(XtextResource resource)
 									throws Exception {
-								
+
 								initGeneration(resource);
 								return Boolean.TRUE;
 							}
@@ -116,15 +122,16 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Starts the generation of the project
+	 * 
 	 * @param resource
 	 */
 	private void initGeneration(Resource resource) {
 		try {
 			for (int i = 0; i < resource.getContents().size(); i++) {
-				
+
 				EObject contents = resource.getContents().get(i);
 				if (contents instanceof App) {
 
@@ -142,10 +149,10 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 			LayeredAppUtil.manageException(e.getMessage(), e.getMessage(), e);
 		}
 	}
-	
-	private List<String> getAllModelExtensions(){
+
+	private List<String> getAllModelExtensions() {
 		List<String> extensions = new ArrayList<String>();
-			
+
 		extensions.add(".entity");
 		extensions.add(".layeredApp");
 		extensions.add(".dbConfig");
@@ -156,22 +163,22 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 		extensions.add(".route");
 		extensions.add(".business");
 		extensions.add(".dtoFromDocument");
-		
-		
+
 		return extensions;
 	}
-	
-	private void loadAllReferences(ResourceSet resourceSet, IPath folder){
+
+	private void loadAllReferences(ResourceSet resourceSet, IPath folder) {
 		List<String> allModelExtensions = getAllModelExtensions();
 		Set<IFile> resultSet = new HashSet<IFile>();
 		for (String fileExtension : allModelExtensions) {
-			Set<IFile> allDSLFilesInFolder = WorkspaceUtils.getAllDSLFilesInFolder(folder, fileExtension);
+			Set<IFile> allDSLFilesInFolder = WorkspaceUtils
+					.getAllDSLFilesInFolder(folder, fileExtension);
 			resultSet.addAll(allDSLFilesInFolder);
 		}
-		
+
 		WorkspaceUtils.getModelElements(resultSet, resourceSet);
 	}
-	
+
 	/**
 	 * Dispatches the generation
 	 * 
@@ -185,50 +192,63 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 			throws CoreException, ModelLoaderException, IOException {
 
 		boolean mainFileValid = validateMainFile(app);
-		
-		final String projectName = app.getConfig().getProjectConfig().getProjectName();
-		final TECHNOLOGY technology = app.getConfig().getProjectConfig().getTechnology();
-		final String projectLocation = app.getConfig().getProjectConfig().getProjectLocation();
-		
+
+		final String projectName = app.getConfig().getProjectConfig()
+				.getProjectName();
+		final TECHNOLOGY technology = app.getConfig().getProjectConfig()
+				.getTechnology();
+		final String projectLocation = app.getConfig().getProjectConfig()
+				.getProjectLocation();
+
 		if (mainFileValid) {
 
 			String rootPath = JavaProjectHelper.getCurrentWorkspaceRootPath();
 
-			final String parentLocation = rootPath + "/"
-					+ projectLocation + "/"
-					+ projectName;
-			
-			
-			Job job = new Job("Generando aplicación "+projectName) {
-				
+			final String parentLocation = rootPath + "/" + projectLocation
+					+ "/" + projectName;
+
+			Job job = new Job("Generando aplicación " + projectName) {
+
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
-					
+
 					try {
-						monitor.beginTask("Generating application "+projectName, 100);						
+						monitor.beginTask("Generating application "
+								+ projectName, 100);
 						monitor.worked(10);
-						
+
 						monitor.subTask("Verifying protected regions ...");
-						
+
 						fsa.setOutputPath(parentLocation);
-						
-						//request specific generator based on technology
-						IGeneratorLayeredApp generator = (IGeneratorLayeredApp) generatorFactory.getGenerator(technology);	
+
+						// request specific generator based on technology
+						IGeneratorLayeredApp generator = (IGeneratorLayeredApp) generatorFactory
+								.getGenerator(technology);
 						generator.doBeginGeneration(resource, fsa, monitor, 80);
-						
+
 						monitor.subTask("Reloading workspace ...");
 						monitor.worked(10);
 						monitor.subTask("Finishing");
 						monitor.done();
 						return Status.OK_STATUS;
-						
-					/*} catch (CoreException e) {
-						LayeredAppUtil.logErrorMessage(e.getMessage(), e);
-						return Status.CANCEL_STATUS;
-					} catch (IOException e) {
-						LayeredAppUtil.logErrorMessage(e.getMessage(), e);
-						return Status.CANCEL_STATUS;*/
+
+						/*
+						 * } catch (CoreException e) {
+						 * LayeredAppUtil.logErrorMessage(e.getMessage(), e);
+						 * return Status.CANCEL_STATUS; } catch (IOException e)
+						 * { LayeredAppUtil.logErrorMessage(e.getMessage(), e);
+						 * return Status.CANCEL_STATUS;
+						 */
 					} catch (Exception e) {
+						final Exception eF = e;
+						Display.getDefault().asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								MessageDialog.openError(null, "Error",
+										eF.getMessage());
+							}
+						});
+
 						LayeredAppUtil.logErrorMessage(e.getMessage(), e);
 						return Status.CANCEL_STATUS;
 					}
@@ -238,8 +258,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler{
 			job.schedule(0);
 		}
 	}
-	
-	
+
 	/**
 	 * Validates the main file
 	 * 

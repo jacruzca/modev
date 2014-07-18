@@ -2,13 +2,14 @@ package co.edu.unal.modev.generator.nodejs.document
 
 import co.edu.unal.modev.common.ConfigCommon
 import co.edu.unal.modev.common.TemplateExtensions
+import co.edu.unal.modev.document.documentDsl.CompoundIndex
 import co.edu.unal.modev.document.documentDsl.Document
 import co.edu.unal.modev.document.documentDsl.DocumentProperty
 import co.edu.unal.modev.document.documentDsl.DocumentsModule
+import co.edu.unal.modev.document.documentDsl.ORDER_TYPE
+import co.edu.unal.modev.document.documentDsl.SimpleTypes
 import co.edu.unal.modev.generator.nodejs.document.util.DocumentUtil
 import javax.inject.Inject
-import co.edu.unal.modev.document.documentDsl.CompoundIndex
-import co.edu.unal.modev.document.documentDsl.ORDER_TYPE
 
 class GenerateDocumentTemplate {
 
@@ -138,7 +139,11 @@ class GenerateDocumentTemplate {
 		} else if(propertyAbstractType.ref != null) {
 			type = "Schema.ObjectId, ref: '" + propertyAbstractType.ref.ref.name + "'"
 		} else if(propertyAbstractType.simple != null) {
-			type = propertyAbstractType.simple.literal
+			if(propertyAbstractType.simple.equals(SimpleTypes.MIXED)){
+				type = "Schema.Types.Mixed";
+			}else{
+				type = propertyAbstractType.simple.literal	
+			}
 		}
 
 		type

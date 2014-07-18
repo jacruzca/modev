@@ -41,8 +41,7 @@ Config:
 	
 Environment:
 	'basePath' basePath = STRING
-	'serverPort' serverPort=INT
-	'webPort' webPort=INT
+	'port' serverPort=INT
 	("dbConfig" dbConfig=[dbConfig::DatabaseConfiguration|ID])?
 	("mongoConfig" mongoConfig=[mongoConfig::MongoConfiguration|ID])?	
 ;
@@ -77,7 +76,7 @@ BusinessLayer:
 			businessModules+=[business::BusinessModule|ID]*
 		'}'
 		'dto' '{'
-			dtosModules+=[dto::DtosModule|ID]
+			dtosModules+=[dto::DtosModule|ID]*
 		'}'
 	"}";
 
