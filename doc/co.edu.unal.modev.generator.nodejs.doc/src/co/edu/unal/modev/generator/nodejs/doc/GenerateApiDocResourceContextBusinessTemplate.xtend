@@ -98,7 +98,7 @@ class GenerateApiDocResourceContextBusinessTemplate {
 					«ENDFOR»
 				],
 				models: {
-					«FOR dtoModule : app.businessLayer.dtosModules»
+					«FOR dtoModule : app.businessLayer.dtosModules SEPARATOR ","»
 						//the DTO module «dtoModule.name»
 						«FOR dto : dtoModule.dtos SEPARATOR ","»
 							//the specification of the DTO «dto.name»

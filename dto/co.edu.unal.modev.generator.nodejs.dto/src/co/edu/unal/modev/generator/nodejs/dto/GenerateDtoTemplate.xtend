@@ -4,11 +4,10 @@ import co.edu.unal.modev.common.ConfigCommon
 import co.edu.unal.modev.common.TemplateExtensions
 import co.edu.unal.modev.dto.dtoDsl.Dto
 import co.edu.unal.modev.dto.dtoDsl.DtosModule
-import co.edu.unal.modev.dtoFromDocument.dtoFromDocumentDsl.DocumentMapper
 import co.edu.unal.modev.generator.nodejs.dto.exception.DtosModuleNotFoundException
 import javax.inject.Inject
 
-class GenerateDtoFromDocumentTemplate {
+class GenerateDtoTemplate {
 
 	@Inject extension TemplateExtensions
 
@@ -20,7 +19,6 @@ class GenerateDtoFromDocumentTemplate {
 		 */
 		
 		«startJavaProtectedRegion(getUniqueId("init", dto, config))»
-		«var document = dto.documentFromDto»
 		var logger = require("../../../config/logger");
 		«endJavaProtectedRegion»
 		
@@ -29,30 +27,17 @@ class GenerateDtoFromDocumentTemplate {
 		«ENDFOR»
 		
 		module.exports.build = function (input) {
-
-			«IF document != null»
-
-				var «document.name»Rep = {
+		
+				var «dto.name»Rep = {
 					«FOR attribute : dto.attributes SEPARATOR ","»
-						«IF document.properties.filter(e|e.name.equals(attribute.name)).size > 0»
-							«attribute.name» : input.«attribute.name»
-						«ELSE»
-							«IF attribute.name.equals("_id")»
-							«attribute.name» : input._id
-							«ELSE»
-							«attribute.name» : {}
-							«ENDIF»
-						«ENDIF»
+						«attribute.name» : input.«attribute.name»
 					«ENDFOR»
 				};
-
+		
 				«startJavaProtectedRegion(getUniqueId("customBuild", dto, config))»
 				«endJavaProtectedRegion»
-
-				return «document.name»Rep;
-			«ELSE»
-				return input;
-			«ENDIF»
+		
+				return «dto.name»Rep;
 		};
 		
 		«startJavaProtectedRegion(getUniqueId("additionalBuildMethods", dto, config))»
@@ -66,7 +51,7 @@ class GenerateDtoFromDocumentTemplate {
 		            var builtInput = module.exports.build(inputList[i]);
 		            arrayResult.push(builtInput);
 		        }
-
+		
 		        «startJavaProtectedRegion(getUniqueId("customBuildList", dto, config))»
 				«endJavaProtectedRegion»
 		
@@ -80,16 +65,6 @@ class GenerateDtoFromDocumentTemplate {
 		«startJavaProtectedRegion(getUniqueId("additionalBuildListMethods", dto, config))»
 		«endJavaProtectedRegion»
 	'''
-
-	private def getDocumentFromDto(Dto dto) {
-		if(dto.belongsTo != null && dto.belongsTo instanceof DocumentMapper) {
-			var documentMapper = dto.belongsTo as DocumentMapper
-
-			return documentMapper.document
-		}
-
-		return null;
-	}
 
 	/**
 	 * finds the module of a document. 

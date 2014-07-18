@@ -76,7 +76,9 @@ class GenerateBusinessTemplate {
 		var res = "";
 		try {
 			var route = operation.getRouteForBusinessOperation(resource)
-
+			
+			var totalBodyParams = route.parameters.filter(r | r.httpType.equals(HTTP_TYPE.BODY)).size
+			
 			for (param : route.parameters) {
 				switch param.httpType {
 					case HTTP_TYPE.NAMED:
@@ -84,9 +86,16 @@ class GenerateBusinessTemplate {
 						var «param.param.name» = req.params.«param.param.name»;
 						'''
 					case HTTP_TYPE.BODY:
-						res = res + '''
-						var «param.param.name» = req.body;
-						'''
+						if(totalBodyParams > 1){
+							res = res + '''
+							var «param.param.name» = req.body.«param.param.name»;
+							'''	
+						}else{
+							res = res + '''
+							var «param.param.name» = req.body;
+							'''
+						}
+						
 					case HTTP_TYPE.QUERY:
 						res = res + '''
 						var «param.param.name» = req.query.«param.param.name»;
