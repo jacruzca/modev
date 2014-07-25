@@ -27,7 +27,8 @@ class GeneratePackageJsonTemplate {
 		        "randomstring": "1.0.3",
 		        "crypto": "0.0.3",
 		        "amqplib": "v0.2.0",
-		        "when": "3.2.3"
+		        "when": "3.2.3",
+		        "csv": "0.3.6"
 		    },
 		    "devDependencies": {
 		        "chai": "~1.9.1",

@@ -25,7 +25,7 @@ class GenerateDtoFromDocumentTemplate {
 		«endJavaProtectedRegion»
 		
 		«FOR attribute : dto.attributes.filter(e|e.type.dtoType != null)»
-			var «attribute.type.dtoType.name.toFirstLower» = require('./«attribute.type.dtoType.name»');
+			var «attribute.type.dtoType.name.toFirstLower» = require('../«attribute.type.dtoType.dtoModule.name»/«attribute.type.dtoType.name»');
 		«ENDFOR»
 		
 		module.exports.build = function (input) {
