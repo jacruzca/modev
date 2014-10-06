@@ -32,39 +32,16 @@ class GenerateDocumentTemplate {
 		«endJavaProtectedRegion»
 		
 		«FOR inlineProperty : document.properties.filter(prop|prop.type.inline != null)»
-			«var inlineDocument = inlineProperty.type.inline»
-			/**
-			 * «inlineDocument.name» - SubDoc
-			 */
-			var «inlineDocument.schemaName» = {
+		
+			«IF inlineProperty.type.inline != null»
 
-				«FOR property : inlineDocument.properties SEPARATOR ","»
-					«IF property.type.inline != null»
-						«IF property.many»
-							«property.name» : [«property.propertyType»]
-						«ELSE»
-							«property.name» : «property.propertyType»
-						«ENDIF»
-					«ELSE»
-						«IF property.many»
-							«property.name» : [{
-						«ELSE»
-							«property.name» : {
-						«ENDIF»
-								type: «property.propertyType»
-						«IF property.defaultValue != null && !property.defaultValue.trim.empty»
-							, default: «property.defaultValue»
-						«ENDIF»
-						«IF property.unique»
-							, unique: true
-						«ENDIF»
-						«IF property.required»
-							, required: true
-						«ENDIF»
-						}
-					«ENDIF»
+				«FOR inlineSubProperty: inlineProperty.type.inline.properties.filter(prop | prop.type.inline != null)»
+					«printSubdocument(inlineSubProperty)»
 				«ENDFOR»
-			};
+
+			«ENDIF»
+		
+			«printSubdocument(inlineProperty)»
 		«ENDFOR»
 		
 		/**
@@ -124,6 +101,45 @@ class GenerateDocumentTemplate {
 
 		res
 	}
+	
+	private def printSubdocument(DocumentProperty inlineProperty)'''
+			«var inlineDocument = inlineProperty.type.inline»
+			/**
+			 * «inlineDocument.name» - SubDoc
+			 */
+			var «inlineDocument.schemaName» = {
+
+				«FOR property : inlineDocument.properties SEPARATOR ","»
+					«IF property.type.inline != null»
+						«IF property.many»
+							«property.name» : [«property.propertyType»]
+						«ELSE»
+							«property.name» : «property.propertyType»
+						«ENDIF»
+					«ELSE»
+						«IF property.many»
+							«property.name» : [{
+						«ELSE»
+							«property.name» : {
+						«ENDIF»
+								type: «property.propertyType»
+						«IF property.defaultValue != null && !property.defaultValue.trim.empty»
+							, default: «property.defaultValue»
+						«ENDIF»
+						«IF property.unique»
+							, unique: true
+						«ENDIF»
+						«IF property.required»
+							, required: true
+						«ENDIF»
+						}
+						«IF property.many»
+						]
+						«ENDIF»
+					«ENDIF»
+				«ENDFOR»
+			};
+	'''
 
 	private def getSchemaName(Document document) {
 		document.name + "Schema"

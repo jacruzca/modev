@@ -2,11 +2,12 @@ package co.edu.unal.modev.generator.nodejs.layeredApp.structure
 
 import co.edu.unal.modev.generator.nodejs.layeredApp.config.GenerateConfig
 import co.edu.unal.modev.generator.nodejs.layeredApp.util.LayeredAppUtil
+import co.edu.unal.modev.generator.nodejs.layeredApp.util.LocationsUtil
 import co.edu.unal.modev.layeredApp.layeredAppDsl.App
 import com.google.inject.Inject
+import java.io.File
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
-import co.edu.unal.modev.generator.nodejs.layeredApp.util.LocationsUtil
 
 class GenerateProjectStructure {
 	
@@ -21,11 +22,21 @@ class GenerateProjectStructure {
 		
 		var app = resource.app as App;
 		
-		//generate server.js
-		fsa.generateFile(serverJsLocation, generateServerJsTemplate.generate(resource, app.config.configCommon))
+		var projectName = app.config.projectConfig.projectName
 		
+		//generate server.js
+		fsa.generateFile(projectName.serverJsLocation, generateServerJsTemplate.generate(resource, app.config.configCommon))
+		
+		//get object which represents the workspace  
+		var currentPackagaeJsonURI = fsa.getURI(packageJsonLocation);  
+		System::out.println("************** "+currentPackagaeJsonURI);
+		System::out.println("************** "+currentPackagaeJsonURI);
+		var previousFile = new File(currentPackagaeJsonURI.path);
+		if(!previousFile.exists){
+			fsa.generateFile(packageJsonLocation, generatePackageJsonTemplate.generate(app.config))	
+		}
 		//generate package.json
-		fsa.generateFile(packageJsonLocation, generatePackageJsonTemplate.generate(app.config))
+		
 		
 		//generate config folder
 		generateConfig.generate(resource, fsa)

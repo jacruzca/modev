@@ -43,8 +43,8 @@ class LocationsUtil {
 		return serverLocation + "package" + JSON_EXTENSION
 	}
 
-	def getServerJsLocation() {
-		return serverLocation + "server" + JS_EXTENSION
+	def getServerJsLocation(String projectName) {
+		return serverLocation + projectName + JS_EXTENSION
 	}
 
 	def getAppLocation() {
