@@ -150,10 +150,6 @@ class GenerateConfigJsTemplate {
 				return "postgres"
 			case DIALECT.SQLITE:
 				return "sqlite"
-			case DIALECT.MARIADB:
-				return "mariadb"
-			case DIALECT.MARIADB:
-				return "mariadb"
 			default:
 				return "mysql"
 		}

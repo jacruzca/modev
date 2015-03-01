@@ -25,7 +25,8 @@ class GenerateLoggerJsTemplate {
 	  transports: [
 	    new (winston.transports.Console)({
 	      colorize: true,
-	      level: level
+	      level: level,
+	      timestamp: true
 	    })
 	    //new (winston.transports.File)({ filename: 'logs/log.log', level: level })
 	  ],
