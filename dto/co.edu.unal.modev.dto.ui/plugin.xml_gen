@@ -250,7 +250,9 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="co.edu.unal.modev.dto.ui.DtoDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="co.edu.unal.modev.dto.ui.DtoDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="abstractDto"
+            >
       </participant>
    </extension>
    <extension

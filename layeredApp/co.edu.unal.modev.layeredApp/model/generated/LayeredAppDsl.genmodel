@@ -4,7 +4,7 @@
     editorDirectory="/co.edu.unal.modev.layeredApp.editor/src" modelPluginID="co.edu.unal.modev.layeredApp"
     forceOverwrite="true" modelName="LayeredAppDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.layeredApp.edit"
-    editorPluginID="co.edu.unal.modev.layeredApp.editor" runtimeVersion="2.9" usedGenPackages="../../../co.edu.unal.modev.business/model/generated/BusinessDsl.genmodel#//businessDsl ../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.genmodel#//dbConfigDsl ../../../co.edu.unal.modev.document/model/generated/DocumentDsl.genmodel#//documentDsl ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.genmodel#//dtoDsl ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel#//entityDsl ../../../co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.genmodel#//mongoConfigDsl ../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.genmodel#//repositoryDsl ../../../co.edu.unal.modev.route/model/generated/RouteDsl.genmodel#//routeDsl">
+    editorPluginID="co.edu.unal.modev.layeredApp.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/co.edu.unal.modev.business/model/generated/BusinessDsl.genmodel#//businessDsl platform:/resource/co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.genmodel#//dbConfigDsl platform:/resource/co.edu.unal.modev.document/model/generated/DocumentDsl.genmodel#//documentDsl platform:/resource/co.edu.unal.modev.dto/model/generated/DtoDsl.genmodel#//dtoDsl platform:/resource/co.edu.unal.modev.entity/model/generated/EntityDsl.genmodel#//entityDsl platform:/resource/co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.genmodel#//mongoConfigDsl platform:/resource/co.edu.unal.modev.repository/model/generated/RepositoryDsl.genmodel#//repositoryDsl platform:/resource/co.edu.unal.modev.route/model/generated/RouteDsl.genmodel#//routeDsl">
   <genPackages prefix="LayeredAppDsl" basePackage="co.edu.unal.modev.layeredApp" disposableProviderFactory="true"
       fileExtensions="layeredApp" ecorePackage="LayeredAppDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="LayeredAppDsl.ecore#//TECHNOLOGY">
@@ -32,8 +32,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Config/production"/>
     </genClasses>
     <genClasses ecoreClass="LayeredAppDsl.ecore#//Environment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/basePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/host"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/serverPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//Environment/basePath"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Environment/dbConfig"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LayeredAppDsl.ecore#//Environment/mongoConfig"/>
     </genClasses>
@@ -46,6 +47,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/projectLocation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/packageName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/applicationVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/apiVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/contactEmail"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/termsOfService"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/licenseName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//ProjectConfig/licenseURL"/>
     </genClasses>
     <genClasses ecoreClass="LayeredAppDsl.ecore#//PersistenceLayer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LayeredAppDsl.ecore#//PersistenceLayer/name"/>

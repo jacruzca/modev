@@ -12,7 +12,7 @@ class GenerateExpressJsTemplate {
 		«startJavaProtectedRegion(getUniqueId("init", configCommon))»
 		
 		var express = require('express');
-		var logger = require("./logger");
+		var logger = console;
 		// Load configurations according to the selected environment
 		var env = process.env.NODE_ENV || 'development';
 		var config = require('./config')[env];

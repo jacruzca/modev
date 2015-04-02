@@ -23,7 +23,7 @@ class GenerateDocumentTemplate {
 		 */
 
 		«startJavaProtectedRegion(getUniqueId("init", document, config))»
-		var logger = require("../../../config/logger");
+		var logger = console;
 		
 		var mongoose = require('mongoose'),
 		Schema = mongoose.Schema;

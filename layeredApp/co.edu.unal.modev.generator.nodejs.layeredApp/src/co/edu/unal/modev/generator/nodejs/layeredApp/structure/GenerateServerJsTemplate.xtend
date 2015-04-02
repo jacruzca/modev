@@ -19,7 +19,7 @@ class GenerateServerJsTemplate {
 		var passport = require('passport');
 		
 		//logging config
-		var logger = require('./config/logger');
+		var logger = console;
 		
 		// Load configurations according to the selected environment
 		var env = process.env.NODE_ENV || 'development';

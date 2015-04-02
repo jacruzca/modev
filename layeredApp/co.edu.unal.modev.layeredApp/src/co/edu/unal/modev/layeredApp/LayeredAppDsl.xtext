@@ -40,8 +40,9 @@ Config:
 	"}";
 	
 Environment:
-	'basePath' basePath = STRING
+	'host' host=STRING
 	'port' serverPort=INT
+	'basePath' basePath = STRING
 	("dbConfig" dbConfig=[dbConfig::DatabaseConfiguration|ID])?
 	("mongoConfig" mongoConfig=[mongoConfig::MongoConfiguration|ID])?	
 ;
@@ -55,6 +56,11 @@ ProjectConfig:
 		'projectLocation' projectLocation=STRING
 		'packageName' packageName=STRING
 		'applicationVersion' applicationVersion=STRING
+		'apiVersion' apiVersion=STRING
+		'contactEmail' contactEmail=STRING
+		'termsOfService' termsOfService=STRING
+		'licenseName' licenseName=STRING
+		'licenseURL' licenseURL=STRING
 	"}";
 
 PersistenceLayer:

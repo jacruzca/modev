@@ -21,7 +21,7 @@ class GenerateRelationalRepositoryTemplate {
 		 * This module represents a repository for the table «repository.entity.name»
 		 */
 		
-		var logger = require("../../../config/logger");
+		var logger = console;
 		
 		«endJavaProtectedRegion»
 		

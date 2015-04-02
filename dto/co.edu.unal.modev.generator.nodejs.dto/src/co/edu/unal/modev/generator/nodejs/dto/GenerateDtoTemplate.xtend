@@ -19,7 +19,7 @@ class GenerateDtoTemplate {
 		 */
 		
 		«startJavaProtectedRegion(getUniqueId("init", dto, config))»
-		var logger = require("../../../config/logger");
+		var logger = console;
 		«endJavaProtectedRegion»
 		
 		«FOR attribute : dto.attributes.filter(e|e.type.dtoType != null)»

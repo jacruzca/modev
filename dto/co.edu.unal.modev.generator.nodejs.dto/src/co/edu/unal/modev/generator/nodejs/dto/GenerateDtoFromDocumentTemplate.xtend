@@ -21,7 +21,7 @@ class GenerateDtoFromDocumentTemplate {
 		
 		«startJavaProtectedRegion(getUniqueId("init", dto, config))»
 		«var document = dto.documentFromDto»
-		var logger = require("../../../config/logger");
+		var logger = console;
 		«endJavaProtectedRegion»
 		
 		«FOR attribute : dto.attributes.filter(e|e.type.dtoType != null)»
@@ -59,6 +59,7 @@ class GenerateDtoFromDocumentTemplate {
 		«endJavaProtectedRegion»
 		
 		module.exports.buildList = function (inputList) {
+			
 		    if (Array.isArray(inputList)) {
 		        var arrayResult = [];
 		

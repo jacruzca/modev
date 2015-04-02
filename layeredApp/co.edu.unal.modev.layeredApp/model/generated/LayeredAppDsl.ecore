@@ -26,10 +26,11 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Environment">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" eType="ecore:EClass ../../../co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mongoConfig" eType="ecore:EClass ../../../co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.ecore#//MongoConfiguration"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" eType="ecore:EClass platform:/resource/co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mongoConfig" eType="ecore:EClass platform:/resource/co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.ecore#//MongoConfiguration"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectConfig">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -40,27 +41,32 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectLocation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apiVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contactEmail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="termsOfService" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="licenseName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="licenseURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PersistenceLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="documentModules" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.document/model/generated/DocumentDsl.ecore#//DocumentsModule"/>
+        upperBound="-1" eType="ecore:EClass platform:/resource/co.edu.unal.modev.document/model/generated/DocumentDsl.ecore#//DocumentsModule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityModules" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//EntitiesModule"/>
+        upperBound="-1" eType="ecore:EClass platform:/resource/co.edu.unal.modev.entity/model/generated/EntityDsl.ecore#//EntitiesModule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryModules" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//RepositoriesModule"/>
+        upperBound="-1" eType="ecore:EClass platform:/resource/co.edu.unal.modev.repository/model/generated/RepositoryDsl.ecore#//RepositoriesModule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="businessModules" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessModule"/>
+        upperBound="-1" eType="ecore:EClass platform:/resource/co.edu.unal.modev.business/model/generated/BusinessDsl.ecore#//BusinessModule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dtosModules" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.ecore#//DtosModule"/>
+        upperBound="-1" eType="ecore:EClass platform:/resource/co.edu.unal.modev.dto/model/generated/DtoDsl.ecore#//DtosModule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RouteLayer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="routesModules" unique="false"
-        upperBound="-1" eType="ecore:EClass ../../../co.edu.unal.modev.route/model/generated/RouteDsl.ecore#//RoutesModule"/>
+        upperBound="-1" eType="ecore:EClass platform:/resource/co.edu.unal.modev.route/model/generated/RouteDsl.ecore#//RoutesModule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TECHNOLOGY">
     <eLiterals name="NODEJS" literal="NodeJS"/>

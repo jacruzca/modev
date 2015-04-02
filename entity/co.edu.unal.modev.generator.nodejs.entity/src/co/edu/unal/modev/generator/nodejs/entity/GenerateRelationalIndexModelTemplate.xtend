@@ -19,7 +19,7 @@ class GenerateRelationalIndexModelTemplate {
 		
 		«startJavaProtectedRegion(getUniqueId("init", config))»
 		var Sequelize = require('sequelize');
-		var logger = require("../../config/logger");
+		var logger = console;
 		
 		var env = process.env.NODE_ENV || 'development';
 		

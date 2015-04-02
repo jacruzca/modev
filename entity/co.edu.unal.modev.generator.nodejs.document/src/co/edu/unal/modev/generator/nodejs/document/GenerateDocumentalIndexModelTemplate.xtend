@@ -16,7 +16,7 @@ class GenerateDocumentalIndexModelTemplate {
 		
 		«startJavaProtectedRegion(getUniqueId("init", config))»
 		var mongoose = require('mongoose');
-		var logger = require("../../config/logger");
+		var logger = console;
 		
 		var env = process.env.NODE_ENV || 'development';
 		var config = require('../../config/config')[env];

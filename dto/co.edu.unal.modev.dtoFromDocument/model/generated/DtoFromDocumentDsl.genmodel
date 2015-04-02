@@ -4,8 +4,8 @@
     editorDirectory="/co.edu.unal.modev.dtoFromDocument.editor/src" modelPluginID="co.edu.unal.modev.dtoFromDocument"
     forceOverwrite="true" modelName="DtoFromDocumentDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.dtoFromDocument.edit"
-    editorPluginID="co.edu.unal.modev.dtoFromDocument.editor" runtimeVersion="2.9"
-    usedGenPackages="../../../co.edu.unal.modev.document/model/generated/DocumentDsl.genmodel#//documentDsl ../../../co.edu.unal.modev.dto/model/generated/DtoDsl.genmodel#//dtoDsl">
+    editorPluginID="co.edu.unal.modev.dtoFromDocument.editor" runtimeVersion="2.10"
+    usedGenPackages="platform:/resource/co.edu.unal.modev.document/model/generated/DocumentDsl.genmodel#//documentDsl platform:/resource/co.edu.unal.modev.dto/model/generated/DtoDsl.genmodel#//dtoDsl">
   <genPackages prefix="DtoFromDocumentDsl" basePackage="co.edu.unal.modev.dtoFromDocument"
       disposableProviderFactory="true" fileExtensions="dtoFromDocument" ecorePackage="DtoFromDocumentDsl.ecore#/">
     <genClasses ecoreClass="DtoFromDocumentDsl.ecore#//DocumentMapper">

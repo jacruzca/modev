@@ -17,7 +17,7 @@ class GenerateBusinessTestTemplate {
 	def generate(Business business, Resource resource, ConfigCommon config) '''
 		«startJavaProtectedRegion(getUniqueId("init", business, config))»
 		
-		var logger = require("../../../../config/logger");
+		var logger = console;
 		var rewire = require("rewire");
 		var Promise = require('mpromise');
 		

@@ -27,7 +27,7 @@ class GenerateDocumentalRepositoryTemplate {
 		*/
 		«startJavaProtectedRegion(getUniqueId("init", repository, configCommon))»
 		
-		var logger = require("../../../config/logger");
+		var logger = console;
 		var mongoose = require('mongoose');
 		
 		«endJavaProtectedRegion»

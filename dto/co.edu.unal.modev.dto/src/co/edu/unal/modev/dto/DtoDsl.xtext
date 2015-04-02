@@ -19,7 +19,7 @@ AbstractEntityMap:
 	{AbstractEntity} "not mapped";
 
 DtoAttribute:
-	name=ID ('type' type=DtoType (many?='*')?)?
+	name=ID (type=DtoType (many?='*')?)?
 ;
 
 DtoType:

@@ -17,7 +17,7 @@ class GenerateDocumentalRepositoryTestTemplate {
 
 	def generate(Repository repository, ConfigCommon configCommon) '''
 		«startJavaProtectedRegion(getUniqueId("init", repository, configCommon))»
-		var logger = require("../../../../config/logger");
+		var logger = console;
 		var mongoose = require('mongoose');
 		var Q = require("q");
 		var env = process.env.NODE_ENV || 'test';

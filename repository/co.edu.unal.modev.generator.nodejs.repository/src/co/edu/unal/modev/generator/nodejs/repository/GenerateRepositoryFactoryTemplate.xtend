@@ -20,7 +20,7 @@ class GenerateRepositoryFactoryTemplate {
 			 */
 		
 			«startJavaProtectedRegion(getUniqueId("init", configCommon))»
-			var logger = require("../../config/logger");
+			var logger = console;
 			var appReference = null;
 			
 			«endJavaProtectedRegion»

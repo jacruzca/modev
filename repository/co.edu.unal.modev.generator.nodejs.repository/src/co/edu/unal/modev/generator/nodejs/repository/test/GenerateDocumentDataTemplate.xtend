@@ -18,7 +18,7 @@ class GenerateDocumentDataTemplate {
 	def generate(Repository repository, ConfigCommon configCommon) '''
 		«startJavaProtectedRegion(getUniqueId("init", repository, configCommon))»
 		«var document = repository.document as Document»
-		var logger = require("../../../../../config/logger");
+		var logger = console;
 		«endJavaProtectedRegion»
 		
 		module.exports.generate = function (id) {

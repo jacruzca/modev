@@ -4,7 +4,7 @@
     editorDirectory="/co.edu.unal.modev.dto.editor/src" modelPluginID="co.edu.unal.modev.dto"
     forceOverwrite="true" modelName="DtoDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.dto.edit"
-    editorPluginID="co.edu.unal.modev.dto.editor" runtimeVersion="2.9">
+    editorPluginID="co.edu.unal.modev.dto.editor" runtimeVersion="2.10">
   <genPackages prefix="DtoDsl" basePackage="co.edu.unal.modev.dto" disposableProviderFactory="true"
       fileExtensions="abstractDto" ecorePackage="DtoDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="DtoDsl.ecore#//SimpleDtoTypes">

@@ -250,7 +250,9 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="co.edu.unal.modev.layeredApp.ui.LayeredAppDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="co.edu.unal.modev.layeredApp.ui.LayeredAppDslExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+            fileExtensions="layeredApp"
+            >
       </participant>
    </extension>
    <extension

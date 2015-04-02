@@ -16,7 +16,7 @@ class GenerateEntityTemplate {
 	def generate(Entity entity) '''
 		«var module = entity.entityModule»
 		«/*startJavaProtectedRegion(module.name)*/»
-		var logger = require("../../../config/logger");
+		var logger = console;
 		
 		module.exports = function(sequelize, DataTypes) {
 			
