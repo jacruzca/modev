@@ -45,13 +45,13 @@ class GenerateBusinessLayer {
 		//generate APIDocBusiness.js
 		fsa.generateFile(app.apiDocBusinessLocation, generateApiDocBusinessTemplate.generate(app, app.config.configCommon))
 
-		//generate for each resource context
-		for (routeModule : app.routeLayer.routesModules) {
-			for (resContext : routeModule.resourcesContext) {
-				fsa.generateFile(routeModule.resourceApiDocBusinessLocation(resContext),
-					generateApiDocResourceContextBusinessTemplate.generate(app, resContext, app.config.configCommon))
-			}
-		}
+//		//generate for each resource context
+//		for (routeModule : app.routeLayer.routesModules) {
+//			for (resContext : routeModule.resourcesContext) {
+//				fsa.generateFile(routeModule.resourceApiDocBusinessLocation(resContext),
+//					generateApiDocResourceContextBusinessTemplate.generate(app, resContext, app.config.configCommon))
+//			}
+//		}
 
 	}
 

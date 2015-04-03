@@ -25,13 +25,11 @@ class GenerateRoutesIndexJsTemplate {
 		
 		var apiDocBusiness = require('../business/api-doc/APIDocBusiness');
 		
-		«FOR routeModule: routesModules»
-				«FOR resContext: routeModule.resourcesContext»
-					var «resContext.name»ResourceBusiness = require('../business/api-doc/«routeModule.name»/«resContext.name.toFirstUpper»APIDocBusiness');
-				«ENDFOR»
-		«ENDFOR»
-		
-		
+«««		«FOR routeModule: routesModules»
+«««				«FOR resContext: routeModule.resourcesContext»
+«««					var «resContext.name»ResourceBusiness = require('../business/api-doc/«routeModule.name»/«resContext.name.toFirstUpper»APIDocBusiness');
+«««				«ENDFOR»
+«««		«ENDFOR»
 		
 		/**
 		 * Main function to bootstrap all routes of this app
@@ -64,12 +62,12 @@ class GenerateRoutesIndexJsTemplate {
 			//routes for the api-doc
 			app.get('/api-docs', apiDocBusiness.apiDoc);
 			
-			«FOR routeModule: routesModules»
-				«FOR resContext: routeModule.resourcesContext»
-					//routes for the «resContext.name» resource context
-					app.get('/api-docs«resContext.basePath»', «resContext.name»ResourceBusiness.apiDoc);
-				«ENDFOR»
-			«ENDFOR»
+«««			«FOR routeModule: routesModules»
+«««				«FOR resContext: routeModule.resourcesContext»
+«««					//routes for the «resContext.name» resource context
+«««					app.get('/api-docs«resContext.basePath»', «resContext.name»ResourceBusiness.apiDoc);
+«««				«ENDFOR»
+«««			«ENDFOR»
 	
 			«startJavaProtectedRegion(getUniqueId("additionalRoutes", configCommon))»
 			«endJavaProtectedRegion»

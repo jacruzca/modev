@@ -13,7 +13,6 @@ import co.edu.unal.modev.layeredApp.layeredAppDsl.App
 import co.edu.unal.modev.layeredApp.layeredAppDsl.Config
 import co.edu.unal.modev.layeredApp.layeredAppDsl.ENVIRONMENT_LIST
 import co.edu.unal.modev.route.routeDsl.HTTP_TYPE
-import co.edu.unal.modev.route.routeDsl.ResourcesContext
 import co.edu.unal.modev.route.routeDsl.Route
 import com.google.inject.Inject
 
@@ -94,70 +93,70 @@ class GenerateApiDocBusinessTemplate {
 					«FOR routeModule : app.routeLayer.routesModules SEPARATOR ","»
 						// documentation for the module «routeModule.name»
 						«FOR resContext : routeModule.resourcesContext SEPARATOR ","»
+							'«resContext.basePath»': {
 							«FOR route : resContext.routes SEPARATOR ","»
-								'«route.uri»': {
-									'«route.httpVerb.toString.toLowerCase»': {
-										tags: [
-											'«resContext.name»'
-										],
-										//a brief description of the operation
-										summary: "«route.operation.description»",
-										description: "«route.operation.description»",
-										operationId: "«route.operation.name»",
-										consumes: [
-											"application/json"
-										],
-										produces: [
-											"application/json"
-										],
-										//the list of parameters the operation is accepting
-										parameters: [
-										«FOR param : route.operation.parameters SEPARATOR ","»
-											//documentation for the parameter «param.name»
-											{
-												//the type according to the HTTP protocol (e.g. body, query)
-												in: '«route.getRouteParam(param).httpType.mapHttpType»',
-												name: '«param.name»',
-												description: '«param.description»',
-												//if the parameter is mandatory or not
-												required: «IF param.required»true«ELSE»false«ENDIF»,
-												«IF route.getRouteParam(param).httpType.equals(HTTP_TYPE.BODY)»
-												//the data type of the parameter
-												schema: {
-													"$ref": "#/definitions/«param.mapOperationParamType»"
-												},
-												«ELSE»
-												//the data type of the parameter
-												type: '«param.mapOperationParamType»'
+								'«route.httpVerb.toString.toLowerCase»': {
+									tags: [
+										'«resContext.name»'
+									],
+									//a brief description of the operation
+									summary: "«route.operation.description»",
+									description: "«route.operation.description»",
+									operationId: "«route.operation.name»",
+									consumes: [
+										"application/json"
+									],
+									produces: [
+										"application/json"
+									],
+									//the list of parameters the operation is accepting
+									parameters: [
+									«FOR param : route.operation.parameters SEPARATOR ","»
+										//documentation for the parameter «param.name»
+										{
+											//the type according to the HTTP protocol (e.g. body, query)
+											in: '«route.getRouteParam(param).httpType.mapHttpType»',
+											name: '«param.name»',
+											description: '«param.description»',
+											//if the parameter is mandatory or not
+											required: «IF param.required»true«ELSE»false«ENDIF»,
+											«IF route.getRouteParam(param).httpType.equals(HTTP_TYPE.BODY)»
+											//the data type of the parameter
+											schema: {
+												"$ref": "#/definitions/«param.mapOperationParamType»"
+											},
+											«ELSE»
+											//the data type of the parameter
+											type: '«param.mapOperationParamType»'
+											«ENDIF»
+										}
+									«ENDFOR»
+									],
+									//the corresponding response messages for this operation
+									responses: {
+										«FOR response : route.responseMessages SEPARATOR ","»
+											'«response.code»': {
+												description: '«response.message»',
+												«IF response.code >= 200 && response.code <=299»
+													«IF route.operation.many»
+													schema: {
+														type: 'array',
+														items: {
+															'$ref': "#/definitions/«route.operation.mapReturnType»"
+														}
+													}
+													«ELSE»
+													schema: {
+														'$ref': "#/definitions/«route.operation.mapReturnType»"
+													}
+													«ENDIF»
 												«ENDIF»
 											}
 										«ENDFOR»
-										],
-										//the corresponding response messages for this operation
-										responses: {
-											«FOR response : route.responseMessages SEPARATOR ","»
-												'«response.code»': {
-													description: '«response.message»',
-													«IF response.code >= 200 && response.code <=299»
-														«IF route.operation.many»
-														schema: {
-															type: 'array',
-															items: {
-																'$ref': "#/definitions/«route.operation.mapReturnType»"
-															}
-														}
-														«ELSE»
-														schema: {
-															'$ref': "#/definitions/«route.operation.mapReturnType»"
-														}
-														«ENDIF»
-													«ENDIF»
-												}
-											«ENDFOR»
-										}
 									}
 								}
 							«ENDFOR»
+							}
 						«ENDFOR»
 					«ENDFOR»
 				}
