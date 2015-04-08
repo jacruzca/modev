@@ -38,7 +38,7 @@ class GenerateBusinessTemplate {
 			/**
 			 * «operation.description»
 			«FOR param : operation.parameters»	
-				* @param {«param.mapOperationParamType»} (HTTP Type: «operation.getMatchingRouteParam(param, resource).httpType.getName») «param.name» «param.description»
+				* @param {«param.mapOperationParamType»} «param.name» -HTTP Type: «operation.getMatchingRouteParam(param, resource).httpType.getName»- «param.description»
 			«ENDFOR»
 			«IF operation.returnType != null»
 				* @returns {«operation.mapReturnType»} 
