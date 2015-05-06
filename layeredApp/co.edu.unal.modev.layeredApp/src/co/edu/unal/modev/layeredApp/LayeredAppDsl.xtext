@@ -42,6 +42,7 @@ Config:
 Environment:
 	'host' host=STRING
 	'port' serverPort=INT
+	'inverse-port' inversePort=INT
 	'basePath' basePath = STRING
 	("dbConfig" dbConfig=[dbConfig::DatabaseConfiguration|ID])?
 	("mongoConfig" mongoConfig=[mongoConfig::MongoConfiguration|ID])?	

@@ -47,7 +47,9 @@ class GenerateConfigJsTemplate {
 		  	 	
 				app: {
 					name: '«config.projectConfig.projectName»',
+					host: '«config.development.host»',
 					port: «config.development.serverPort»,
+					inversePort: «config.development.inversePort»,
 					tokenExpiration: 3600000*2
 				}
 			},
@@ -70,7 +72,9 @@ class GenerateConfigJsTemplate {
 			 	«ENDIF»
 				app: {
 					name: '«config.projectConfig.projectName»',
+					host: '«config.test.host»',
 					port: «config.test.serverPort»,
+					inversePort: «config.test.inversePort»,
 					tokenExpiration: 3600000*2
 				}
 			},
@@ -102,7 +106,9 @@ class GenerateConfigJsTemplate {
 		  	 	
 				app: {
 					name: '«config.projectConfig.projectName»',
+					host: '«config.qa.host»',
 					port: «config.qa.serverPort»,
+					inversePort: «config.qa.inversePort»,
 					tokenExpiration: 3600000*2
 				}
 			},
@@ -133,7 +139,9 @@ class GenerateConfigJsTemplate {
 			«ENDIF»
 				app: {
 					name: '«config.projectConfig.projectName»',
+					host: '«config.production.host»',
 					port: «config.production.serverPort»,
+					inversePort: «config.production.inversePort»,
 					tokenExpiration: 3600000*2
 				}
 			}

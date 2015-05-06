@@ -26,6 +26,11 @@ class GenerateApiDocBusinessTemplate {
 		 * @module business/api-doc/APIDocBusiness
 		 * @see https://github.com/wordnik/swagger-spec
 		 */
+		 
+		«startJavaProtectedRegion(getUniqueId("init", configCommon))»
+		var env = process.env.NODE_ENV || 'development';
+		var config = require('../../../config/config')[env];
+		«endJavaProtectedRegion»
 		
 		/**
 		 * the apiDoc method export a json object containing the documentation
@@ -49,7 +54,7 @@ class GenerateApiDocBusinessTemplate {
 						"url": '«app.config.projectConfig.licenseURL»'
 					}
 				},
-				host: '«app.config.getHost(app.config.projectConfig.environment)»:«app.config.getPort(app.config.projectConfig.environment)»',
+				host: config.app.host + ':' + config.app.inversePort,
 				basePath: '«app.config.getBasePath(app.config.projectConfig.environment)»',
 				schemes: [
 					'http'
@@ -80,7 +85,12 @@ class GenerateApiDocBusinessTemplate {
 											«IF attribute.type.dtoType != null»
 											"$ref": "#/definitions/«attribute.dtoAttributeType»"
 											«ELSE»
+											«IF attribute.dtoAttributeType.equals("date")»
+											type: "string",
+											format: "date"
+											«ELSE»
 											type: "«attribute.dtoAttributeType»"
+											«ENDIF»
 											«ENDIF»
 										}
 									«ENDFOR»

@@ -4,7 +4,7 @@
     editorDirectory="/co.edu.unal.modev.repository.editor/src" modelPluginID="co.edu.unal.modev.repository"
     forceOverwrite="true" modelName="RepositoryDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.repository.edit"
-    editorPluginID="co.edu.unal.modev.repository.editor" runtimeVersion="2.9">
+    editorPluginID="co.edu.unal.modev.repository.editor" runtimeVersion="2.10">
   <genPackages prefix="RepositoryDsl" basePackage="co.edu.unal.modev.repository" disposableProviderFactory="true"
       fileExtensions="repository" ecorePackage="RepositoryDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RepositoryDsl.ecore#//VOID">

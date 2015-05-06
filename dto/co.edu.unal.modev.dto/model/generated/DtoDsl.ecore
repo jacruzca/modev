@@ -30,7 +30,8 @@
     <eLiterals name="NUMBER" value="1" literal="Number"/>
     <eLiterals name="DECIMAL" value="2" literal="Decimal"/>
     <eLiterals name="DATE" value="3" literal="Date"/>
-    <eLiterals name="BOOLEAN" value="4" literal="Boolean"/>
+    <eLiterals name="ARRAY" value="4" literal="Array"/>
+    <eLiterals name="BOOLEAN" value="5" literal="Boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractEntity" eSuperTypes="#//AbstractEntityMap"/>
 </ecore:EPackage>

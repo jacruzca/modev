@@ -4,7 +4,7 @@
     editorDirectory="/co.edu.unal.modev.document.editor/src" modelPluginID="co.edu.unal.modev.document"
     forceOverwrite="true" modelName="DocumentDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.document.edit"
-    editorPluginID="co.edu.unal.modev.document.editor" runtimeVersion="2.9">
+    editorPluginID="co.edu.unal.modev.document.editor" runtimeVersion="2.10">
   <genPackages prefix="DocumentDsl" basePackage="co.edu.unal.modev.document" disposableProviderFactory="true"
       fileExtensions="document" ecorePackage="DocumentDsl.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="DocumentDsl.ecore#//ORDER_TYPE">

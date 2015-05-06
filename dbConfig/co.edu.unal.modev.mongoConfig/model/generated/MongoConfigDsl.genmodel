@@ -4,7 +4,7 @@
     editorDirectory="/co.edu.unal.modev.mongoConfig.editor/src" modelPluginID="co.edu.unal.modev.mongoConfig"
     forceOverwrite="true" modelName="MongoConfigDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="co.edu.unal.modev.mongoConfig.edit"
-    editorPluginID="co.edu.unal.modev.mongoConfig.editor" runtimeVersion="2.9">
+    editorPluginID="co.edu.unal.modev.mongoConfig.editor" runtimeVersion="2.10">
   <genPackages prefix="MongoConfigDsl" basePackage="co.edu.unal.modev.mongoConfig"
       disposableProviderFactory="true" fileExtensions="mongoConfig" ecorePackage="MongoConfigDsl.ecore#/">
     <genClasses ecoreClass="MongoConfigDsl.ecore#//MongoDbConfiguration">

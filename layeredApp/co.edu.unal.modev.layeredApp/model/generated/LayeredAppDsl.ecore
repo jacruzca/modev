@@ -28,6 +28,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Environment">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inversePort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dbConfig" eType="ecore:EClass platform:/resource/co.edu.unal.modev.dbConfig/model/generated/DbConfigDsl.ecore#//DatabaseConfiguration"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mongoConfig" eType="ecore:EClass platform:/resource/co.edu.unal.modev.mongoConfig/model/generated/MongoConfigDsl.ecore#//MongoConfiguration"/>

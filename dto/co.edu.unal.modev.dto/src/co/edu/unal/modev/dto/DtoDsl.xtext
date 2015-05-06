@@ -30,4 +30,5 @@ enum SimpleDtoTypes:
 	NUMBER='Number' |
 	DECIMAL='Decimal' |
 	DATE='Date' |
+	ARRAY = 'Array' |
 	BOOLEAN='Boolean';
