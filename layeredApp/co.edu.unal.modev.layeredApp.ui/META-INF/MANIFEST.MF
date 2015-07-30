@@ -7,8 +7,8 @@ Bundle-SymbolicName: co.edu.unal.modev.layeredApp.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: co.edu.unal.modev.layeredApp;visibility:=reexport,
  org.eclipse.xtext.ui,
- org.eclipse.ui.editors;bundle-version="3.5.0",
- org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui.editors;bundle-version="3.8.100",
+ org.eclipse.ui.ide;bundle-version="3.9.2",
  org.eclipse.xtext.ui.shared,
  org.eclipse.ui,
  org.eclipse.xtext.builder,
@@ -22,7 +22,7 @@ Require-Bundle: co.edu.unal.modev.layeredApp;visibility:=reexport,
  org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: co.edu.unal.modev.layeredApp.ui.quickfix,
  co.edu.unal.modev.layeredApp.ui.contentassist,
  co.edu.unal.modev.layeredApp.ui.contentassist.antlr,

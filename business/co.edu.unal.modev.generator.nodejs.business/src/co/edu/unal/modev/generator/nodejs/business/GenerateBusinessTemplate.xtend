@@ -65,7 +65,7 @@ class GenerateBusinessTemplate {
 			}
 		}
 		
-		throw new RouteNotFoundException("Route or param not found")
+		throw new RouteNotFoundException("Route or param not found. Route name: " + route.name)
 	}
 	
 	/**
