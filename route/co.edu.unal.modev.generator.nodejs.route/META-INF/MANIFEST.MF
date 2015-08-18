@@ -8,8 +8,8 @@ Bundle-Vendor: jacruzca-UNAL
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  co.edu.unal.modev.route;bundle-version="1.0.0",
- co.edu.unal.modev.business;bundle-version="1.0.0",
- co.edu.unal.modev.common;bundle-version="1.0.0"
+ co.edu.unal.modev.common;bundle-version="1.0.0",
+ co.edu.unal.modev.business;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: co.edu.unal.modev.generator.nodejs.route
