@@ -73,6 +73,9 @@ class GenerateDocumentTemplate {
 					«ENDIF»
 				«ENDIF»
 			«ENDFOR»
+		},{
+			«startJavaProtectedRegion(getUniqueId("mainSchemaOptions", document, config))»
+			«endJavaProtectedRegion»
 		});
 		
 		«FOR indexes : document.compoundIndexes»
